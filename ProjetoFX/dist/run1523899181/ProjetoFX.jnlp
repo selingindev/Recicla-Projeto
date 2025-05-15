@@ -8,9 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProjetoFX.jar" size="24165" download="eager" />
-    <jar href="lib\mysql-connector-j-8.4.0.jar" size="2533399" download="eager" />
-    <jar href="lib\recicla.jar" size="176738" download="eager" />
+    <jar href="ProjetoFX.jar" size="24143" download="eager" />
+    <jar href="lib\recicla.jar" size="176742" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="projetofx.ProjetoFX"  name="ProjetoFX" />
   <update check="always"/>

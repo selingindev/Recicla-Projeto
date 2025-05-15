@@ -4,10 +4,8 @@
  */
 package recicla;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import recicla.util.ConexaoDb;
 import recicla.view.ManterColPdc;
 import recicla.view.ManterColaborador;
 import recicla.view.ManterLogradouro;
@@ -35,8 +33,6 @@ public class Start {
      * @throws java.lang.ClassNotFoundException
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-     
-
         if(ManterUsuario.validar()) {
             menu();
         } else {
