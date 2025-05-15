@@ -12,7 +12,7 @@
     <children>
         <MenuBar prefHeight="49.0" prefWidth="682.0">
             <menus>
-            
+                <!--
                 <Menu fx:id="manterColPdc" mnemonicParsing="false" text="Gerenciar ColPdc">
                     <items>
                         <MenuItem fx:id="inserirColPdc" mnemonicParsing="false" text="Inserir ColPdc"/>
@@ -31,6 +31,7 @@
                         <MenuItem fx:id="listarColaborador" mnemonicParsing="false" text="Listar Colaborador"/>
                     </items>
                 </Menu>
+            -->
                 <Menu fx:id="manterLogradouro" mnemonicParsing="false" text="Gerenciar Logradouro">
                     <items>
                         <MenuItem fx:id="inserirLogradouro" mnemonicParsing="false" text="Inserir Logradouro"/>
@@ -38,8 +39,9 @@
                         <MenuItem fx:id="buscarLogradouro" mnemonicParsing="false" text="Buscar Logradouro"/>
                         <MenuItem fx:id="excluirLogradouro" mnemonicParsing="false" text="Excluir Logradouro"/>
                         <MenuItem fx:id="listarLogradouro" mnemonicParsing="false" text="Listar Logradouro"/>
+                        <MenuItem fx:id="buscarCep" mnemonicParsing="false" text="Buscar CEP"/>
                     </items>
-                </Menu>
+                </Menu>    <!--
                 <Menu fx:id="manterMaterial" mnemonicParsing="false" text="Gerenciar Material">
                     <items>
                         <MenuItem fx:id="inserirMaterial" mnemonicParsing="false" text="Inserir Material"/>
@@ -120,7 +122,7 @@
                         <MenuItem fx:id="excluirSistema" mnemonicParsing="false" text="Excluir Sistema"/>
                         <MenuItem fx:id="listarSistema" mnemonicParsing="false" text="Listar Sistema"/>
                     </items>
-                </Menu>
+                </Menu>   -->
                 <Menu fx:id="manterUsuario" mnemonicParsing="false" text="Gerenciar Usuario">
                     <items>
                         <MenuItem fx:id="inserirUsuario" mnemonicParsing="false" text="Inserir Usuario"/>
@@ -130,6 +132,7 @@
                         <MenuItem fx:id="listarUsuario" mnemonicParsing="false" text="Listar Usuario"/>
                     </items>
                 </Menu>
+                    <!--
                 <Menu fx:id="manterUsuarioSistema" mnemonicParsing="false" text="Gerenciar UsuarioSistema">
                     <items>
                         <MenuItem fx:id="inserirUsuarioSistema" mnemonicParsing="false" text="Inserir UsuarioSistema"/>
@@ -139,6 +142,7 @@
                         <MenuItem fx:id="listarUsuarioSistema" mnemonicParsing="false" text="Listar UsuarioSistema"/>
                     </items>
                 </Menu>
+                               -->    
             </menus>
             <padding>
                 <Insets left="110.0" top="10.0" />
