@@ -5,13 +5,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import projetofx.ProjetoFX;
@@ -19,113 +17,293 @@ import projetofx.ProjetoFX;
 /**
  * FXML Controller class
  *
- * @author Bruno Pequeno
- * FATEC Carapicuíba
+ * @author Bruno Pequeno FATEC Carapicuíba
  * @version 1.1
- * 
+ *
  */
 public class MenuInterface implements Initializable {
-    
 
+    // ===== COLPDC =====
     @FXML
-    private Menu manterUsuario;
+    private MenuItem inserirColPdc;
+    @FXML
+    private MenuItem alterarColPdc;
+    @FXML
+    private MenuItem buscarColPdc;
+    @FXML
+    private MenuItem excluirColPdc;
+    @FXML
+    private MenuItem listarColPdc;
 
+// ===== COLABORADOR =====
     @FXML
-    private MenuItem inserirU;
+    private MenuItem inserirColaborador;
+    @FXML
+    private MenuItem alterarColaborador;
+    @FXML
+    private MenuItem buscarColaborador;
+    @FXML
+    private MenuItem excluirColaborador;
+    @FXML
+    private MenuItem listarColaborador;
 
+// ===== LOGRADOURO =====
     @FXML
-    private MenuItem listarU;
+    private MenuItem inserirLogradouro;
+    @FXML
+    private MenuItem alterarLogradouro;
+    @FXML
+    private MenuItem buscarLogradouro;
+    @FXML
+    private MenuItem excluirLogradouro;
+    @FXML
+    private MenuItem listarLogradouro;
 
+// ===== MATERIAL =====
     @FXML
-    private Menu manterProduto;
+    private MenuItem inserirMaterial;
+    @FXML
+    private MenuItem alterarMaterial;
+    @FXML
+    private MenuItem buscarMaterial;
+    @FXML
+    private MenuItem excluirMaterial;
+    @FXML
+    private MenuItem listarMaterial;
 
+// ===== PDRCOL =====
     @FXML
-    private MenuItem inserirP;
+    private MenuItem inserirPDRCOL;
+    @FXML
+    private MenuItem alterarPDRCOL;
+    @FXML
+    private MenuItem buscarPDRCOL;
+    @FXML
+    private MenuItem excluirPDRCOL;
+    @FXML
+    private MenuItem listarPDRCOL;
 
+// ===== PEF_PDC =====
     @FXML
-    private MenuItem listarP;
+    private MenuItem inserirPEF_PDC;
+    @FXML
+    private MenuItem alterarPEF_PDC;
+    @FXML
+    private MenuItem buscarPEF_PDC;
+    @FXML
+    private MenuItem excluirPEF_PDC;
+    @FXML
+    private MenuItem listarPEF_PDC;
 
+// ===== PESSOA =====
     @FXML
-    private Menu manterUP;
+    private MenuItem inserirPessoa;
+    @FXML
+    private MenuItem alterarPessoa;
+    @FXML
+    private MenuItem buscarPessoa;
+    @FXML
+    private MenuItem excluirPessoa;
+    @FXML
+    private MenuItem listarPessoa;
 
+// ===== PESSOAFISICA =====
     @FXML
-    private MenuItem inserirUP;
+    private MenuItem inserirPessoaFisica;
+    @FXML
+    private MenuItem alterarPessoaFisica;
+    @FXML
+    private MenuItem buscarPessoaFisica;
+    @FXML
+    private MenuItem excluirPessoaFisica;
+    @FXML
+    private MenuItem listarPessoaFisica;
 
+// ===== PESSOAJURIDICA =====
     @FXML
-    private MenuItem listarUP;
-    
-    private void initComponentes () {
+    private MenuItem inserirPessoaJuridica;
+    @FXML
+    private MenuItem alterarPessoaJuridica;
+    @FXML
+    private MenuItem buscarPessoaJuridica;
+    @FXML
+    private MenuItem excluirPessoaJuridica;
+    @FXML
+    private MenuItem listarPessoaJuridica;
+
+// ===== PONTOCOLETA =====
+    @FXML
+    private MenuItem inserirPontoColeta;
+    @FXML
+    private MenuItem alterarPontoColeta;
+    @FXML
+    private MenuItem buscarPontoColeta;
+    @FXML
+    private MenuItem excluirPontoColeta;
+    @FXML
+    private MenuItem listarPontoColeta;
+
+// ===== PONTORECICLAGEM =====
+    @FXML
+    private MenuItem inserirPontoReciclagem;
+    @FXML
+    private MenuItem alterarPontoReciclagem;
+    @FXML
+    private MenuItem buscarPontoReciclagem;
+    @FXML
+    private MenuItem excluirPontoReciclagem;
+    @FXML
+    private MenuItem listarPontoReciclagem;
+
+// ===== SISTEMA =====
+    @FXML
+    private MenuItem inserirSistema;
+    @FXML
+    private MenuItem alterarSistema;
+    @FXML
+    private MenuItem buscarSistema;
+    @FXML
+    private MenuItem excluirSistema;
+    @FXML
+    private MenuItem listarSistema;
+
+// ===== USUARIO =====
+    @FXML
+    private MenuItem inserirUsuario;
+    @FXML
+    private MenuItem alterarUsuario;
+    @FXML
+    private MenuItem buscarUsuario;
+    @FXML
+    private MenuItem excluirUsuario;
+    @FXML
+    private MenuItem listarUsuario;
+
+// ===== USUARIOSISTEMA =====
+    @FXML
+    private MenuItem inserirUsuarioSistema;
+    @FXML
+    private MenuItem alterarUsuarioSistema;
+    @FXML
+    private MenuItem buscarUsuarioSistema;
+    @FXML
+    private MenuItem excluirUsuarioSistema;
+    @FXML
+    private MenuItem listarUsuarioSistema;
+
+    private void initComponentes() {
+        // ===== COLPDC =====
         
-        inserirU.setOnAction((ActionEvent event) -> {
-            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/InserirUsuarioInterface.fxml"));
-            Parent novatela = null;
-            try {
-                novatela = loader.load();
-                Stage stg = ProjetoFX.getStage();
-                stg.setScene(new Scene(novatela));
-                stg.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+        /**
+        configurarAcao(inserirColPdc, "colpdc", "Inserir", "ColPdc");
+        configurarAcao(alterarColPdc, "colpdc", "Alterar", "ColPdc");
+        configurarAcao(buscarColPdc, "colpdc", "Buscar", "ColPdc");
+        configurarAcao(excluirColPdc, "colpdc", "Excluir", "ColPdc");
+        configurarAcao(listarColPdc, "colpdc", "Listar", "ColPdc");
 
-        listarU.setOnAction((ActionEvent event) -> {
-            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/ConsultarUsuarioInterface.fxml"));
-            Parent novatela = null;
+
+        // ===== COLABORADOR =====
+        configurarAcao(inserirColaborador, "colaborador", "Inserir", "Colaborador");
+        configurarAcao(alterarColaborador, "colaborador", "Alterar", "Colaborador");
+        configurarAcao(buscarColaborador, "colaborador", "Buscar", "Colaborador");
+        configurarAcao(excluirColaborador, "colaborador", "Excluir", "Colaborador");
+        configurarAcao(listarColaborador, "colaborador", "Listar", "Colaborador");
+
+        // ===== LOGRADOURO =====
+        configurarAcao(inserirLogradouro, "logradouro", "Inserir", "Logradouro");
+        configurarAcao(alterarLogradouro, "logradouro", "Alterar", "Logradouro");
+        configurarAcao(buscarLogradouro, "logradouro", "Buscar", "Logradouro");
+        configurarAcao(excluirLogradouro, "logradouro", "Excluir", "Logradouro");
+        configurarAcao(listarLogradouro, "logradouro", "Listar", "Logradouro");
+
+        // ===== MATERIAL =====
+        configurarAcao(inserirMaterial, "material", "Inserir", "Material");
+        configurarAcao(alterarMaterial, "material", "Alterar", "Material");
+        configurarAcao(buscarMaterial, "material", "Buscar", "Material");
+        configurarAcao(excluirMaterial, "material", "Excluir", "Material");
+        configurarAcao(listarMaterial, "material", "Listar", "Material");
+
+        // ===== PDRCOL =====
+        configurarAcao(inserirPDRCOL, "pdrcoll", "Inserir", "PDRCOL");
+        configurarAcao(alterarPDRCOL, "pdrcoll", "Alterar", "PDRCOL");
+        configurarAcao(buscarPDRCOL, "pdrcoll", "Buscar", "PDRCOL");
+        configurarAcao(excluirPDRCOL, "pdrcoll", "Excluir", "PDRCOL");
+        configurarAcao(listarPDRCOL, "pdrcoll", "Listar", "PDRCOL");
+
+        // ===== PEF_PDC =====
+        configurarAcao(inserirPEF_PDC, "pef_pdc", "Inserir", "PEF_PDC");
+        configurarAcao(alterarPEF_PDC, "pef_pdc", "Alterar", "PEF_PDC");
+        configurarAcao(buscarPEF_PDC, "pef_pdc", "Buscar", "PEF_PDC");
+        configurarAcao(excluirPEF_PDC, "pef_pdc", "Excluir", "PEF_PDC");
+        configurarAcao(listarPEF_PDC, "pef_pdc", "Listar", "PEF_PDC");
+
+        // ===== PESSOA =====
+        configurarAcao(inserirPessoa, "pessoa", "Inserir", "Pessoa");
+        configurarAcao(alterarPessoa, "pessoa", "Alterar", "Pessoa");
+        configurarAcao(buscarPessoa, "pessoa", "Buscar", "Pessoa");
+        configurarAcao(excluirPessoa, "pessoa", "Excluir", "Pessoa");
+        configurarAcao(listarPessoa, "pessoa", "Listar", "Pessoa");
+
+        // ===== PESSOAFISICA =====
+        configurarAcao(inserirPessoaFisica, "pessoafisica", "Inserir", "PessoaFisica");
+        configurarAcao(alterarPessoaFisica, "pessoafisica", "Alterar", "PessoaFisica");
+        configurarAcao(buscarPessoaFisica, "pessoafisica", "Buscar", "PessoaFisica");
+        configurarAcao(excluirPessoaFisica, "pessoafisica", "Excluir", "PessoaFisica");
+        configurarAcao(listarPessoaFisica, "pessoafisica", "Listar", "PessoaFisica");
+
+        // ===== PESSOAJURIDICA =====
+        configurarAcao(inserirPessoaJuridica, "pessoajuridica", "Inserir", "PessoaJuridica");
+        configurarAcao(alterarPessoaJuridica, "pessoajuridica", "Alterar", "PessoaJuridica");
+        configurarAcao(buscarPessoaJuridica, "pessoajuridica", "Buscar", "PessoaJuridica");
+        configurarAcao(excluirPessoaJuridica, "pessoajuridica", "Excluir", "PessoaJuridica");
+        configurarAcao(listarPessoaJuridica, "pessoajuridica", "Listar", "PessoaJuridica");
+
+        // ===== PONTOCOLETA =====
+        configurarAcao(inserirPontoColeta, "pontocoleta", "Inserir", "PontoColeta");
+        configurarAcao(alterarPontoColeta, "pontocoleta", "Alterar", "PontoColeta");
+        configurarAcao(buscarPontoColeta, "pontocoleta", "Buscar", "PontoColeta");
+        configurarAcao(excluirPontoColeta, "pontocoleta", "Excluir", "PontoColeta");
+        configurarAcao(listarPontoColeta, "pontocoleta", "Listar", "PontoColeta");
+
+        // ===== PONTORECICLAGEM =====
+        configurarAcao(inserirPontoReciclagem, "pontoreciclagem", "Inserir", "PontoReciclagem");
+        configurarAcao(alterarPontoReciclagem, "pontoreciclagem", "Alterar", "PontoReciclagem");
+        configurarAcao(buscarPontoReciclagem, "pontoreciclagem", "Buscar", "PontoReciclagem");
+        configurarAcao(excluirPontoReciclagem, "pontoreciclagem", "Excluir", "PontoReciclagem");
+        configurarAcao(listarPontoReciclagem, "pontoreciclagem", "Listar", "PontoReciclagem");
+
+        // ===== SISTEMA =====
+        configurarAcao(inserirSistema, "sistema", "Inserir", "Sistema");
+        configurarAcao(alterarSistema, "sistema", "Alterar", "Sistema");
+        configurarAcao(buscarSistema, "sistema", "Buscar", "Sistema");
+        configurarAcao(excluirSistema, "sistema", "Excluir", "Sistema");
+        configurarAcao(listarSistema, "sistema", "Listar", "Sistema");
+         */
+
+        // ===== USUARIO =====
+        configurarAcao(inserirUsuario, "usuarios", "Inserir", "Usuario");
+        configurarAcao(alterarUsuario, "usuarios", "Alterar", "Usuario");
+        configurarAcao(buscarUsuario, "usuarios", "Buscar", "Usuario");
+        configurarAcao(excluirUsuario, "usuarios", "Excluir", "Usuario");
+        configurarAcao(listarUsuario, "usuarios", "Listar", "Usuario");
+        /**
+        // ===== USUARIOSISTEMA =====
+        configurarAcao(inserirUsuarioSistema, "usuariosistema", "Inserir", "UsuarioSistema");
+        configurarAcao(alterarUsuarioSistema, "usuariosistema", "Alterar", "UsuarioSistema");
+        configurarAcao(buscarUsuarioSistema, "usuariosistema", "Buscar", "UsuarioSistema");
+        configurarAcao(excluirUsuarioSistema, "usuariosistema", "Excluir", "UsuarioSistema");
+        configurarAcao(listarUsuarioSistema, "usuariosistema", "Listar", "UsuarioSistema");
+
+*/
+    }
+
+    private void configurarAcao(MenuItem item, String pasta, String acao, String nomeBean) {
+        item.setOnAction(event -> {
             try {
-                novatela = loader.load();
-                Stage stg = ProjetoFX.getStage();
-                stg.setScene(new Scene(novatela));
-                stg.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        
-        inserirP.setOnAction((ActionEvent event) -> {
-            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/produtos/InserirProdutoInterface.fxml"));
-            Parent novatela = null;
-            try {
-                novatela = loader.load();
-                Stage stg = ProjetoFX.getStage();
-                stg.setScene(new Scene(novatela));
-                stg.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-         
-        listarP.setOnAction((ActionEvent event) -> {
-            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/produtos/ConsultarProdutoInterface.fxml"));
-            Parent novatela = null;
-            try {
-                novatela = loader.load();
-                Stage stg = ProjetoFX.getStage();
-                stg.setScene(new Scene(novatela));
-                stg.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        
-        inserirUP.setOnAction((ActionEvent event) -> {
-            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/relacoes/InserirRelacaoInterface.fxml"));
-            Parent novatela = null;
-            try {
-                novatela = loader.load();
-                Stage stg = ProjetoFX.getStage();
-                stg.setScene(new Scene(novatela));
-                stg.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInterface.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        
-        listarUP.setOnAction((ActionEvent event) -> {
-            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/relacoes/ConsultarRelacaoInterface.fxml"));
-            Parent novatela = null;
-            try {
-                novatela = loader.load();
+                // Exemplo: /br/com/fatec/xmls/usuarios/InserirUsuarioInterface.fxml
+                String caminho = String.format("/br/com/fatec/xmls/%s/%s%sInterface.fxml",
+                        pasta.toLowerCase(), acao, nomeBean);
+                Parent novatela = FXMLLoader.load(ProjetoFX.class.getResource(caminho));
                 Stage stg = ProjetoFX.getStage();
                 stg.setScene(new Scene(novatela));
                 stg.show();
@@ -138,11 +316,10 @@ public class MenuInterface implements Initializable {
     /**
      * Initializes the controller class.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         initComponentes();
-    }    
-    
+    }
+
 }
