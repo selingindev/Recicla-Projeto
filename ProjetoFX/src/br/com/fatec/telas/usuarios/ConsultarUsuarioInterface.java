@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.fatec.telas;
+package br.com.fatec.telas.usuarios;
 
+import br.com.fatec.telas.LoginInterface;
 import recicla.model.bean.Usuario;
 import recicla.controller.ControllerUsuario;
 import java.io.IOException;

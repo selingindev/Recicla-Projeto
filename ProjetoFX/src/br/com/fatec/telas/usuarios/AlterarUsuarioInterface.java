@@ -1,4 +1,4 @@
-package br.com.fatec.telas;
+package br.com.fatec.telas.usuarios;
 
 import recicla.model.bean.Usuario;
 import recicla.controller.ControllerUsuario;
