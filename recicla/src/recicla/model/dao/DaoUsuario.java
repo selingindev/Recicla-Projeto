@@ -32,7 +32,8 @@ public class DaoUsuario implements DaoBasico {
         // cria o select para ser executado no banco de dados 
         String sql = "select * from usuarios WHERE login = ? AND senha = ?";
         // prepared statement para seleção
-        PreparedStatement stmt = this.c.prepareStatement(sql);
+        PreparedStatement
+         stmt = this.c.prepareStatement(sql);
         // seta os valores
         stmt.setString(1,usuEnt.getLogin());
         stmt.setString(2,usuEnt.getSenha());

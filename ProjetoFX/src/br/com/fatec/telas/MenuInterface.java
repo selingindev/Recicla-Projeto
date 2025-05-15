@@ -58,6 +58,8 @@ public class MenuInterface implements Initializable {
     private MenuItem excluirLogradouro;
     @FXML
     private MenuItem listarLogradouro;
+    @FXML
+    private MenuItem buscarCep;
 
 // ===== MATERIAL =====
     @FXML
@@ -209,12 +211,6 @@ public class MenuInterface implements Initializable {
         configurarAcao(excluirColaborador, "colaborador", "Excluir", "Colaborador");
         configurarAcao(listarColaborador, "colaborador", "Listar", "Colaborador");
 
-        // ===== LOGRADOURO =====
-        configurarAcao(inserirLogradouro, "logradouro", "Inserir", "Logradouro");
-        configurarAcao(alterarLogradouro, "logradouro", "Alterar", "Logradouro");
-        configurarAcao(buscarLogradouro, "logradouro", "Buscar", "Logradouro");
-        configurarAcao(excluirLogradouro, "logradouro", "Excluir", "Logradouro");
-        configurarAcao(listarLogradouro, "logradouro", "Listar", "Logradouro");
 
         // ===== MATERIAL =====
         configurarAcao(inserirMaterial, "material", "Inserir", "Material");
@@ -283,9 +279,17 @@ public class MenuInterface implements Initializable {
         // ===== USUARIO =====
         configurarAcao(inserirUsuario, "usuarios", "Inserir", "Usuario");
         configurarAcao(alterarUsuario, "usuarios", "Alterar", "Usuario");
-        configurarAcao(buscarUsuario, "usuarios", "Buscar", "Usuario");
+        configurarAcao(buscarUsuario, "usuarios", "Consultar", "Usuario");
         configurarAcao(excluirUsuario, "usuarios", "Excluir", "Usuario");
         configurarAcao(listarUsuario, "usuarios", "Listar", "Usuario");
+        
+             // ===== LOGRADOURO =====
+        configurarAcao(inserirLogradouro, "logradouro", "Inserir", "Logradouro");
+        configurarAcao(alterarLogradouro, "logradouro", "Alterar", "Logradouro");
+        configurarAcao(buscarLogradouro, "logradouro", "Consultar", "Logradouro");
+        configurarAcao(excluirLogradouro, "logradouro", "Excluir", "Logradouro");
+        configurarAcao(listarLogradouro, "logradouro", "Listar", "Logradouro");
+        configurarAcao(buscarCep, "logradouro", "Buscar", "Cep");
         /**
         // ===== USUARIOSISTEMA =====
         configurarAcao(inserirUsuarioSistema, "usuariosistema", "Inserir", "UsuarioSistema");
