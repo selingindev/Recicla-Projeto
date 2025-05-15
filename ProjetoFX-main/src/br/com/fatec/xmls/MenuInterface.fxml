@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.telas.MenuInterface">
+    <children>
+        <MenuBar prefHeight="49.0" prefWidth="682.0">
+            <menus>
+            
+                <Menu fx:id="manterColPdc" mnemonicParsing="false" text="Gerenciar ColPdc">
+                    <items>
+                        <MenuItem fx:id="inserirColPdc" mnemonicParsing="false" text="Inserir ColPdc"/>
+                        <MenuItem fx:id="alterarColPdc" mnemonicParsing="false" text="Alterar ColPdc"/>
+                        <MenuItem fx:id="buscarColPdc" mnemonicParsing="false" text="Buscar ColPdc"/>
+                        <MenuItem fx:id="excluirColPdc" mnemonicParsing="false" text="Excluir ColPdc"/>
+                        <MenuItem fx:id="listarColPdc" mnemonicParsing="false" text="Listar ColPdc"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterColaborador" mnemonicParsing="false" text="Gerenciar Colaborador">
+                    <items>
+                        <MenuItem fx:id="inserirColaborador" mnemonicParsing="false" text="Inserir Colaborador"/>
+                        <MenuItem fx:id="alterarColaborador" mnemonicParsing="false" text="Alterar Colaborador"/>
+                        <MenuItem fx:id="buscarColaborador" mnemonicParsing="false" text="Buscar Colaborador"/>
+                        <MenuItem fx:id="excluirColaborador" mnemonicParsing="false" text="Excluir Colaborador"/>
+                        <MenuItem fx:id="listarColaborador" mnemonicParsing="false" text="Listar Colaborador"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterLogradouro" mnemonicParsing="false" text="Gerenciar Logradouro">
+                    <items>
+                        <MenuItem fx:id="inserirLogradouro" mnemonicParsing="false" text="Inserir Logradouro"/>
+                        <MenuItem fx:id="alterarLogradouro" mnemonicParsing="false" text="Alterar Logradouro"/>
+                        <MenuItem fx:id="buscarLogradouro" mnemonicParsing="false" text="Buscar Logradouro"/>
+                        <MenuItem fx:id="excluirLogradouro" mnemonicParsing="false" text="Excluir Logradouro"/>
+                        <MenuItem fx:id="listarLogradouro" mnemonicParsing="false" text="Listar Logradouro"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterMaterial" mnemonicParsing="false" text="Gerenciar Material">
+                    <items>
+                        <MenuItem fx:id="inserirMaterial" mnemonicParsing="false" text="Inserir Material"/>
+                        <MenuItem fx:id="alterarMaterial" mnemonicParsing="false" text="Alterar Material"/>
+                        <MenuItem fx:id="buscarMaterial" mnemonicParsing="false" text="Buscar Material"/>
+                        <MenuItem fx:id="excluirMaterial" mnemonicParsing="false" text="Excluir Material"/>
+                        <MenuItem fx:id="listarMaterial" mnemonicParsing="false" text="Listar Material"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPDRCOL" mnemonicParsing="false" text="Gerenciar PDRCOL">
+                    <items>
+                        <MenuItem fx:id="inserirPDRCOL" mnemonicParsing="false" text="Inserir PDRCOL"/>
+                        <MenuItem fx:id="alterarPDRCOL" mnemonicParsing="false" text="Alterar PDRCOL"/>
+                        <MenuItem fx:id="buscarPDRCOL" mnemonicParsing="false" text="Buscar PDRCOL"/>
+                        <MenuItem fx:id="excluirPDRCOL" mnemonicParsing="false" text="Excluir PDRCOL"/>
+                        <MenuItem fx:id="listarPDRCOL" mnemonicParsing="false" text="Listar PDRCOL"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPEFPDC" mnemonicParsing="false" text="Gerenciar PEF_PDC">
+                    <items>
+                        <MenuItem fx:id="inserirPEFPDC" mnemonicParsing="false" text="Inserir PEF_PDC"/>
+                        <MenuItem fx:id="alterarPEFPDC" mnemonicParsing="false" text="Alterar PEF_PDC"/>
+                        <MenuItem fx:id="buscarPEFPDC" mnemonicParsing="false" text="Buscar PEF_PDC"/>
+                        <MenuItem fx:id="excluirPEFPDC" mnemonicParsing="false" text="Excluir PEF_PDC"/>
+                        <MenuItem fx:id="listarPEFPDC" mnemonicParsing="false" text="Listar PEF_PDC"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPessoa" mnemonicParsing="false" text="Gerenciar Pessoa">
+                    <items>
+                        <MenuItem fx:id="inserirPessoa" mnemonicParsing="false" text="Inserir Pessoa"/>
+                        <MenuItem fx:id="alterarPessoa" mnemonicParsing="false" text="Alterar Pessoa"/>
+                        <MenuItem fx:id="buscarPessoa" mnemonicParsing="false" text="Buscar Pessoa"/>
+                        <MenuItem fx:id="excluirPessoa" mnemonicParsing="false" text="Excluir Pessoa"/>
+                        <MenuItem fx:id="listarPessoa" mnemonicParsing="false" text="Listar Pessoa"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPessoaFisica" mnemonicParsing="false" text="Gerenciar PessoaFisica">
+                    <items>
+                        <MenuItem fx:id="inserirPessoaFisica" mnemonicParsing="false" text="Inserir PessoaFisica"/>
+                        <MenuItem fx:id="alterarPessoaFisica" mnemonicParsing="false" text="Alterar PessoaFisica"/>
+                        <MenuItem fx:id="buscarPessoaFisica" mnemonicParsing="false" text="Buscar PessoaFisica"/>
+                        <MenuItem fx:id="excluirPessoaFisica" mnemonicParsing="false" text="Excluir PessoaFisica"/>
+                        <MenuItem fx:id="listarPessoaFisica" mnemonicParsing="false" text="Listar PessoaFisica"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPessoaJuridica" mnemonicParsing="false" text="Gerenciar PessoaJuridica">
+                    <items>
+                        <MenuItem fx:id="inserirPessoaJuridica" mnemonicParsing="false" text="Inserir PessoaJuridica"/>
+                        <MenuItem fx:id="alterarPessoaJuridica" mnemonicParsing="false" text="Alterar PessoaJuridica"/>
+                        <MenuItem fx:id="buscarPessoaJuridica" mnemonicParsing="false" text="Buscar PessoaJuridica"/>
+                        <MenuItem fx:id="excluirPessoaJuridica" mnemonicParsing="false" text="Excluir PessoaJuridica"/>
+                        <MenuItem fx:id="listarPessoaJuridica" mnemonicParsing="false" text="Listar PessoaJuridica"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPontoColeta" mnemonicParsing="false" text="Gerenciar PontoColeta">
+                    <items>
+                        <MenuItem fx:id="inserirPontoColeta" mnemonicParsing="false" text="Inserir PontoColeta"/>
+                        <MenuItem fx:id="alterarPontoColeta" mnemonicParsing="false" text="Alterar PontoColeta"/>
+                        <MenuItem fx:id="buscarPontoColeta" mnemonicParsing="false" text="Buscar PontoColeta"/>
+                        <MenuItem fx:id="excluirPontoColeta" mnemonicParsing="false" text="Excluir PontoColeta"/>
+                        <MenuItem fx:id="listarPontoColeta" mnemonicParsing="false" text="Listar PontoColeta"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterPontoReciclagem" mnemonicParsing="false" text="Gerenciar PontoReciclagem">
+                    <items>
+                        <MenuItem fx:id="inserirPontoReciclagem" mnemonicParsing="false" text="Inserir PontoReciclagem"/>
+                        <MenuItem fx:id="alterarPontoReciclagem" mnemonicParsing="false" text="Alterar PontoReciclagem"/>
+                        <MenuItem fx:id="buscarPontoReciclagem" mnemonicParsing="false" text="Buscar PontoReciclagem"/>
+                        <MenuItem fx:id="excluirPontoReciclagem" mnemonicParsing="false" text="Excluir PontoReciclagem"/>
+                        <MenuItem fx:id="listarPontoReciclagem" mnemonicParsing="false" text="Listar PontoReciclagem"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterSistema" mnemonicParsing="false" text="Gerenciar Sistema">
+                    <items>
+                        <MenuItem fx:id="inserirSistema" mnemonicParsing="false" text="Inserir Sistema"/>
+                        <MenuItem fx:id="alterarSistema" mnemonicParsing="false" text="Alterar Sistema"/>
+                        <MenuItem fx:id="buscarSistema" mnemonicParsing="false" text="Buscar Sistema"/>
+                        <MenuItem fx:id="excluirSistema" mnemonicParsing="false" text="Excluir Sistema"/>
+                        <MenuItem fx:id="listarSistema" mnemonicParsing="false" text="Listar Sistema"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterUsuario" mnemonicParsing="false" text="Gerenciar Usuario">
+                    <items>
+                        <MenuItem fx:id="inserirUsuario" mnemonicParsing="false" text="Inserir Usuario"/>
+                        <MenuItem fx:id="alterarUsuario" mnemonicParsing="false" text="Alterar Usuario"/>
+                        <MenuItem fx:id="buscarUsuario" mnemonicParsing="false" text="Buscar Usuario"/>
+                        <MenuItem fx:id="excluirUsuario" mnemonicParsing="false" text="Excluir Usuario"/>
+                        <MenuItem fx:id="listarUsuario" mnemonicParsing="false" text="Listar Usuario"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="manterUsuarioSistema" mnemonicParsing="false" text="Gerenciar UsuarioSistema">
+                    <items>
+                        <MenuItem fx:id="inserirUsuarioSistema" mnemonicParsing="false" text="Inserir UsuarioSistema"/>
+                        <MenuItem fx:id="alterarUsuarioSistema" mnemonicParsing="false" text="Alterar UsuarioSistema"/>
+                        <MenuItem fx:id="buscarUsuarioSistema" mnemonicParsing="false" text="Buscar UsuarioSistema"/>
+                        <MenuItem fx:id="excluirUsuarioSistema" mnemonicParsing="false" text="Excluir UsuarioSistema"/>
+                        <MenuItem fx:id="listarUsuarioSistema" mnemonicParsing="false" text="Listar UsuarioSistema"/>
+                    </items>
+                </Menu>
+            </menus>
+            <padding>
+                <Insets left="110.0" top="10.0" />
+            </padding>
+        </MenuBar>
+        <Label fx:id="lbLogin1" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="211.0" prefHeight="51.0" prefWidth="320.0" text="BRAIN JAVA">
+            <font>
+                <Font name="Courier New Bold" size="45.0" />
+            </font>
+        </Label>
+        <Label fx:id="lbLogin11" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="198.0" prefHeight="35.0" prefWidth="160.0" text="System">
+            <font>
+                <Font name="Courier New" size="17.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
