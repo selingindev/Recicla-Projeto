@@ -3,24 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/usuarios/AlterarUsuarioInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/MenuInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/MenuInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/usuarios/AlterarUsuarioInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/LoginInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/usuarios/ConsultarUsuarioInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/usuarios/InserirUsuarioInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/usuarios/ConsultarUsuarioInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/AlterarLogradouroInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/AlterarLogradouroInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/ConsultarLogradouroInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/ConsultarLogradouroInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/ExcluirLogradouroInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/InserirLogradouroInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/InserirLogradouroInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/ExcluirLogradouroInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/ListarLogradouroInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/ListarLogradouroInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pdc/ListarPDCInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pdc/ConsultarPDCInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pdc/ExcluirPDCInterface.java</file>
         </group>
     </open-files>
 </project-private>
