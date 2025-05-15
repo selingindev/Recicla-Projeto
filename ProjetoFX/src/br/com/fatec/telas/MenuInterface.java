@@ -195,110 +195,119 @@ public class MenuInterface implements Initializable {
 
     private void initComponentes() {
         // ===== COLPDC =====
-        
+
         /**
-        configurarAcao(inserirColPdc, "colpdc", "Inserir", "ColPdc");
-        configurarAcao(alterarColPdc, "colpdc", "Alterar", "ColPdc");
-        configurarAcao(buscarColPdc, "colpdc", "Buscar", "ColPdc");
-        configurarAcao(excluirColPdc, "colpdc", "Excluir", "ColPdc");
-        configurarAcao(listarColPdc, "colpdc", "Listar", "ColPdc");
-
-
-        // ===== COLABORADOR =====
-        configurarAcao(inserirColaborador, "colaborador", "Inserir", "Colaborador");
-        configurarAcao(alterarColaborador, "colaborador", "Alterar", "Colaborador");
-        configurarAcao(buscarColaborador, "colaborador", "Buscar", "Colaborador");
-        configurarAcao(excluirColaborador, "colaborador", "Excluir", "Colaborador");
-        configurarAcao(listarColaborador, "colaborador", "Listar", "Colaborador");
-
-
-        // ===== MATERIAL =====
-        configurarAcao(inserirMaterial, "material", "Inserir", "Material");
-        configurarAcao(alterarMaterial, "material", "Alterar", "Material");
-        configurarAcao(buscarMaterial, "material", "Buscar", "Material");
-        configurarAcao(excluirMaterial, "material", "Excluir", "Material");
-        configurarAcao(listarMaterial, "material", "Listar", "Material");
-
-        // ===== PDRCOL =====
-        configurarAcao(inserirPDRCOL, "pdrcoll", "Inserir", "PDRCOL");
-        configurarAcao(alterarPDRCOL, "pdrcoll", "Alterar", "PDRCOL");
-        configurarAcao(buscarPDRCOL, "pdrcoll", "Buscar", "PDRCOL");
-        configurarAcao(excluirPDRCOL, "pdrcoll", "Excluir", "PDRCOL");
-        configurarAcao(listarPDRCOL, "pdrcoll", "Listar", "PDRCOL");
-
-        // ===== PEF_PDC =====
-        configurarAcao(inserirPEF_PDC, "pef_pdc", "Inserir", "PEF_PDC");
-        configurarAcao(alterarPEF_PDC, "pef_pdc", "Alterar", "PEF_PDC");
-        configurarAcao(buscarPEF_PDC, "pef_pdc", "Buscar", "PEF_PDC");
-        configurarAcao(excluirPEF_PDC, "pef_pdc", "Excluir", "PEF_PDC");
-        configurarAcao(listarPEF_PDC, "pef_pdc", "Listar", "PEF_PDC");
-
-        // ===== PESSOA =====
-        configurarAcao(inserirPessoa, "pessoa", "Inserir", "Pessoa");
-        configurarAcao(alterarPessoa, "pessoa", "Alterar", "Pessoa");
-        configurarAcao(buscarPessoa, "pessoa", "Buscar", "Pessoa");
-        configurarAcao(excluirPessoa, "pessoa", "Excluir", "Pessoa");
-        configurarAcao(listarPessoa, "pessoa", "Listar", "Pessoa");
-
-        // ===== PESSOAFISICA =====
-        configurarAcao(inserirPessoaFisica, "pessoafisica", "Inserir", "PessoaFisica");
-        configurarAcao(alterarPessoaFisica, "pessoafisica", "Alterar", "PessoaFisica");
-        configurarAcao(buscarPessoaFisica, "pessoafisica", "Buscar", "PessoaFisica");
-        configurarAcao(excluirPessoaFisica, "pessoafisica", "Excluir", "PessoaFisica");
-        configurarAcao(listarPessoaFisica, "pessoafisica", "Listar", "PessoaFisica");
-
-        // ===== PESSOAJURIDICA =====
-        configurarAcao(inserirPessoaJuridica, "pessoajuridica", "Inserir", "PessoaJuridica");
-        configurarAcao(alterarPessoaJuridica, "pessoajuridica", "Alterar", "PessoaJuridica");
-        configurarAcao(buscarPessoaJuridica, "pessoajuridica", "Buscar", "PessoaJuridica");
-        configurarAcao(excluirPessoaJuridica, "pessoajuridica", "Excluir", "PessoaJuridica");
-        configurarAcao(listarPessoaJuridica, "pessoajuridica", "Listar", "PessoaJuridica");
-
-        // ===== PONTOCOLETA =====
-        configurarAcao(inserirPontoColeta, "pontocoleta", "Inserir", "PontoColeta");
-        configurarAcao(alterarPontoColeta, "pontocoleta", "Alterar", "PontoColeta");
-        configurarAcao(buscarPontoColeta, "pontocoleta", "Buscar", "PontoColeta");
-        configurarAcao(excluirPontoColeta, "pontocoleta", "Excluir", "PontoColeta");
-        configurarAcao(listarPontoColeta, "pontocoleta", "Listar", "PontoColeta");
-
-        // ===== PONTORECICLAGEM =====
-        configurarAcao(inserirPontoReciclagem, "pontoreciclagem", "Inserir", "PontoReciclagem");
-        configurarAcao(alterarPontoReciclagem, "pontoreciclagem", "Alterar", "PontoReciclagem");
-        configurarAcao(buscarPontoReciclagem, "pontoreciclagem", "Buscar", "PontoReciclagem");
-        configurarAcao(excluirPontoReciclagem, "pontoreciclagem", "Excluir", "PontoReciclagem");
-        configurarAcao(listarPontoReciclagem, "pontoreciclagem", "Listar", "PontoReciclagem");
-
-        // ===== SISTEMA =====
-        configurarAcao(inserirSistema, "sistema", "Inserir", "Sistema");
-        configurarAcao(alterarSistema, "sistema", "Alterar", "Sistema");
-        configurarAcao(buscarSistema, "sistema", "Buscar", "Sistema");
-        configurarAcao(excluirSistema, "sistema", "Excluir", "Sistema");
-        configurarAcao(listarSistema, "sistema", "Listar", "Sistema");
+         * configurarAcao(inserirColPdc, "colpdc", "Inserir", "ColPdc");
+         * configurarAcao(alterarColPdc, "colpdc", "Alterar", "ColPdc");
+         * configurarAcao(buscarColPdc, "colpdc", "Buscar", "ColPdc");
+         * configurarAcao(excluirColPdc, "colpdc", "Excluir", "ColPdc");
+         * configurarAcao(listarColPdc, "colpdc", "Listar", "ColPdc");
+         *
+         *
+         * // ===== COLABORADOR ===== configurarAcao(inserirColaborador,
+         * "colaborador", "Inserir", "Colaborador");
+         * configurarAcao(alterarColaborador, "colaborador", "Alterar",
+         * "Colaborador"); configurarAcao(buscarColaborador, "colaborador",
+         * "Buscar", "Colaborador"); configurarAcao(excluirColaborador,
+         * "colaborador", "Excluir", "Colaborador");
+         * configurarAcao(listarColaborador, "colaborador", "Listar",
+         * "Colaborador");
+         *
+         *
+         * // ===== MATERIAL ===== configurarAcao(inserirMaterial, "material",
+         * "Inserir", "Material"); configurarAcao(alterarMaterial, "material",
+         * "Alterar", "Material"); configurarAcao(buscarMaterial, "material",
+         * "Buscar", "Material"); configurarAcao(excluirMaterial, "material",
+         * "Excluir", "Material"); configurarAcao(listarMaterial, "material",
+         * "Listar", "Material");
+         *
+         * // ===== PDRCOL ===== configurarAcao(inserirPDRCOL, "pdrcoll",
+         * "Inserir", "PDRCOL"); configurarAcao(alterarPDRCOL, "pdrcoll",
+         * "Alterar", "PDRCOL"); configurarAcao(buscarPDRCOL, "pdrcoll",
+         * "Buscar", "PDRCOL"); configurarAcao(excluirPDRCOL, "pdrcoll",
+         * "Excluir", "PDRCOL"); configurarAcao(listarPDRCOL, "pdrcoll",
+         * "Listar", "PDRCOL");
+         *
+         * // ===== PEF_PDC ===== configurarAcao(inserirPEF_PDC, "pef_pdc",
+         * "Inserir", "PEF_PDC"); configurarAcao(alterarPEF_PDC, "pef_pdc",
+         * "Alterar", "PEF_PDC"); configurarAcao(buscarPEF_PDC, "pef_pdc",
+         * "Buscar", "PEF_PDC"); configurarAcao(excluirPEF_PDC, "pef_pdc",
+         * "Excluir", "PEF_PDC"); configurarAcao(listarPEF_PDC, "pef_pdc",
+         * "Listar", "PEF_PDC");
+         *
+         * // ===== PESSOA ===== configurarAcao(inserirPessoa, "pessoa",
+         * "Inserir", "Pessoa"); configurarAcao(alterarPessoa, "pessoa",
+         * "Alterar", "Pessoa"); configurarAcao(buscarPessoa, "pessoa",
+         * "Buscar", "Pessoa"); configurarAcao(excluirPessoa, "pessoa",
+         * "Excluir", "Pessoa"); configurarAcao(listarPessoa, "pessoa",
+         * "Listar", "Pessoa");
+         *
+         * // ===== PESSOAFISICA ===== configurarAcao(inserirPessoaFisica,
+         * "pessoafisica", "Inserir", "PessoaFisica");
+         * configurarAcao(alterarPessoaFisica, "pessoafisica", "Alterar",
+         * "PessoaFisica"); configurarAcao(buscarPessoaFisica, "pessoafisica",
+         * "Buscar", "PessoaFisica"); configurarAcao(excluirPessoaFisica,
+         * "pessoafisica", "Excluir", "PessoaFisica");
+         * configurarAcao(listarPessoaFisica, "pessoafisica", "Listar",
+         * "PessoaFisica");
+         *
+         * // ===== PESSOAJURIDICA ===== configurarAcao(inserirPessoaJuridica,
+         * "pessoajuridica", "Inserir", "PessoaJuridica");
+         * configurarAcao(alterarPessoaJuridica, "pessoajuridica", "Alterar",
+         * "PessoaJuridica"); configurarAcao(buscarPessoaJuridica,
+         * "pessoajuridica", "Buscar", "PessoaJuridica");
+         * configurarAcao(excluirPessoaJuridica, "pessoajuridica", "Excluir",
+         * "PessoaJuridica"); configurarAcao(listarPessoaJuridica,
+         * "pessoajuridica", "Listar", "PessoaJuridica");
+         *
+         * // ===== PONTORECICLAGEM ===== configurarAcao(inserirPontoReciclagem,
+         * "pontoreciclagem", "Inserir", "PontoReciclagem");
+         * configurarAcao(alterarPontoReciclagem, "pontoreciclagem", "Alterar",
+         * "PontoReciclagem"); configurarAcao(buscarPontoReciclagem,
+         * "pontoreciclagem", "Buscar", "PontoReciclagem");
+         * configurarAcao(excluirPontoReciclagem, "pontoreciclagem", "Excluir",
+         * "PontoReciclagem"); configurarAcao(listarPontoReciclagem,
+         * "pontoreciclagem", "Listar", "PontoReciclagem");
+         *
+         * // ===== SISTEMA ===== configurarAcao(inserirSistema, "sistema",
+         * "Inserir", "Sistema"); configurarAcao(alterarSistema, "sistema",
+         * "Alterar", "Sistema"); configurarAcao(buscarSistema, "sistema",
+         * "Buscar", "Sistema"); configurarAcao(excluirSistema, "sistema",
+         * "Excluir", "Sistema"); configurarAcao(listarSistema, "sistema",
+         * "Listar", "Sistema");
          */
-
         // ===== USUARIO =====
         configurarAcao(inserirUsuario, "usuarios", "Inserir", "Usuario");
         configurarAcao(alterarUsuario, "usuarios", "Alterar", "Usuario");
         configurarAcao(buscarUsuario, "usuarios", "Consultar", "Usuario");
         configurarAcao(excluirUsuario, "usuarios", "Excluir", "Usuario");
         configurarAcao(listarUsuario, "usuarios", "Listar", "Usuario");
-        
-             // ===== LOGRADOURO =====
+
+        // ===== LOGRADOURO =====
         configurarAcao(inserirLogradouro, "logradouro", "Inserir", "Logradouro");
         configurarAcao(alterarLogradouro, "logradouro", "Alterar", "Logradouro");
         configurarAcao(buscarLogradouro, "logradouro", "Consultar", "Logradouro");
         configurarAcao(excluirLogradouro, "logradouro", "Excluir", "Logradouro");
         configurarAcao(listarLogradouro, "logradouro", "Listar", "Logradouro");
         configurarAcao(buscarCep, "logradouro", "Buscar", "Cep");
-        /**
-        // ===== USUARIOSISTEMA =====
-        configurarAcao(inserirUsuarioSistema, "usuariosistema", "Inserir", "UsuarioSistema");
-        configurarAcao(alterarUsuarioSistema, "usuariosistema", "Alterar", "UsuarioSistema");
-        configurarAcao(buscarUsuarioSistema, "usuariosistema", "Buscar", "UsuarioSistema");
-        configurarAcao(excluirUsuarioSistema, "usuariosistema", "Excluir", "UsuarioSistema");
-        configurarAcao(listarUsuarioSistema, "usuariosistema", "Listar", "UsuarioSistema");
 
-*/
+        // ===== PONTOCOLETA =====
+        configurarAcao(inserirPontoColeta, "pdc", "Inserir", "PDC");
+        configurarAcao(alterarPontoColeta, "pdc", "Alterar", "PDC");
+        configurarAcao(buscarPontoColeta, "pdc", "Consultar", "PDC");
+        configurarAcao(excluirPontoColeta, "pdc", "Excluir", "PDC");
+        configurarAcao(listarPontoColeta, "pdc", "Listar", "PDC");
+        /**
+         * // ===== USUARIOSISTEMA ===== configurarAcao(inserirUsuarioSistema,
+         * "usuariosistema", "Inserir", "UsuarioSistema");
+         * configurarAcao(alterarUsuarioSistema, "usuariosistema", "Alterar",
+         * "UsuarioSistema"); configurarAcao(buscarUsuarioSistema,
+         * "usuariosistema", "Buscar", "UsuarioSistema");
+         * configurarAcao(excluirUsuarioSistema, "usuariosistema", "Excluir",
+         * "UsuarioSistema"); configurarAcao(listarUsuarioSistema,
+         * "usuariosistema", "Listar", "UsuarioSistema");
+         *
+         */
     }
 
     private void configurarAcao(MenuItem item, String pasta, String acao, String nomeBean) {
