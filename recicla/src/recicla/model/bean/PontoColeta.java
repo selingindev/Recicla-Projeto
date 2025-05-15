@@ -1,28 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package recicla.model.bean;
 
 
 public class PontoColeta {
-
-    public PontoColeta(String nome) {
-        this.nome = nome;
-    }
     private int id;
-    private int idLog;
+    private String idLog;
     private String nome;
-
-    public PontoColeta(int id) {
-        this.id = id;
-    }
+    private String qrCode;
     
     
-    public PontoColeta(int id, int idLog, String nome) {
+    public PontoColeta(int id, String idLog, String nome, String qrCode) {
         this.id = id;
         this.idLog = idLog;
         this.nome = nome;
+        this.qrCode = qrCode;
     }
     
     public int getId (){
@@ -33,11 +23,11 @@ public class PontoColeta {
         this.id = id;
     }
     
-    public int getIdLog () {
+    public String getIdLog () {
         return idLog;
     }
     
-    public void setIdLog (int idLog) {
+    public void setIdLog (String idLog) {
         this.idLog = idLog;
     }
     
@@ -47,5 +37,13 @@ public class PontoColeta {
     
     public void setNome (String nome) {
         this.nome = nome;
+    }
+    
+    public String getQrCode () {
+        return qrCode;
+    }
+    
+    public void setQrCode (String qrCode) {
+        this.qrCode = qrCode;
     }
 }
