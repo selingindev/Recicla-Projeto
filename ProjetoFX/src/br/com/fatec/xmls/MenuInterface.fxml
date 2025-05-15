@@ -105,15 +105,7 @@
                         <MenuItem fx:id="listarPontoColeta" mnemonicParsing="false" text="Listar PontoColeta"/>
                     </items>
                 </Menu>
-                <Menu fx:id="manterPontoReciclagem" mnemonicParsing="false" text="Gerenciar PontoReciclagem">
-                    <items>
-                        <MenuItem fx:id="inserirPontoReciclagem" mnemonicParsing="false" text="Inserir PontoReciclagem"/>
-                        <MenuItem fx:id="alterarPontoReciclagem" mnemonicParsing="false" text="Alterar PontoReciclagem"/>
-                        <MenuItem fx:id="buscarPontoReciclagem" mnemonicParsing="false" text="Buscar PontoReciclagem"/>
-                        <MenuItem fx:id="excluirPontoReciclagem" mnemonicParsing="false" text="Excluir PontoReciclagem"/>
-                        <MenuItem fx:id="listarPontoReciclagem" mnemonicParsing="false" text="Listar PontoReciclagem"/>
-                    </items>
-                </Menu>
+
                 <Menu fx:id="manterSistema" mnemonicParsing="false" text="Gerenciar Sistema">
                     <items>
                         <MenuItem fx:id="inserirSistema" mnemonicParsing="false" text="Inserir Sistema"/>
@@ -132,8 +124,27 @@
                         <MenuItem fx:id="listarUsuario" mnemonicParsing="false" text="Listar Usuario"/>
                     </items>
                 </Menu>
+                    <Menu fx:id="manterPontoColeta" mnemonicParsing="false" text="Gerenciar PontoColeta">
+                    <items>
+                        <MenuItem fx:id="inserirPontoColeta" mnemonicParsing="false" text="Inserir PontoColeta"/>
+                        <MenuItem fx:id="alterarPontoColeta" mnemonicParsing="false" text="Alterar PontoColeta"/>
+                        <MenuItem fx:id="buscarPontoColeta" mnemonicParsing="false" text="Buscar PontoColeta"/>
+                        <MenuItem fx:id="excluirPontoColeta" mnemonicParsing="false" text="Excluir PontoColeta"/>
+                        <MenuItem fx:id="listarPontoColeta" mnemonicParsing="false" text="Listar PontoColeta"/>
+                    </items>
+                </Menu>
+
                     <!--
-                <Menu fx:id="manterUsuarioSistema" mnemonicParsing="false" text="Gerenciar UsuarioSistema">
+                    <Menu fx:id="manterPontoReciclagem" mnemonicParsing="false" text="Gerenciar PontoReciclagem">
+                    <items>
+                        <MenuItem fx:id="inserirPontoReciclagem" mnemonicParsing="false" text="Inserir PontoReciclagem"/>
+                        <MenuItem fx:id="alterarPontoReciclagem" mnemonicParsing="false" text="Alterar PontoReciclagem"/>
+                        <MenuItem fx:id="buscarPontoReciclagem" mnemonicParsing="false" text="Buscar PontoReciclagem"/>
+                        <MenuItem fx:id="excluirPontoReciclagem" mnemonicParsing="false" text="Excluir PontoReciclagem"/>
+                        <MenuItem fx:id="listarPontoReciclagem" mnemonicParsing="false" text="Listar PontoReciclagem"/>
+                    </items>
+                </Menu>
+ <Menu fx:id="manterUsuarioSistema" mnemonicParsing="false" text="Gerenciar UsuarioSistema">
                     <items>
                         <MenuItem fx:id="inserirUsuarioSistema" mnemonicParsing="false" text="Inserir UsuarioSistema"/>
                         <MenuItem fx:id="alterarUsuarioSistema" mnemonicParsing="false" text="Alterar UsuarioSistema"/>
