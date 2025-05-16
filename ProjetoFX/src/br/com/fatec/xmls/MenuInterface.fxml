@@ -133,6 +133,15 @@
                         <MenuItem fx:id="listarPontoColeta" mnemonicParsing="false" text="Listar PontoColeta"/>
                     </items>
                 </Menu>
+                       <Menu fx:id="manterColaborador" mnemonicParsing="false" text="Gerenciar Colaborador">
+                    <items>
+                        <MenuItem fx:id="inserirColaborador" mnemonicParsing="false" text="Inserir Colaborador"/>
+                        <MenuItem fx:id="alterarColaborador" mnemonicParsing="false" text="Alterar Colaborador"/>
+                        <MenuItem fx:id="buscarColaborador" mnemonicParsing="false" text="Buscar Colaborador"/>
+                        <MenuItem fx:id="excluirColaborador" mnemonicParsing="false" text="Excluir Colaborador"/>
+                        <MenuItem fx:id="listarColaborador" mnemonicParsing="false" text="Listar Colaborador"/>
+                    </items>
+                </Menu>
 
                     <!--
                     <Menu fx:id="manterPontoReciclagem" mnemonicParsing="false" text="Gerenciar PontoReciclagem">

@@ -260,14 +260,15 @@ public class MenuInterface implements Initializable {
          * "PessoaJuridica"); configurarAcao(listarPessoaJuridica,
          * "pessoajuridica", "Listar", "PessoaJuridica");
          *
-         * // ===== PONTORECICLAGEM ===== configurarAcao(inserirPontoReciclagem,
-         * "pontoreciclagem", "Inserir", "PontoReciclagem");
-         * configurarAcao(alterarPontoReciclagem, "pontoreciclagem", "Alterar",
-         * "PontoReciclagem"); configurarAcao(buscarPontoReciclagem,
-         * "pontoreciclagem", "Buscar", "PontoReciclagem");
-         * configurarAcao(excluirPontoReciclagem, "pontoreciclagem", "Excluir",
-         * "PontoReciclagem"); configurarAcao(listarPontoReciclagem,
-         * "pontoreciclagem", "Listar", "PontoReciclagem");
+         * // ===== PONTORECICLAGEM =====
+         * configurarAcao(inserirPontoReciclagem, "pontoreciclagem", "Inserir",
+         * "PontoReciclagem"); configurarAcao(alterarPontoReciclagem,
+         * "pontoreciclagem", "Alterar", "PontoReciclagem");
+         * configurarAcao(buscarPontoReciclagem, "pontoreciclagem", "Buscar",
+         * "PontoReciclagem"); configurarAcao(excluirPontoReciclagem,
+         * "pontoreciclagem", "Excluir", "PontoReciclagem");
+         * configurarAcao(listarPontoReciclagem, "pontoreciclagem", "Listar",
+         * "PontoReciclagem");
          *
          * // ===== SISTEMA ===== configurarAcao(inserirSistema, "sistema",
          * "Inserir", "Sistema"); configurarAcao(alterarSistema, "sistema",
@@ -297,6 +298,13 @@ public class MenuInterface implements Initializable {
         configurarAcao(buscarPontoColeta, "pdc", "Consultar", "PDC");
         configurarAcao(excluirPontoColeta, "pdc", "Excluir", "PDC");
         configurarAcao(listarPontoColeta, "pdc", "Listar", "PDC");
+        
+        // ===== COLABORADOR ===== 
+        configurarAcao(inserirColaborador, "colaborador", "Inserir", "Colaborador");
+        configurarAcao(alterarColaborador, "colaborador", "Alterar", "Colaborador");
+        configurarAcao(buscarColaborador, "colaborador", "Consultar", "Colaborador");
+        configurarAcao(excluirColaborador, "colaborador", "Excluir", "Colaborador");
+        configurarAcao(listarColaborador, "colaborador", "Listar", "Colaborador");
         /**
          * // ===== USUARIOSISTEMA ===== configurarAcao(inserirUsuarioSistema,
          * "usuariosistema", "Inserir", "UsuarioSistema");
