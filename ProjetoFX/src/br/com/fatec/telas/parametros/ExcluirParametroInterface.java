@@ -24,11 +24,11 @@ import utils.NavigationUtil;
  *
  * @author raife
  */
-public class InserirParametroInterface extends Application{
+public class ExcluirParametroInterface extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("recicla.InserirParametroInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("recicla.ExcluirParametroInterface.fxml"));
         
         System.out.println(root);
         
@@ -46,20 +46,18 @@ public class InserirParametroInterface extends Application{
     }
     
     @FXML private TextField TextCodigo;
-    @FXML private TextField TextDescricao;
-    @FXML private Button btnInsert;
+    @FXML private Button btnDelete;
     
     @FXML
     private void handleInsert(ActionEvent event) throws SQLException, ClassNotFoundException {
         
         int codigo = Integer.parseInt(TextCodigo.getText());
-        String descricao = TextDescricao.getText();
         
-        Parametro entPar = new Parametro(codigo, descricao);
-        ControllerParametro contPar = new ControllerParametro();
+        Parametro entPar = new Parametro(codigo);
+        ControllerParametro controllerParametro = new ControllerParametro();
+        Boolean parSaida = controllerParametro.excluir(entPar);
 
-        Parametro saidaPar = (Parametro) contPar.inserir(entPar);
-        JOptionPane.showMessageDialog(null, saidaPar.toString());
+        JOptionPane.showMessageDialog(null, parSaida.toString());
     }
     
     @FXML

@@ -5,14 +5,17 @@
 package br.com.fatec.telas.parametros;
 
 import java.sql.SQLException;
+import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -24,13 +27,13 @@ import utils.NavigationUtil;
  *
  * @author raife
  */
-public class InserirParametroInterface extends Application{
+public class ConsultarParametroInterface extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("recicla.InserirParametroInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("recicla.ConsultarParametroInterface.fxml"));
         
-        System.out.println(root);
+       System.out.println(root);
         
         Scene scene = new Scene(root);
         
@@ -47,22 +50,24 @@ public class InserirParametroInterface extends Application{
     
     @FXML private TextField TextCodigo;
     @FXML private TextField TextDescricao;
-    @FXML private Button btnInsert;
+    @FXML private Button btnSearch;
+    @FXML private TableView tableColaborador;
     
     @FXML
-    private void handleInsert(ActionEvent event) throws SQLException, ClassNotFoundException {
+    private void handleSearch(ActionEvent event) throws SQLException, ClassNotFoundException {
         
-        int codigo = Integer.parseInt(TextCodigo.getText());
+        int id = Integer.parseInt(TextCodigo.getText());
         String descricao = TextDescricao.getText();
-        
-        Parametro entPar = new Parametro(codigo, descricao);
+        Parametro parEnt = new Parametro(id);
+		
+        // Pesquisa Colaborador
         ControllerParametro contPar = new ControllerParametro();
-
-        Parametro saidaPar = (Parametro) contPar.inserir(entPar);
-        JOptionPane.showMessageDialog(null, saidaPar.toString());
+        List<Object> listaParametros = contPar.listar(parEnt);
+        
+        // Adicionando os dados na tabela
+        tableColaborador.setItems((ObservableList) listaParametros);
     }
-    
-    @FXML
+          @FXML
     private void onVoltarClick(javafx.event.ActionEvent event) {
         NavigationUtil.voltarParaTelaInicial(event);
     }
