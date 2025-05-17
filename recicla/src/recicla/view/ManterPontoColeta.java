@@ -64,7 +64,7 @@ public class ManterPontoColeta implements ViewBasico {
     public void inserir() throws SQLException, ClassNotFoundException {
         try {
             int id = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID:"));
-            String idLog = JOptionPane.showInputDialog("Digite o IDLOG:");
+            int idLog = Integer.parseInt(JOptionPane.showInputDialog("Digite o IDLOG:"));
             String nome = JOptionPane.showInputDialog("Digite o Nome:");
             String qrCode = JOptionPane.showInputDialog("Registre o QrCode:");
 
@@ -80,7 +80,7 @@ public class ManterPontoColeta implements ViewBasico {
         try {
             int alteraId = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do Ponto de Coleta que deseja alterar:"));
 
-            PontoColeta pc = (PontoColeta) controller.buscar(new PontoColeta(alteraId, "", "", ""));
+            PontoColeta pc = (PontoColeta) controller.buscar(new PontoColeta(alteraId, 0, "", ""));
             if (pc != null) {
                 String novoNome = JOptionPane.showInputDialog("Digite o novo Nome:");
                 pc.setNome(novoNome);
@@ -98,7 +98,7 @@ public class ManterPontoColeta implements ViewBasico {
     public void excluir() throws SQLException, ClassNotFoundException {
         try {
             int excluiId = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do Ponto de Coleta que deseja excluir:"));
-            PontoColeta pc = new PontoColeta(excluiId, "", "", "");
+            PontoColeta pc = new PontoColeta(excluiId, 0, "", "");
             PontoColeta excluido = (PontoColeta) controller.excluir(pc);
             if (excluido != null) {
                 JOptionPane.showMessageDialog(null, "Ponto de Coleta excluído com sucesso!", "Exclusão", JOptionPane.INFORMATION_MESSAGE);
@@ -114,7 +114,7 @@ public class ManterPontoColeta implements ViewBasico {
     public void buscar() throws SQLException, ClassNotFoundException {
         try {
             int buscaId = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do Ponto de Coleta que deseja buscar:"));
-            PontoColeta pc = (PontoColeta) controller.buscar(new PontoColeta(buscaId, "", "", ""));
+            PontoColeta pc = (PontoColeta) controller.buscar(new PontoColeta(buscaId, 0, "", ""));
             if (pc != null) {
                 JOptionPane.showMessageDialog(null, "Ponto de Coleta encontrado:\nID: " + pc.getId() +
                                                       "\nIDLOG: " + pc.getIdLog() +

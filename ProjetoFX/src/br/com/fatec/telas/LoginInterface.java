@@ -1,5 +1,6 @@
 package br.com.fatec.telas;
 
+import java.io.IOException;
 import recicla.model.bean.Usuario;
 import recicla.controller.ControllerUsuario;
 import java.net.URL;
@@ -8,7 +9,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,29 +50,27 @@ public class LoginInterface implements Initializable {
     ControllerUsuario usuCont = null;
 
     private void initComponentes () {
-        btEntrar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                usuCont = new ControllerUsuario();
-                Usuario usu = new Usuario(txtLogin.getText(),txtSenha.getText(),"","");
-                try {
-                    Object usuSaida = usuCont.validar(usu);
-                    try
-                        {
-                            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/MenuInterface.fxml"));
-                            Parent novatela  = loader.load();
-                            Stage stg = ProjetoFX.getStage();
-                            stg.setScene(new Scene(novatela));
-                            stg.show();
-                        } catch(Exception e) {
-                        } catch (Throwable ex) {                    
-                        Logger.getLogger(LoginInterface.class.getName()).log(Level.SEVERE, null, ex);
-                    }                    
-                } catch (SQLException | ClassNotFoundException ex) {
+        btEntrar.setOnAction((ActionEvent event) -> {
+            usuCont = new ControllerUsuario();
+            Usuario usu = new Usuario(txtLogin.getText(),txtSenha.getText(),"","");
+            try {
+                Object usuSaida = usuCont.validar(usu);
+                try
+                {
+                    FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/MenuInterface.fxml"));
+                    Parent novatela  = loader.load();
+                    Stage stg = ProjetoFX.getStage();
+                    stg.setScene(new Scene(novatela));
+                    stg.show();
+                } catch(IOException e) {
+                    Logger.getLogger(LoginInterface.class.getName()).log(Level.SEVERE, null, e);
+                } catch (Throwable ex) {
                     Logger.getLogger(LoginInterface.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(null, usu.getLogin());
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(LoginInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
+            JOptionPane.showMessageDialog(null, usu.getLogin());
         }); 
     }
     

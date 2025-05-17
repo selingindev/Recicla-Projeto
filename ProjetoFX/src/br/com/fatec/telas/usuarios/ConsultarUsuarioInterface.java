@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -109,22 +108,19 @@ public class ConsultarUsuarioInterface implements Initializable {
             }
         });
 
-        btAlterar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TablePosition pos = listaUsuario.getSelectionModel().getSelectedCells().get(0);
-                int row = pos.getRow();
-                setUsuario(listaUsuario.getItems().get(row));
-                FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/AlterarUsuarioInterface.fxml"));
-                Parent novatela = null;
-                try {
-                    novatela = loader.load();
-                    Stage stg = ProjetoFX.getStage();
-                    stg.setScene(new Scene(novatela));
-                    stg.show();
-                } catch (IOException ex) {
-                    Logger.getLogger(ConsultarUsuarioInterface.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        btAlterar.setOnAction((ActionEvent event) -> {
+            TablePosition pos = listaUsuario.getSelectionModel().getSelectedCells().get(0);
+            int row = pos.getRow();
+            setUsuario(listaUsuario.getItems().get(row));
+            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/usuario/AlterarUsuarioInterface.fxml"));
+            Parent novatela = null;
+            try {
+                novatela = loader.load();
+                Stage stg = ProjetoFX.getStage();
+                stg.setScene(new Scene(novatela));
+                stg.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ConsultarUsuarioInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         
@@ -141,19 +137,16 @@ public class ConsultarUsuarioInterface implements Initializable {
             }
         });
 
-        btVoltar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/MenuInterface.fxml"));
-                Parent novatela = null;
-                try {
-                    novatela = loader.load();
-                    Stage stg = ProjetoFX.getStage();
-                    stg.setScene(new Scene(novatela));
-                    stg.show();
-                } catch (IOException ex) {
-                    Logger.getLogger(ConsultarUsuarioInterface.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        btVoltar.setOnAction((ActionEvent event) -> {
+            FXMLLoader loader = new FXMLLoader(ProjetoFX.class.getResource("/br/com/fatec/xmls/MenuInterface.fxml"));
+            Parent novatela = null;
+            try {
+                novatela = loader.load();
+                Stage stg = ProjetoFX.getStage();
+                stg.setScene(new Scene(novatela));
+                stg.show();
+            } catch (IOException ex) {
+                Logger.getLogger(ConsultarUsuarioInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
         });   
     }
@@ -161,11 +154,12 @@ public class ConsultarUsuarioInterface implements Initializable {
     public void montaLista(Usuario usu) throws SQLException, ClassNotFoundException {
         List<Object> listaObj = usuCont.listar(usu);
         lista = new ArrayList<>();
+        System.out.println(listaObj);
 
         for (Object objLista : listaObj) {
             lista.add((Usuario) objLista);
         }
-        
+        System.out.println("Lista depois do for: "+ lista);
         oList = FXCollections.observableArrayList(lista);
         tid.setCellValueFactory(new PropertyValueFactory<Usuario,String>("id"));
         tlogin.setCellValueFactory(new PropertyValueFactory<Usuario,String>("login"));

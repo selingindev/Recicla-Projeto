@@ -3,12 +3,12 @@ package recicla.model.bean;
 
 public class PontoColeta {
     private int id;
-    private String idLog;
+    private int idLog;
     private String nome;
     private String qrCode;
     
     
-    public PontoColeta(int id, String idLog, String nome, String qrCode) {
+    public PontoColeta(int id, int idLog, String nome, String qrCode) {
         this.id = id;
         this.idLog = idLog;
         this.nome = nome;
@@ -23,11 +23,11 @@ public class PontoColeta {
         this.id = id;
     }
     
-    public String getIdLog () {
+    public int getIdLog () {
         return idLog;
     }
     
-    public void setIdLog (String idLog) {
+    public void setIdLog (int idLog) {
         this.idLog = idLog;
     }
     

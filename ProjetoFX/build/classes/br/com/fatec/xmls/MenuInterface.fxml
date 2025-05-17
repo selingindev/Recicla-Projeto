@@ -104,24 +104,19 @@
                         <MenuItem fx:id="excluirPontoColeta" mnemonicParsing="false" text="Excluir PontoColeta"/>
                         <MenuItem fx:id="listarPontoColeta" mnemonicParsing="false" text="Listar PontoColeta"/>
                     </items>
-                </Menu>
+                </Menu> -->
 
-                <Menu fx:id="manterSistema" mnemonicParsing="false" text="Gerenciar Sistema">
+                <Menu fx:id="manterPessoa" mnemonicParsing="false" text="Gerenciar Pessoa">
                     <items>
-                        <MenuItem fx:id="inserirSistema" mnemonicParsing="false" text="Inserir Sistema"/>
-                        <MenuItem fx:id="alterarSistema" mnemonicParsing="false" text="Alterar Sistema"/>
-                        <MenuItem fx:id="buscarSistema" mnemonicParsing="false" text="Buscar Sistema"/>
-                        <MenuItem fx:id="excluirSistema" mnemonicParsing="false" text="Excluir Sistema"/>
-                        <MenuItem fx:id="listarSistema" mnemonicParsing="false" text="Listar Sistema"/>
+                        <MenuItem fx:id="inserirPessoa" mnemonicParsing="false" text="Inserir Pessoa"/>
+                        <MenuItem fx:id="buscarPessoa" mnemonicParsing="false" text="Buscar Pessoa"/>
+                        <MenuItem fx:id="listarPessoa" mnemonicParsing="false" text="Listar Pessoa"/>
                     </items>
-                </Menu>   -->
+                </Menu>   
                 <Menu fx:id="manterUsuario" mnemonicParsing="false" text="Gerenciar Usuario">
                     <items>
-                        <MenuItem fx:id="inserirUsuario" mnemonicParsing="false" text="Inserir Usuario"/>
-                        <MenuItem fx:id="alterarUsuario" mnemonicParsing="false" text="Alterar Usuario"/>
-                        <MenuItem fx:id="buscarUsuario" mnemonicParsing="false" text="Buscar Usuario"/>
-                        <MenuItem fx:id="excluirUsuario" mnemonicParsing="false" text="Excluir Usuario"/>
-                        <MenuItem fx:id="listarUsuario" mnemonicParsing="false" text="Listar Usuario"/>
+                      <MenuItem fx:id="inserirUsuario" mnemonicParsing="false" text="Inserir Usuario"/>
+                      <MenuItem fx:id="consultarUsuario" mnemonicParsing="false" text="Consultar Usuario"/>
                     </items>
                 </Menu>
                     <Menu fx:id="manterPontoColeta" mnemonicParsing="false" text="Gerenciar PontoColeta">

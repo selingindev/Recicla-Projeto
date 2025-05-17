@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.telas.AlterarUsuarioInterface">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.telas.usuarios.AlterarUsuarioInterface">
    <children>
       <Button fx:id="btSalvar" layoutX="192.0" layoutY="348.0" mnemonicParsing="false" text="Salvar" />
       <Label fx:id="lbLogin" layoutX="118.0" layoutY="137.0" text="Login" />
