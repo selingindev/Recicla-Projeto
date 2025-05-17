@@ -26,7 +26,7 @@ public class DaoPontoColeta implements DaoBasico {
         String sql = "INSERT INTO PON_PONTOCOLETA (nome, id_log, qr_code) VALUES (?, ?, ?)";
         PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         stmt.setString(1, ponto.getNome());
-        stmt.setString(2, ponto.getIdLog());
+        stmt.setInt(2, ponto.getIdLog());
         stmt.setString(3, ponto.getQrCode());
         stmt.executeUpdate();
 
@@ -45,7 +45,7 @@ public class DaoPontoColeta implements DaoBasico {
         String sql = "UPDATE PON_PONTOCOLETA SET nome = ?, id_log = ?, qr_code = ? WHERE id = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
         stmt.setString(1, ponto.getNome());
-        stmt.setString(2, ponto.getIdLog());
+        stmt.setInt(2, ponto.getIdLog());
         stmt.setString(3, ponto.getQrCode());
         stmt.setInt(4, ponto.getId());
         stmt.executeUpdate();
@@ -75,7 +75,7 @@ public class DaoPontoColeta implements DaoBasico {
         if (rs.next()) {
             pontoEncontrado = new PontoColeta(
                 rs.getInt("id"),
-                rs.getString("id_log"),
+                rs.getInt("id_log"),
                 rs.getString("nome"),
                 rs.getString("qr_code")
             );
@@ -97,7 +97,7 @@ public class DaoPontoColeta implements DaoBasico {
         while (rs.next()) {
             PontoColeta ponto = new PontoColeta(
                 rs.getInt("id"),
-                rs.getString("id_log"),
+                rs.getInt("id_log"),
                 rs.getString("nome"),
                 rs.getString("qr_code")
             );

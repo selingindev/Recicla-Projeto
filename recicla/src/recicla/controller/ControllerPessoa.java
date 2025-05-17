@@ -47,5 +47,10 @@ public class ControllerPessoa implements ControllerBasico{
         return dao.listar(obj);
     }
     
+    public List<Object> listarTodos()  throws SQLException, ClassNotFoundException {
+        dao = new DaoPessoa();
+        return dao.listarTodos();
+    }
+    
 }
 

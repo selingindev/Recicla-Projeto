@@ -25,7 +25,7 @@ public class ExcluirPDCInterface {
     private void handleExcluir() {
         try {
             int id = Integer.parseInt(idField.getText());
-            PontoColeta pc = new PontoColeta(id, "SimuladoLog", "SimuladoNome", "SimuladoQRCode");
+            PontoColeta pc = new PontoColeta(id, 0, "SimuladoNome", "SimuladoQRCode");
             resultadoArea.setText("Ponto excluído (simulado):\nID: " + pc.getId());
         } catch (Exception e) {
             resultadoArea.setText("Erro: " + e.getMessage());

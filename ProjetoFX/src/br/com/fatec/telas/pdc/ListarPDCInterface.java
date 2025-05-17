@@ -22,7 +22,7 @@ public class ListarPDCInterface {
     private void handleListar() {
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= 5; i++) {
-            PontoColeta pc = new PontoColeta(i, "Log" + i, "Nome" + i, "QRCode" + i);
+            PontoColeta pc = new PontoColeta(i, 0 + i, "Nome" + i, "QRCode" + i);
             sb.append("ID: ").append(pc.getId())
                     .append(", IDLOG: ").append(pc.getIdLog())
                     .append(", Nome: ").append(pc.getNome())
