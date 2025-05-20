@@ -51,7 +51,7 @@ public class ConsultarParametroInterface extends Application{
     @FXML private TextField TextCodigo;
     @FXML private TextField TextDescricao;
     @FXML private Button btnSearch;
-    @FXML private TableView tableColaborador;
+    @FXML private TableView tableParametro;
     
     @FXML
     private void handleSearch(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -65,7 +65,7 @@ public class ConsultarParametroInterface extends Application{
         List<Object> listaParametros = contPar.listar(parEnt);
         
         // Adicionando os dados na tabela
-        tableColaborador.setItems((ObservableList) listaParametros);
+        tableParametro.setItems((ObservableList) listaParametros);
     }
           @FXML
     private void onVoltarClick(javafx.event.ActionEvent event) {

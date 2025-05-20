@@ -49,7 +49,7 @@ public class ExcluirParametroInterface extends Application{
     @FXML private Button btnDelete;
     
     @FXML
-    private void handleInsert(ActionEvent event) throws SQLException, ClassNotFoundException {
+    private void handleExclude(ActionEvent event) throws SQLException, ClassNotFoundException {
         
         int codigo = Integer.parseInt(TextCodigo.getText());
         
