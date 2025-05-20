@@ -16,7 +16,7 @@
         <TextField fx:id="funcional" layoutX="20" layoutY="30" prefHeight="26.0" prefWidth="278.0" promptText="Digite o funcional..." />
 
         <!-- Botão Inserir -->
-        <Button id="btnInsert" fx:id="searchButton" layoutX="313.0" layoutY="30.0" onAction="#handleInsert" text="Inserir" />
+        <Button id="btnInsert" fx:id="btnInsert" layoutX="313.0" layoutY="30.0" onAction="#handleInsert" text="Inserir" />
         
     </children>
 

@@ -1,4 +1,8 @@
-package br.com.fatec.telas.colaborador;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package br.com.fatec.telas.parametros;
 
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -12,15 +16,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import recicla.controller.ControllerColaborador;
-import recicla.model.bean.Colaborador;
+import recicla.controller.ControllerParametro;
+import recicla.model.bean.Parametro;
 import utils.NavigationUtil;
 
-public class InserirColaboradorInterface extends Application {
-
+/**
+ *
+ * @author raife
+ */
+public class InserirParametroInterface extends Application{
+    
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("recicla.InserirColaboradorInterface.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("recicla.InserirParametroInterface.fxml"));
         
         System.out.println(root);
         
@@ -37,19 +45,21 @@ public class InserirColaboradorInterface extends Application {
         launch(args);
     }
     
-    @FXML private TextField TextFuncional;
+    @FXML private TextField TextCodigo;
+    @FXML private TextField TextDescricao;
     @FXML private Button btnInsert;
     
     @FXML
     private void handleInsert(ActionEvent event) throws SQLException, ClassNotFoundException {
         
-        int funcional = Integer.parseInt(TextFuncional.getText());
+        int codigo = Integer.parseInt(TextCodigo.getText());
+        String descricao = TextDescricao.getText();
         
-        Colaborador entCol = new Colaborador(funcional);
-        ControllerColaborador contCol = new ControllerColaborador();
+        Parametro entPar = new Parametro(codigo, descricao);
+        ControllerParametro contPar = new ControllerParametro();
 
-        Colaborador saidaCol = (Colaborador) contCol.inserir(entCol);
-        JOptionPane.showMessageDialog(null, saidaCol.toString());
+        Parametro saidaPar = (Parametro) contPar.inserir(entPar);
+        JOptionPane.showMessageDialog(null, saidaPar.toString());
     }
     
     @FXML
