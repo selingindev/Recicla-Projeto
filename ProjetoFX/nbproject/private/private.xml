@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/projetofx/ProjetoFX.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/colaborador/ConsultarColaboradorInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/colaborador/AlterarColaboradorInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/colaborador/AlterarColaboradorInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/LoginInterface.java</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/MenuInterface.fxml</file>
-            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/MenuInterface.java</file>
+            <file>file:/C:/wamp64/www/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/parametros/AlterarParametroInterface.java</file>
+            <file>file:/C:/wamp64/www/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/parametros/ExcluirParametroInterface.java</file>
+            <file>file:/C:/wamp64/www/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/BuscarCepInterface.java</file>
+            <file>file:/C:/wamp64/www/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/parametros/InserirParametroInterface.java</file>
         </group>
     </open-files>
 </project-private>
