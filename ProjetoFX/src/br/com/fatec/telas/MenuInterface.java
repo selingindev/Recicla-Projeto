@@ -101,11 +101,7 @@ public class MenuInterface implements Initializable {
     @FXML
     private MenuItem inserirPessoa;
     @FXML
-    private MenuItem alterarPessoa;
-    @FXML
     private MenuItem buscarPessoa;
-    @FXML
-    private MenuItem excluirPessoa;
     @FXML
     private MenuItem listarPessoa;
 
@@ -173,13 +169,10 @@ public class MenuInterface implements Initializable {
     @FXML
     private MenuItem inserirUsuario;
     @FXML
-    private MenuItem alterarUsuario;
-    @FXML
     private MenuItem buscarUsuario;
+
     @FXML
-    private MenuItem excluirUsuario;
-    @FXML
-    private MenuItem listarUsuario;
+    private MenuItem consultarUsuario;
 
 // ===== USUARIOSISTEMA =====
     @FXML
@@ -235,13 +228,8 @@ public class MenuInterface implements Initializable {
          * "Excluir", "PEF_PDC"); configurarAcao(listarPEF_PDC, "pef_pdc",
          * "Listar", "PEF_PDC");
          *
-         * // ===== PESSOA ===== configurarAcao(inserirPessoa, "pessoa",
-         * "Inserir", "Pessoa"); configurarAcao(alterarPessoa, "pessoa",
-         * "Alterar", "Pessoa"); configurarAcao(buscarPessoa, "pessoa",
-         * "Buscar", "Pessoa"); configurarAcao(excluirPessoa, "pessoa",
-         * "Excluir", "Pessoa"); configurarAcao(listarPessoa, "pessoa",
-         * "Listar", "Pessoa");
-         *
+          // ===== PESSOA ===== 
+         
          * // ===== PESSOAFISICA ===== configurarAcao(inserirPessoaFisica,
          * "pessoafisica", "Inserir", "PessoaFisica");
          * configurarAcao(alterarPessoaFisica, "pessoafisica", "Alterar",
@@ -277,12 +265,15 @@ public class MenuInterface implements Initializable {
          * "Excluir", "Sistema"); configurarAcao(listarSistema, "sistema",
          * "Listar", "Sistema");
          */
+        // ========= PESSOA ==========
+        configurarAcao(inserirPessoa, "pessoa","Inserir", "Pessoa"); 
+        configurarAcao(buscarPessoa, "pessoa","Buscar", "Pessoa"); 
+        configurarAcao(listarPessoa, "pessoa","Consultar", "Pessoa");
+
         // ===== USUARIO =====
-        configurarAcao(inserirUsuario, "usuarios", "Inserir", "Usuario");
-        configurarAcao(alterarUsuario, "usuarios", "Alterar", "Usuario");
-        configurarAcao(buscarUsuario, "usuarios", "Consultar", "Usuario");
-        configurarAcao(excluirUsuario, "usuarios", "Excluir", "Usuario");
-        configurarAcao(listarUsuario, "usuarios", "Listar", "Usuario");
+        configurarAcao(inserirUsuario, "usuario", "Inserir", "Usuario");
+        //configurarAcao(buscarUsuario, "usuario", "Buscar", "Usuario");
+        configurarAcao(consultarUsuario, "usuario", "Consultar", "Usuario");
 
         // ===== LOGRADOURO =====
         configurarAcao(inserirLogradouro, "logradouro", "Inserir", "Logradouro");

@@ -134,5 +134,30 @@ public class DaoPessoa implements DaoBasico {
         stmt.close();
         return pessoas;
     }
-    
+    public List<Object> listarTodos() throws SQLException  {
+        
+        // usus: array armazena a lista de registros
+        List<Object> pessoas = new ArrayList<>();
+        
+        String sql = "select * from PES_PESSOA";
+        PreparedStatement stmt = this.c.prepareStatement(sql);
+        // seta os valores
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        while (rs.next()) {      
+            // criando o objeto Usuario
+            Pessoa pessoa = new Pessoa(
+                rs.getInt(1),
+                rs.getString(2),
+                rs.getInt(3)
+            );
+            // adiciona o usu à lista de usus
+            pessoas.add(pessoa);
+        }
+        
+        rs.close();
+        stmt.close();
+        return pessoas;
+    }
 }

@@ -30,7 +30,7 @@ public class ConsultarPDCInterface {
             int id = Integer.parseInt(idField.getText());
             String novoNome = novoNomeField.getText();
 
-            PontoColeta pc = new PontoColeta(id, "SimuladoLog", novoNome, "SimuladoQRCode");
+            PontoColeta pc = new PontoColeta(id, 0, novoNome, "SimuladoQRCode");
             resultadoArea.setText("Ponto alterado (simulado):\nID: " + pc.getId() + "\nNovo nome: " + pc.getNome());
         } catch (Exception e) {
             resultadoArea.setText("Erro: " + e.getMessage());

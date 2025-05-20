@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/view/ManterParametro.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/model/bean/Parametro.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/model/bean/Municipio.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/model/dao/DaoMunicipio.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/model/dao/DaoColaborador.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/controller/ControllerMunicipio.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/view/ManterMunicipio.java</file>
-            <file>file:/C:/wamp64/www/Recicla-Projeto/recicla/src/recicla/Start.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/recicla/src/recicla/model/bean/Pessoa.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/recicla/src/recicla/controller/ControllerPessoa.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/recicla/src/recicla/util/ConexaoDb.java</file>
         </group>
     </open-files>
 </project-private>

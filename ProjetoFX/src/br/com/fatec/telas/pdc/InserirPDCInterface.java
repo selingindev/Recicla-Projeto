@@ -31,7 +31,7 @@ public class InserirPDCInterface {
     private void handleInserir() {
         try {
             int id = Integer.parseInt(idField.getText());
-            String idLog = idLogField.getText();
+            int idLog = Integer.parseInt(idLogField.getText());
             String nome = nomeField.getText();
             String qrCode = qrCodeField.getText();
 

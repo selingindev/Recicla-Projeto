@@ -10,7 +10,10 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Arthur Selingin
+ * 
+ * 
+ * FAVOR NÃO ALTERAR ESSE ARQUIVO, CRIE UM BD NAS EXPECIFICAÇÕES;
  */
 public class ConexaoDb {
     
@@ -37,9 +40,9 @@ public class ConexaoDb {
             // String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
             // String url = "jdbc:mysql://" + serverName + "/" + mydatabase + "?useSSL=false";
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase + "?useTimezone=true&serverTimezone=UTC";
-            String username = "root";        //nome de um usuário de seu BD
+            String username = "recicla_bd";        //nome de um usuário de seu BD
 //            String password = "admin";      //sua senha de acesso
-            String password = "root123456";      //sua senha de acesso
+            String password = "reciclaadmin123";      //sua senha de acesso
             connection = DriverManager.getConnection(url, username, password);
             //Testa sua conexão//
             if (connection != null) {
