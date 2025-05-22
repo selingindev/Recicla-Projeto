@@ -31,7 +31,7 @@ public class AlterarPDRInterface {
 
             // Simulação de alteração
             PontoReciclagem pr = new PontoReciclagem(id, idPEJ, novoNome);
-            resultadoArea.setText("Ponto de reciclagem alterado (simulado):\nID: " + pr.getId() +  "\nNovo ID PJ: " + pr.getIdPEJ()+ "\nNovo nome: " + pr.getNome());
+            resultadoArea.setText("Ponto de reciclagem alterado (simulado):\nID: " + pr.getId() + "\nNovo ID PJ: " + pr.getIdPEJ() + "\nNovo nome: " + pr.getNome());
         } catch (Exception e) {
             resultadoArea.setText("Erro: " + e.getMessage());
         }
