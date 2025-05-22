@@ -31,14 +31,13 @@ public class InserirPEF_PDCInterface extends Application {
 
     @FXML private void handleInsert() throws Exception {
         PEF_PDC obj = new PEF_PDC(
-            0L,
-            Long.parseLong(tfIdPef.getText()),
-            Long.parseLong(tfIdCol.getText()),
-            Long.parseLong(tfIdMat.getText()),
-            Long.parseLong(tfIdPdc.getText()),
-            tfCod.getText(),
-            new BigDecimal(tfQuant.getText()),
-            java.sql.Date.valueOf(tfData.getText())
+          Integer.parseInt(tfIdPef.getText()),   // idPef
+    Integer.parseInt(tfIdCol.getText()),   // idCol
+    Integer.parseInt(tfIdMat.getText()),   // idMat
+    Integer.parseInt(tfIdPdc.getText()),   // idPdc
+    Integer.parseInt(tfCod.getText()),     // cod
+    Integer.parseInt(tfQuant.getText()), 
+    tfData.getText() 
         );
         ControllerPEF_PDC ctr = new ControllerPEF_PDC();
         PEF_PDC res = (PEF_PDC) ctr.inserir(obj);

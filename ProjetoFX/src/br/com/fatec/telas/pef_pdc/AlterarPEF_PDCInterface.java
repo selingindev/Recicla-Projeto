@@ -17,10 +17,14 @@ import java.math.BigDecimal;
 
 public class AlterarPEF_PDCInterface extends Application {
 
-    @FXML private TableView<PEF_PDC> table;
-    @FXML private TableColumn<PEF_PDC, Long> colId;
-    @FXML private TextField tfCod, tfQuant, tfData;
-    @FXML private Button btnEditar, btnVoltar;
+    @FXML
+    private TableView<PEF_PDC> table;
+    @FXML
+    private TableColumn<PEF_PDC, Long> colId;
+    @FXML
+    private TextField tfCod, tfQuant, tfData;
+    @FXML
+    private Button btnEditar, btnVoltar;
 
     private PEF_PDC selected;
 
@@ -35,16 +39,19 @@ public class AlterarPEF_PDCInterface extends Application {
         launch(args);
     }
 
-    @FXML private void handleAlter() throws Exception {
+    @FXML
+    private void handleAlter() throws Exception {
         selected = table.getSelectionModel().getSelectedItem();
-        selected.setCod(tfCod.getText());
-        selected.setQuant(new BigDecimal(tfQuant.getText()));
-        selected.setData(java.sql.Date.valueOf(tfData.getText()));
+        selected.setCod(Integer.parseInt(tfCod.getText()));
+        selected.setQuant(Integer.parseInt(tfQuant.getText()));
+        selected.setData(tfData.getText());
+
         ControllerPEF_PDC ctr = new ControllerPEF_PDC();
         PEF_PDC res = (PEF_PDC) ctr.alterar(selected);
         JOptionPane.showMessageDialog(null, res);
     }
 
-    @FXML private void onVoltarClick() {
+    @FXML
+    private void onVoltarClick() {
     }
 }
