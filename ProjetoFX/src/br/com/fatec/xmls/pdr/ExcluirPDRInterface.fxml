@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="br.com.fatec.telas.pdr.ExcluirPDRInterface">
+    <Button text="Voltar" onAction="#onVoltarClick"/>
+    <Label text="Excluir Ponto de Reciclagem" />
+    <TextField fx:id="idField" promptText="ID" /> 
+    <Button text="Excluir" onAction="#handleExcluir" />
+    <TextArea fx:id="resultadoArea" prefHeight="100" prefWidth="300"/>
+</VBox>
