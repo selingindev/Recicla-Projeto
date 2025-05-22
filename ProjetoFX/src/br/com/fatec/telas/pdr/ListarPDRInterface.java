@@ -19,10 +19,10 @@ public class ListarPDRInterface {
         StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= 5; i++) {
             // Simulando dados
-            PontoReciclagem pr = new PontoReciclagem(i, "Nome" + i, "QRCode" + i);
+            PontoReciclagem pr = new PontoReciclagem();
             sb.append("ID: ").append(pr.getId())
+              .append(", ID PJ: ").append(pr.getIdPEJ())     
               .append(", Nome: ").append(pr.getNome())
-              .append(", QRCode: ").append(pr.getQrCode())
               .append("\n");
         }
         resultadoArea.setText(sb.toString());

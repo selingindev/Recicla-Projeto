@@ -23,11 +23,10 @@ public class ConsultarPDRInterface {
     private void handleConsultar() {
         try {
             int id = Integer.parseInt(idField.getText());
-            String novoNome = novoNomeField.getText();
-
+  
             // Simulação de consulta
-            PontoReciclagem pr = new PontoReciclagem(id, novoNome, "SimuladoQRCode");
-            resultadoArea.setText("Ponto consultado (simulado):\nID: " + pr.getId() + "\nNome: " + pr.getNome());
+            PontoReciclagem pr = new PontoReciclagem(id);
+            resultadoArea.setText("Ponto consultado (simulado):\nID: " + pr.getId());
         } catch (Exception e) {
             resultadoArea.setText("Erro: " + e.getMessage());
         }

@@ -14,11 +14,8 @@ public class AlterarPDRInterface {
 
     @FXML
     private TextField idField;
-    
-    
     @FXML
     private TextField idPEJField;
-    
     @FXML
     private TextField novoNomeField;
     @FXML
@@ -28,11 +25,13 @@ public class AlterarPDRInterface {
     private void handleAlterar() {
         try {
             int id = Integer.parseInt(idField.getText());
+            int idPEJ = Integer.parseInt(idPEJField.getText());
             String novoNome = novoNomeField.getText();
+            
 
             // Simulação de alteração
-            PontoReciclagem pr = new PontoReciclagem(id, novoNome, "SimuladoQRCode");
-            resultadoArea.setText("Ponto de reciclagem alterado (simulado):\nID: " + pr.getId() + "\nNovo nome: " + pr.getNome());
+            PontoReciclagem pr = new PontoReciclagem(id, idPEJ, novoNome);
+            resultadoArea.setText("Ponto de reciclagem alterado (simulado):\nID: " + pr.getId() +  "\nNovo ID PJ: " + pr.getIdPEJ()+ "\nNovo nome: " + pr.getNome());
         } catch (Exception e) {
             resultadoArea.setText("Erro: " + e.getMessage());
         }

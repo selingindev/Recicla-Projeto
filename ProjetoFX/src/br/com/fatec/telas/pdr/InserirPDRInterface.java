@@ -15,16 +15,21 @@ public class InserirPDRInterface {
     @FXML
     private TextField nomeField;
     @FXML
+    private TextField idPEJField;
+    @FXML
     private TextArea resultadoArea;
+    
+    
 
     @FXML
     private void handleInserir() {
         try {
             String nome = nomeField.getText();
+            int idPEJ = Integer.parseInt(idPEJField.getText());
 
             // Simulação de inserção (ID fictício)
-            PontoReciclagem pr = new PontoReciclagem(999, nome, "SimuladoQRCode");
-            resultadoArea.setText("Ponto de reciclagem inserido (simulado):\nID: " + pr.getId() + "\nNome: " + pr.getNome());
+            PontoReciclagem pr = new PontoReciclagem(idPEJ, nome);
+         resultadoArea.setText("Ponto de reciclagem inserido (simulado):\nID: " + pr.getId() +  "\nNovo ID PJ: " + pr.getIdPEJ()+ "\nNovo nome: " + pr.getNome());
         } catch (Exception e) {
             resultadoArea.setText("Erro: " + e.getMessage());
         }
