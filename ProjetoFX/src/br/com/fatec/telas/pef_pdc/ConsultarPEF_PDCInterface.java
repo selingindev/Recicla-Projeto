@@ -1,45 +1,55 @@
 package br.com.fatec.telas.pef_pdc;
 
-import javafx.application.Application;
+import java.util.List;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javax.swing.JOptionPane;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import recicla.controller.ControllerPEF_PDC;
 import recicla.model.bean.PEF_PDC;
 
-public class ConsultarPEF_PDCInterface extends Application {
+public class ConsultarPEF_PDCInterface {
 
-    @FXML private TableView<PEF_PDC> table;
-    @FXML private TableColumn<PEF_PDC, Long> colId;
-    @FXML private Button btnVoltar;
+    @FXML
+    private TableView<PEF_PDC> table;
+    @FXML
+    private TableColumn<PEF_PDC, Integer> colId;
+    @FXML
+    private TableColumn<PEF_PDC, Integer> colCod;
+    @FXML
+    private TableColumn<PEF_PDC, Integer> colQuant;
+    @FXML
+    private TableColumn<PEF_PDC, String> colData;
+    @FXML
+    private Button btnVoltar;
 
     private ObservableList<PEF_PDC> data = FXCollections.observableArrayList();
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ConsultarPEF_PDFInterface.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+    @FXML
+    private void initialize() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colCod.setCellValueFactory(new PropertyValueFactory<>("cod"));
+        colQuant.setCellValueFactory(new PropertyValueFactory<>("quant"));
+        colData.setCellValueFactory(new PropertyValueFactory<>("data"));
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @FXML private void initialize() throws Exception {
         ControllerPEF_PDC ctr = new ControllerPEF_PDC();
-        data.addAll((java.util.List<PEF_PDC>)(Object)ctr.listar(null));
+        try {
+            List<PEF_PDC> lista = (List<PEF_PDC>) (List<?>) ctr.listar(null);
+            data.addAll(lista);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         table.setItems(data);
     }
 
-    @FXML private void onVoltarClick() {
+    @FXML
+    private void onVoltarClick() {
+        // Fecha a janela atual
+        Stage stage = (Stage) btnVoltar.getScene().getWindow();
+        stage.close();
     }
 }
