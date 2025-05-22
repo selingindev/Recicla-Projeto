@@ -3,9 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/GitHub/Recicla-Projeto/recicla/src/recicla/model/bean/Pessoa.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/recicla/src/recicla/controller/ControllerPessoa.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/recicla/src/recicla/util/ConexaoDb.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/dao/DaoPontoColeta.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/dao/DaoPessoaJuridica.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/bean/PessoaJuridica.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/controller/ControllerPessoaJuridica.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/bean/Colaborador.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/dao/DaoColPdc.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/bean/PontoColeta.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/test/Usuario/TesteControllerUsuario.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/Start.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/util/ConexaoDb.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/test/util/TesteConexaoDb.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/bean/Material.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/recicla/src/recicla/model/bean/PEF_PDC.java</file>
         </group>
     </open-files>
 </project-private>

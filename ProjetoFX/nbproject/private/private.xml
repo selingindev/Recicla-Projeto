@@ -3,15 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pessoa/AlterarPessoaInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pessoa/BuscarPessoaInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pessoa/ConsultarPessoaInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/usuarios/AlterarUsuarioInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/usuarios/ConsultarUsuarioInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/LoginInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/MenuInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pessoa/InserirPessoaInterface.java</file>
-            <file>file:/C:/GitHub/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/usuario/AlterarUsuarioInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/projetofx/ProjetoFX.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/colaborador/ConsultarColaboradorInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/colaborador/AlterarColaboradorInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/colaborador/AlterarColaboradorInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/LoginInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/MenuInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/MenuInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/usuario/AlterarUsuarioInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/colaborador/ConsultarColaboradorInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/colaborador/ListarColaboradorInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/colaborador/ExcluirColaboradorInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/colaborador/InserirColaboradorInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/BuscarCepInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/logradouro/AlterarLogradouroInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/BuscarCepInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/xmls/logradouro/AlterarLogradouroInterface.fxml</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/usuarios/ConsultarUsuarioInterface.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ProjetoFX/src/br/com/fatec/telas/pessoa/AlterarPessoaInterface.java</file>
         </group>
     </open-files>
 </project-private>
