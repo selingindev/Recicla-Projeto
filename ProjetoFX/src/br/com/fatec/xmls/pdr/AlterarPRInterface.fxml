@@ -11,7 +11,7 @@
     <Button text="Voltar" onAction="#onVoltarClick"/>
     <Label text="Alterar Ponto de Reciclagem" />
     <TextField fx:id="idField" promptText="ID" />
-    <TextField fx:id="idPEJField" promptText="idPEJ" 
+    <TextField fx:id="idPEJField" promptText="idPEJ"/> 
     <TextField fx:id="novoNomeField" promptText="Novo Nome" />
     <Button text="Alterar" onAction="#handleAlterar" />
     <TextArea fx:id="resultadoArea" prefHeight="100" prefWidth="300"/>
