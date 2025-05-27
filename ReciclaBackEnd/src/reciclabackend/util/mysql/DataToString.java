@@ -4,11 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class DataToString {
-    public static void main(String[] args) {
-     
-    formatData("2025-09-02");
-    }
-       static String formatData(String dataSqlString){
+
+    String formatData(String dataSqlString) {
 
         LocalDate data = LocalDate.parse(dataSqlString);
 
@@ -17,8 +14,8 @@ public class DataToString {
 
         String dataMySQL = data.format(formaToSting);
 
-       System.out.println(dataMySQL);
+        System.out.println(dataMySQL);
         return dataMySQL;
-    }   
+    }
 
 }
