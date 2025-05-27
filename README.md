@@ -1,6 +1,3 @@
-# Recicla-Projeto
-Projeto recicla, um sistema para gerenciamento de coleta de residúos reciclados por parte de cada empresa. Realizado pelos alunos do 2AMS-ADS e o orientador Alexandre Bittencourt
-
 -- TRIGRAMAS DAS TABELAS
 -- LOG -> LOG_LOGRADOURO
 -- PES -> PES_PESSOA
@@ -13,6 +10,10 @@ Projeto recicla, um sistema para gerenciamento de coleta de residúos reciclados
 -- PRC -> PDR_COL (Relacionamento Ponto Reciclagem - Colaborador)
 -- CPC -> COL_PDC (Relacionamento Colaborador - Ponto de Coleta)
 -- PPC -> PEF_PDC (Ponto de coleta por Pessoa Física)
+
+CREATE DATABASE RECICLADB;
+
+USE RECICLADB;
 
 -- Tabela: LOG_LOGRADOURO
 CREATE TABLE LOG_LOGRADOURO (
@@ -142,3 +143,6 @@ CREATE TABLE USUARIOS_SISTEMAS (
     FOREIGN KEY (IDU) REFERENCES USUARIOS(ID),
     FOREIGN KEY (IDS) REFERENCES SISTEMAS(ID)
 );
+
+INSERT INTO `usuarios` (`login`, `senha`, `status`, `tipo`) VALUES ('BIT', 'ABF', 'ATIVO', 'ADM');
+INSERT INTO `usuarios` (`login`, `senha`, `status`, `tipo`) VALUES ('TES', 'ABF', 'ATIVO', 'VISITANTE');
