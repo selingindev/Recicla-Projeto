@@ -28,9 +28,9 @@ public class ControllerLogradouro implements ControllerBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoLogradouro();
-        return dao.excluir(obj);
+        return dao.excluir(id);
     }
 
     @Override
