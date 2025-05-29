@@ -64,7 +64,7 @@ public class DaoPessoaFisica implements DaoBasico {
 
     @Override
     public Object buscar(int id) throws SQLException {
-        PessoaFisica pf = (PessoaFisica) obj;
+        
         String sql = "SELECT * FROM pef_pessoafisica WHERE id = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
