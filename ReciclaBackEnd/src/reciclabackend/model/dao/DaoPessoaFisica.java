@@ -54,10 +54,10 @@ public class DaoPessoaFisica implements DaoBasico {
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, pf.getId());
+        ps.setInt(1, id);
         ps.executeUpdate();
 
-        return pf;
+        return true;
     }
 
     @Override
