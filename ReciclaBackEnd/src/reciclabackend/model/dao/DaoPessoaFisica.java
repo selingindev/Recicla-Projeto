@@ -48,26 +48,26 @@ public class DaoPessoaFisica implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
+    public Object excluir(int id) throws SQLException {
         PessoaFisica pf = (PessoaFisica) obj;
         String sql = "DELETE FROM pef_pessoafisica WHERE id = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, pf.getId());
+        ps.setInt(1, id());
         ps.executeUpdate();
 
         return pf;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
+    public Object buscar(int id) throws SQLException {
         PessoaFisica pf = (PessoaFisica) obj;
         String sql = "SELECT * FROM pef_pessoafisica WHERE id = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, pf.getId());
+        ps.setInt(1, id());
 
         ResultSet rs = ps.executeQuery();
 
@@ -80,7 +80,7 @@ public class DaoPessoaFisica implements DaoBasico {
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
+    public List<Object> listar(String pfiltro) throws SQLException {
         String sql = "SELECT * FROM pef_pessoafisica";
         List<Object> lista = new ArrayList<>();
 
