@@ -48,16 +48,16 @@ public class DaoPessoaFisica implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        PessoaFisica pf = (PessoaFisica) obj;
+    public boolean excluir(int id) throws SQLException {
+
         String sql = "DELETE FROM pef_pessoafisica WHERE id = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, pf.getId());
+        ps.setInt(1, id);
         ps.executeUpdate();
 
-        return pf;
+        return true;
     }
 
     @Override
