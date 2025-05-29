@@ -10,7 +10,7 @@ import reciclabackend.model.bean.Material;
 import reciclabackend.util.ViewBasico;
 
 public class ManterMaterial implements ViewBasico {
-#####
+
     @Override
     public void menu() throws SQLException, ClassNotFoundException {
         String msg = " 1 - Inserir \n 2 - Alterar \n 3 - buscar \n 4 - excluir \n 5 - Listar ";
