@@ -59,23 +59,21 @@ public class DaoParametro implements DaoBasico{
         }   
  
     @Override
-    public Boolean excluir(Object obj) throws SQLException {
-        Parametro parametro = (Parametro) obj; 
+    public boolean excluir(int id) throws SQLException {
         String sql = "delete from PAR_PARAMETRO WHERE ID = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, parametro.getId());
+        stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
         return true;
        }
  
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        Parametro parametro = (Parametro) obj; 
+    public Object buscar(int cod) throws SQLException {
         String sql = "select * from PAR_PARAMETRO WHERE COD = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
  
-        stmt.setInt(1, parametro.getCod());
+        stmt.setInt(1, cod);
         ResultSet rs = stmt.executeQuery();
         Parametro logSaida = null;
         while (rs.next()) {      
@@ -89,24 +87,23 @@ public class DaoParametro implements DaoBasico{
     }
  
      @Override
-    public List<Object> listar(Object obj) throws SQLException  {
-        Parametro parametroEntrada = (Parametro) obj;
-        List<Object> logts = new ArrayList<>();
+    public List<Object> listar(String filtro) throws SQLException  {
+        List<Object> param = new ArrayList<>();
         String sql = "select * from PAR_PARAMETROS where COD = ?";
         PreparedStatement stmt = this.c.prepareStatement(sql);
         // seta os valores
-        stmt.setInt(1,parametroEntrada.getCod());
+        stmt.setInt(1,0);
         
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {      
             Parametro parametro = new Parametro(
                 rs.getInt(1),
                 rs.getString(3)
-                );
-            logts.add(parametro);
+            );
+            param.add(parametro);
         }
         rs.close();
         stmt.close();
-        return logts;
+        return param;
     }
 }
