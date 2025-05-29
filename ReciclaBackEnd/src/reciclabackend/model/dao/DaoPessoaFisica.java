@@ -48,7 +48,7 @@ public class DaoPessoaFisica implements DaoBasico {
     }
 
     @Override
-    public Object excluir(int id) throws SQLException {
+    public boolean excluir(int id) throws SQLException {
         PessoaFisica pf = (PessoaFisica) obj;
         String sql = "DELETE FROM pef_pessoafisica WHERE id = ?";
 
