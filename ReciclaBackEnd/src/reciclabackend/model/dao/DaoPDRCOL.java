@@ -76,38 +76,36 @@ public class DaoPDRCOL implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        PdrCol entidade = (PdrCol) obj;
+    public boolean excluir(int id) throws SQLException {
         String sql = "DELETE FROM PDR_COL WHERE id = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, entidade.getId());
+        stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
         c.close();
-        return entidade;
+        return true;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        PdrCol entidade = (PdrCol) obj;
+    public Object buscar(int id) throws SQLException {
         String sql = "SELECT * FROM PDR_COL WHERE id = ?";
         PreparedStatement stmt = this.c.prepareStatement(sql);
-        stmt.setInt(1, entidade.getId());
+        stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
-        PdrCol resultado = null;
+        PdrCol entidade = null;
         if (rs.next()) {      
-            resultado = new PdrCol(
+            entidade = new PdrCol(
                 rs.getInt("id"),
                 rs.getInt("id_pdr"),
                 rs.getInt("id_col")
             );
         }
         stmt.close();
-        return resultado;
+        return entidade;
     }
     
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
+    public List<Object> listar(String pfiltro) throws SQLException {
         List<Object> lista = new ArrayList<>();
         String sql = "SELECT * FROM PDR_COL";
         PreparedStatement stmt = this.c.prepareStatement(sql);
