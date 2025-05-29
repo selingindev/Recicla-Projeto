@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400" 
+            prefWidth="400" 
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="br.com.fatec.telas.colaborador.ListarColaboradorInterface">
+
+    <children>
+            <Button text="Voltar" onAction="#onVoltarClick"/>
+
+        <!-- Botão Pesquisar -->
+        <Button id="btnSearch" fx:id="searchButton" layoutX="313.0" layoutY="30.0" onAction="#handleSearch" text="Pesquisar" />
+        
+        <!-- Tabela de colaboradores -->
+        <TableView fx:id="tableColaborador" layoutX="20" layoutY="60" prefHeight="200" prefWidth="360">
+            <columns>
+                <TableColumn fx:id="idCol" prefWidth="170" text="ID" />
+                <TableColumn fx:id="funcionalCol" prefWidth="170" text="Funcional" />
+            </columns>
+        </TableView>
+        
+    </children>
+
+</AnchorPane>

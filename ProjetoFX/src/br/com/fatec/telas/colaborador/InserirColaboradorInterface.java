@@ -52,7 +52,7 @@ public class InserirColaboradorInterface extends Application {
         JOptionPane.showMessageDialog(null, saidaCol.toString());
     }
     
-          @FXML
+    @FXML
     private void onVoltarClick(javafx.event.ActionEvent event) {
         NavigationUtil.voltarParaTelaInicial(event);
     }

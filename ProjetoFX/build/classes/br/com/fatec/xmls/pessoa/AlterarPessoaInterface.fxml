@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fatec.telas.pessoa.AlterarPessoaInterface">
+    <children>
+     
+      
+      <!-- Label e TextField do Id -->
+      <Label fx:id="lbId" layoutX="118.0" layoutY="40.0" text="Id" />
+      <TextField fx:id="txtId" layoutX="118.0" layoutY="65.0" prefHeight="25.0" prefWidth="324.0" editable="false" />
+      
+      <!-- Label e TextField do Nome -->
+      <Label fx:id="lbNome" layoutX="118.0" layoutY="110.0" text="Nome" />
+      <TextField fx:id="txtNome" layoutX="118.0" layoutY="135.0" prefHeight="25.0" prefWidth="324.0" />
+      
+      <!-- Label e TextField do Id_LOG -->
+      <Label fx:id="lbIdLog" layoutX="118.0" layoutY="180.0" text="Id_LOG" />
+      <TextField fx:id="txtIdLog" layoutX="118.0" layoutY="205.0" prefHeight="25.0" prefWidth="324.0" />
+      
+      <!-- Botões alinhados horizontalmente -->
+      <Button fx:id="btSalvar" layoutX="178.0" layoutY="270.0" mnemonicParsing="false" text="Salvar" prefWidth="90.0"/>
+      <Button fx:id="btVoltar" layoutX="284.0" layoutY="270.0" mnemonicParsing="false" text="Voltar" prefWidth="90.0"/>
+
+   
+   </children>
+</AnchorPane>

@@ -221,12 +221,7 @@ public class MenuInterface implements Initializable {
          * "Excluir", "PDRCOL"); configurarAcao(listarPDRCOL, "pdrcoll",
          * "Listar", "PDRCOL");
          *
-         * // ===== PEF_PDC ===== configurarAcao(inserirPEF_PDC, "pef_pdc",
-         * "Inserir", "PEF_PDC"); configurarAcao(alterarPEF_PDC, "pef_pdc",
-         * "Alterar", "PEF_PDC"); configurarAcao(buscarPEF_PDC, "pef_pdc",
-         * "Buscar", "PEF_PDC"); configurarAcao(excluirPEF_PDC, "pef_pdc",
-         * "Excluir", "PEF_PDC"); configurarAcao(listarPEF_PDC, "pef_pdc",
-         * "Listar", "PEF_PDC");
+     
          *
           // ===== PESSOA ===== 
          
@@ -248,15 +243,7 @@ public class MenuInterface implements Initializable {
          * "PessoaJuridica"); configurarAcao(listarPessoaJuridica,
          * "pessoajuridica", "Listar", "PessoaJuridica");
          *
-         * // ===== PONTORECICLAGEM =====
-         * configurarAcao(inserirPontoReciclagem, "pontoreciclagem", "Inserir",
-         * "PontoReciclagem"); configurarAcao(alterarPontoReciclagem,
-         * "pontoreciclagem", "Alterar", "PontoReciclagem");
-         * configurarAcao(buscarPontoReciclagem, "pontoreciclagem", "Buscar",
-         * "PontoReciclagem"); configurarAcao(excluirPontoReciclagem,
-         * "pontoreciclagem", "Excluir", "PontoReciclagem");
-         * configurarAcao(listarPontoReciclagem, "pontoreciclagem", "Listar",
-         * "PontoReciclagem");
+        
          *
          * // ===== SISTEMA ===== configurarAcao(inserirSistema, "sistema",
          * "Inserir", "Sistema"); configurarAcao(alterarSistema, "sistema",
@@ -272,7 +259,7 @@ public class MenuInterface implements Initializable {
 
         // ===== USUARIO =====
         configurarAcao(inserirUsuario, "usuario", "Inserir", "Usuario");
-        //configurarAcao(buscarUsuario, "usuario", "Buscar", "Usuario");
+        configurarAcao(buscarUsuario, "usuario", "Buscar", "Usuario");
         configurarAcao(consultarUsuario, "usuario", "Consultar", "Usuario");
 
         // ===== LOGRADOURO =====
@@ -296,7 +283,22 @@ public class MenuInterface implements Initializable {
         configurarAcao(buscarColaborador, "colaborador", "Consultar", "Colaborador");
         configurarAcao(excluirColaborador, "colaborador", "Excluir", "Colaborador");
         configurarAcao(listarColaborador, "colaborador", "Listar", "Colaborador");
+        
+        // ===== PONTORECICLAGEM =====
+        configurarAcao(inserirPontoReciclagem, "pdr", "Inserir","PDR"); 
+        configurarAcao(alterarPontoReciclagem,"pdr", "Alterar", "PDR");
+        configurarAcao(buscarPontoReciclagem, "pdr", "Consultar","PDR");
+        configurarAcao(excluirPontoReciclagem, "pdr", "Excluir", "PDR");
+        configurarAcao(listarPontoReciclagem, "pdr", "Listar", "PDR");
+        
+        // ===== PEF_PDC ===== 
+       configurarAcao(inserirPEF_PDC, "pef_pdc","Inserir", "PEF_PDC"); 
+       configurarAcao(alterarPEF_PDC, "pef_pdc","Alterar", "PEF_PDC");
+       configurarAcao(buscarPEF_PDC, "pef_pdc","Consultar", "PEF_PDC");
+       configurarAcao(excluirPEF_PDC, "pef_pdc","Excluir", "PEF_PDC");
+       configurarAcao(listarPEF_PDC, "pef_pdc","Listar", "PEF_PDC");
         /**
+         * 
          * // ===== USUARIOSISTEMA ===== configurarAcao(inserirUsuarioSistema,
          * "usuariosistema", "Inserir", "UsuarioSistema");
          * configurarAcao(alterarUsuarioSistema, "usuariosistema", "Alterar",
