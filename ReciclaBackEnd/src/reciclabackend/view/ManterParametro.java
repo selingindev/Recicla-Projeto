@@ -70,9 +70,8 @@ public class ManterParametro implements ViewBasico {
     public void excluir() throws SQLException, ClassNotFoundException {
         int cod = Integer.parseInt(JOptionPane.showInputDialog(null, "CÓDIGO"));
 
-        Parametro parEntrada = new Parametro(cod);
         ControllerParametro controllerParametro = new ControllerParametro();
-        Boolean parSaida = controllerParametro.excluir(parEntrada);
+        Boolean parSaida = controllerParametro.excluir(cod);
 
         JOptionPane.showMessageDialog(null, parSaida.toString());
         
@@ -84,8 +83,7 @@ public class ManterParametro implements ViewBasico {
         String descricao = JOptionPane.showInputDialog(null, "DESCRICAO");
         
         ControllerParametro controllerParametro = new ControllerParametro();
-        Parametro logEntrada = new Parametro(cod, descricao);
-        String dadosPar = (String) controllerParametro.buscar(logEntrada);
+        String dadosPar = (String) controllerParametro.buscar(cod);
         JOptionPane.showMessageDialog(null, dadosPar);
         
     }
@@ -95,9 +93,8 @@ public class ManterParametro implements ViewBasico {
         int cod = Integer.parseInt(JOptionPane.showInputDialog(null, "CÓDIGO"));
         String descricao = JOptionPane.showInputDialog(null, "DESCRICAO");
         
-        Parametro parEntrada = new Parametro(cod, descricao);
         ControllerParametro controllerParametro = new ControllerParametro();
-        List<Object> listaParametro = controllerParametro.listar(parEntrada);
+        List<Object> listaParametro = controllerParametro.listar(descricao);
         for(Object ParametroItem : listaParametro){
             Parametro parametro = (Parametro) ParametroItem;
             JOptionPane.showMessageDialog(null, parametro.toString());

@@ -14,9 +14,9 @@ public class ControllerParametro implements ControllerBasico{
     
     DaoParametro dao;
 	@Override
-	public Object buscar(Object obj) throws SQLException , ClassNotFoundException {
+	public Object buscar(int cod) throws SQLException , ClassNotFoundException {
             dao = new DaoParametro();
-            return dao.buscar(obj);
+            return dao.buscar(cod);
 	}
 
 	@Override
@@ -32,14 +32,14 @@ public class ControllerParametro implements ControllerBasico{
 	}
 
 	@Override
-	public Boolean excluir(Object obj) throws SQLException , ClassNotFoundException {
+	public boolean excluir(int id) throws SQLException , ClassNotFoundException {
             dao = new DaoParametro();
-	    return dao.excluir(obj);
+	    return dao.excluir(id);
 	}
 
 	@Override
-	public List<Object> listar(Object obj) throws SQLException , ClassNotFoundException {
+	public List<Object> listar(String filtro) throws SQLException , ClassNotFoundException {
             dao = new DaoParametro();
-            return dao.listar(obj);
+            return dao.listar(filtro);
 	}
 }
