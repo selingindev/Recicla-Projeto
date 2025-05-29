@@ -4,6 +4,7 @@
  */
 package Pessoa;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -112,7 +113,7 @@ public class ControllerPessoaTest {
         ControllerPessoa instance = new ControllerPessoa();
         Pessoa negocia = new Pessoa(123, "negocia", 2);
         Pessoa negocia2 = new Pessoa(124, "negocia", 5);
-        List<Object> expResult = null;
+        List<Object> expResult = new ArrayList<>();
         expResult.add(negocia2);
         expResult.add(negocia);
         List<Object> result = instance.listar(filtro);
@@ -127,9 +128,9 @@ public class ControllerPessoaTest {
         System.out.println("listarTodos");
         ControllerPessoa instance = new ControllerPessoa();
         List<Object> result = instance.listarTodos();
-        assertTrue(result.size() >= 2); // Pode ter mais de outros testes
+        assertTrue(result.size() >= 2); 
     
-        // Verifica integridade básica
+        
         for (Object obj : result) {
             assertTrue(obj instanceof Pessoa);
         }
