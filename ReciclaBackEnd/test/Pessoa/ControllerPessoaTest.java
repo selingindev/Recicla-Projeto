@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import reciclabackend.controller.ControllerPessoa;
 import static org.junit.Assert.*;
+import reciclabackend.model.bean.Pessoa;
 
 /**
  *
@@ -44,13 +45,13 @@ public class ControllerPessoaTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        Object obj = null;
+        Object obj = new Pessoa("biel", 1);
         ControllerPessoa instance = new ControllerPessoa();
-        Object expResult = null;
+        Object expResult = new Pessoa(1, "biel", 1);
         Object result = instance.inserir(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result instanceof Pessoa);
+        Pessoa pessoa = (Pessoa) result;
+        assertNotNull(pessoa.getId());
     }
 
     /**
@@ -58,14 +59,20 @@ public class ControllerPessoaTest {
      */
     @Test
     public void testAlterar() throws Exception {
-        System.out.println("alterar");
-        Object obj = null;
+         // Pré-cria registro
+        Pessoa existente = new Pessoa("Original", 1);
         ControllerPessoa instance = new ControllerPessoa();
-        Object expResult = null;
-        Object result = instance.alterar(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Pessoa criada = (Pessoa) instance.inserir(existente);
+    
+         // Altera
+        criada.setNome("biel alteração");
+        criada.setIdLog(2);
+        Pessoa alterada = (Pessoa) instance.alterar(criada);
+    
+        // Verifica
+        assertEquals(criada.getId(), alterada.getId());
+        assertEquals("biel alteração", alterada.getNome());
+        assertEquals(2, alterada.getIdLog());
     }
 
     /**
@@ -74,13 +81,13 @@ public class ControllerPessoaTest {
     @Test
     public void testBuscar() throws Exception {
         System.out.println("buscar");
-        int id = 0;
+        int id = 1;
         ControllerPessoa instance = new ControllerPessoa();
-        Object expResult = null;
+        Object expResult = new Pessoa(id, "teste banco", 4);
         Object result = instance.buscar(id);
+        assertTrue(result instanceof Pessoa); 
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -89,13 +96,10 @@ public class ControllerPessoaTest {
     @Test
     public void testExcluir() throws Exception {
         System.out.println("excluir");
-        int id = 0;
+        int id = 1;
         ControllerPessoa instance = new ControllerPessoa();
-        boolean expResult = false;
         boolean result = instance.excluir(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result);
     }
 
     /**
@@ -104,13 +108,15 @@ public class ControllerPessoaTest {
     @Test
     public void testListar() throws Exception {
         System.out.println("listar");
-        String filtro = "";
+        String filtro = "negocia";
         ControllerPessoa instance = new ControllerPessoa();
+        Pessoa negocia = new Pessoa(123, "negocia", 2);
+        Pessoa negocia2 = new Pessoa(124, "negocia", 5);
         List<Object> expResult = null;
+        expResult.add(negocia2);
+        expResult.add(negocia);
         List<Object> result = instance.listar(filtro);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -120,11 +126,13 @@ public class ControllerPessoaTest {
     public void testListarTodos() throws Exception {
         System.out.println("listarTodos");
         ControllerPessoa instance = new ControllerPessoa();
-        List<Object> expResult = null;
         List<Object> result = instance.listarTodos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result.size() >= 2); // Pode ter mais de outros testes
+    
+        // Verifica integridade básica
+        for (Object obj : result) {
+            assertTrue(obj instanceof Pessoa);
+        }
     }
     
 }
