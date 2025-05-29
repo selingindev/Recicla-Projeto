@@ -62,6 +62,7 @@ public class ControllerPDRCOL implements ControllerBasico {
         dao = new DaoPDRCOL();
         PdrCol usuSaida = dao.validar(usuEnt);
         return usuSaida;
+        
     }
 
 
