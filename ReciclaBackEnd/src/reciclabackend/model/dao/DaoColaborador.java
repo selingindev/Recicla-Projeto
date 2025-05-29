@@ -108,7 +108,7 @@ public class DaoColaborador implements DaoBasico {
 	}
 
 	@Override
-	public Boolean excluir(Object obj) {
+	public Boolean excluir(int id) {
 		Colaborador colEnt = (Colaborador) obj; 
 		
 		try{
