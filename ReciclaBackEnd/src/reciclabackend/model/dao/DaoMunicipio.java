@@ -28,15 +28,13 @@ public class DaoMunicipio implements DaoBasico{
         }
 
 	@Override
-	public Object buscar(Object obj) {
-		
-            Municipio munEnt = (Municipio) obj; 
+	public Object buscar(int cod) {
 
             try {			
                 String sql = "SELECT * FROM MUN_MUNICIPIO WHERE COD = ?";
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
-                stmt.setInt(1, munEnt.getCodigo());
+                stmt.setInt(1, cod);
 
                 ResultSet rs = stmt.executeQuery();
                 Municipio munSaida = null;
@@ -116,8 +114,7 @@ public class DaoMunicipio implements DaoBasico{
 	}
 
 	@Override
-	public Boolean excluir(Object obj) {
-            Municipio munEnt = (Municipio) obj; 
+	public boolean excluir(int cod) { 
 
             try{
                 String sql = "DELETE FROM MUN_MUNICIPIO WHERE ID = ?";
@@ -126,7 +123,7 @@ public class DaoMunicipio implements DaoBasico{
                 PreparedStatement stmt = c.prepareStatement(sql);
 
                 // seta os valores
-                stmt.setInt(1,munEnt.getId());
+                stmt.setInt(1,cod);
 
                 // executa
                 stmt.execute();
@@ -141,9 +138,8 @@ public class DaoMunicipio implements DaoBasico{
 	}
 
 	@Override
-	public List<Object> listar(Object obj){
+	public List<Object> listar(String filtro){
             try{
-                Municipio munEnt = (Municipio) obj;
                 // usus: array armazena a lista de registros
                 List<Object> cols = new ArrayList<>();
 
@@ -151,7 +147,7 @@ public class DaoMunicipio implements DaoBasico{
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
                 // seta os valores
-                stmt.setInt(1, munEnt.getId());
+                stmt.setInt(1, 0); // Erro
 
                 ResultSet rs = stmt.executeQuery();
 

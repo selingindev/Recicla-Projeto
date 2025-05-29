@@ -10,9 +10,9 @@ public class ControllerMunicipio implements ControllerBasico {
 
 	DaoMunicipio dao;
 	@Override
-	public Object buscar(Object obj) throws SQLException , ClassNotFoundException {
+	public Object buscar(int cod) throws SQLException , ClassNotFoundException {
             dao = new DaoMunicipio();
-            return dao.buscar(obj);
+            return dao.buscar(cod);
 	}
 
 	@Override
@@ -28,15 +28,15 @@ public class ControllerMunicipio implements ControllerBasico {
 	}
 
 	@Override
-	public Boolean excluir(Object obj) throws SQLException , ClassNotFoundException {
+	public boolean excluir(int id) throws SQLException , ClassNotFoundException {
             dao = new DaoMunicipio();
-	    return dao.excluir(obj);
+	    return dao.excluir(id);
 	}
 
 	@Override
-	public List<Object> listar(Object obj) throws SQLException , ClassNotFoundException {
+	public List<Object> listar(String filtro) throws SQLException , ClassNotFoundException {
             dao = new DaoMunicipio();
-            return dao.listar(obj);
+            return dao.listar(filtro);
 	}
 
 }
