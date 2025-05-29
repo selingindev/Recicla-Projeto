@@ -12,18 +12,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import reciclabackend.model.bean.Municipio;
+import reciclabackend.model.bean.ValorCredito;
 import reciclabackend.util.ConexaoDb;
 import reciclabackend.util.DaoBasico;
 /**
  *
  * @author raife
  */
-public class DaoMunicipio implements DaoBasico{
+public class DaoValorCredito implements DaoBasico{
 
     private final Connection c;
 	
-	public DaoMunicipio() throws SQLException, ClassNotFoundException{
+	public DaoValorCredito() throws SQLException, ClassNotFoundException{
             this.c = ConexaoDb.getConexaoMySQL();
         }
 
@@ -31,24 +31,27 @@ public class DaoMunicipio implements DaoBasico{
 	public Object buscar(int cod) {
 
             try {			
-                String sql = "SELECT * FROM MUN_MUNICIPIO WHERE COD = ?";
+                String sql = "SELECT * FROM VLC-VALOR_CREDITO WHERE ID = ?";
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
                 stmt.setInt(1, cod);
 
                 ResultSet rs = stmt.executeQuery();
-                Municipio munSaida = null;
+                ValorCredito valorSaida = null;
 
                 while (rs.next()) {      
-                        munSaida = new Municipio(
-                                        rs.getInt(1),
-                                        rs.getString(2)
-                                        );
+                        valorSaida = new ValorCredito(
+                            rs.getInt(1),
+                            rs.getDouble(2),
+                            rs.getInt(3),
+                            rs.getInt(4),
+                            rs.getInt(5)
+                        );
                 }
 
                 stmt.close();
 
-                return munSaida;
+                return valorSaida;
             }catch(SQLException e) {
                 e.printStackTrace();
             }
@@ -57,11 +60,11 @@ public class DaoMunicipio implements DaoBasico{
 
 	@Override
 	public Object inserir(Object obj) {
-            Municipio munEnt = (Municipio) obj;
+            ValorCredito valorEnt = (ValorCredito) obj;
 
-            String sql = "INSERT INTO MUN_MUNICIPIO" + 
-                                     "(COD, NOME)" + 
-                                    " values (?, ?)";
+            String sql = "INSERT INTO VLC-VALOR_CREDITO" + 
+                                     "(ID, VALOR, ID_MAT, ID_PAR, ID_MUNI)" + 
+                                    " values (?, ?, ?, ?, ?)";
 
             try {
                 PreparedStatement stmt;
@@ -69,19 +72,22 @@ public class DaoMunicipio implements DaoBasico{
                 stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 
-                stmt.setInt(1, munEnt.getCodigo());
-                stmt.setString(2, munEnt.getNome());
+                stmt.setInt(1, valorEnt.getId());
+                stmt.setDouble(2, valorEnt.getValor());
+                stmt.setInt(3, valorEnt.getIdMat());
+                stmt.setInt(4, valorEnt.getIdPar());
+                stmt.setInt(5, valorEnt.getIdMuni());
 
                 stmt.executeUpdate();
                 ResultSet rs = stmt.getGeneratedKeys();
 
                 if(rs.next()) {
                     int id = rs.getInt(1);
-                    munEnt.setId(id);
+                    valorEnt.setId(id);
                 }
 
                 stmt.close();
-                return munEnt;
+                return valorEnt;
             } catch (SQLException e) {
                 e.printStackTrace();
                 return null;
@@ -92,21 +98,20 @@ public class DaoMunicipio implements DaoBasico{
 	@Override
 	public Object alterar(Object obj) {
             try {
-                Municipio munEnt = (Municipio) obj;
-                String sql = "UPDATE MUN_MUNICIPIO SET COD = ? NOME = ? WHERE ID = ?";
+                ValorCredito valorEnt = (ValorCredito) obj;
+                String sql = "UPDATE VLC-VALOR_CREDITO SET VAlOR = ? WHERE ID = ?";
 
                 // prepared statement para inserção
                 PreparedStatement stmt = c.prepareStatement(sql);
 
                 // seta os valores
-                stmt.setInt(1, munEnt.getCodigo());
-                stmt.setString(2, munEnt.getNome());
-                stmt.setInt(3, munEnt.getId());
+                stmt.setDouble(1, valorEnt.getValor());
+                stmt.setInt(2, valorEnt.getId());
 
                 stmt.execute();
                 stmt.close();
 
-                return munEnt;
+                return valorEnt;
             }catch(SQLException e) {
                 e.printStackTrace();
                 return null;
@@ -114,16 +119,16 @@ public class DaoMunicipio implements DaoBasico{
 	}
 
 	@Override
-	public boolean excluir(int cod) { 
+	public boolean excluir(int id) { 
 
             try{
-                String sql = "DELETE FROM MUN_MUNICIPIO WHERE COD = ?";
+                String sql = "DELETE FROM VLC-VALOR_CREDITO WHERE ID = ?";
 
                 // prepared statement para inserção
                 PreparedStatement stmt = c.prepareStatement(sql);
 
                 // seta os valores
-                stmt.setInt(1,cod);
+                stmt.setInt(1,id);
 
                 // executa
                 stmt.execute();
@@ -141,29 +146,32 @@ public class DaoMunicipio implements DaoBasico{
 	public List<Object> listar(String filtro){
             try{
                 // usus: array armazena a lista de registros
-                List<Object> cols = new ArrayList<>();
+                List<Object> valores = new ArrayList<>();
 
-                String sql = "SELECT * FROM MUN_MUNICIPIO WHERE ID = ?";
+                String sql = "SELECT * FROM VLC-VALOR_CREDITO WHERE VALOR = ?";
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
                 // seta os valores
-                stmt.setInt(1, 0); // Erro
+                stmt.setString(1, filtro); // Erro
 
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {      
 
-                    Municipio col = new Municipio(
-                        rs.getInt(1),
-                        rs.getString(2)
+                    ValorCredito col = new ValorCredito(
+                       rs.getInt(1),
+                        rs.getDouble(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5)
                     );
 
-                    cols.add(col);
+                    valores.add(col);
                 }
 
                 rs.close();
                 stmt.close();
-                return cols;
+                return valores;
             }
             catch(SQLException e) {
                 e.printStackTrace();
