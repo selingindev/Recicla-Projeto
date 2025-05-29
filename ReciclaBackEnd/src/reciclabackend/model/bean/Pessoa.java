@@ -17,21 +17,24 @@ public class Pessoa implements Serializable {
     private int idLog;
     private Logradouro log;
     
-    //inserir
+    //alterar
     public Pessoa(int id, String nome, int idLog) {
         this.id = id;
         this.nome = nome;
         this.idLog = idLog;
     }
-    
-
+    //inserir
+    public Pessoa( String nome, int idLog) {
+        this.nome = nome;
+        this.idLog = idLog;
+    }
     
     //listar
     public Pessoa(String nome) {
         this.nome = nome;
     }
     
-    //buscar alterar
+    //buscar, excluir
     public Pessoa(int id) {
         this.id = id;
     }
