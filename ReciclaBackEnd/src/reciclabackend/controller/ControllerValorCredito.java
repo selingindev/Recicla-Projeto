@@ -13,7 +13,7 @@ public class ControllerValorCredito implements ControllerBasico {
 	public Object buscar(int id) throws SQLException , ClassNotFoundException {
             dao = new DaoValorCredito();
             return dao.buscar(id);
-	}
+	} 
 
 	@Override
 	public Object inserir(Object obj) throws SQLException , ClassNotFoundException {
