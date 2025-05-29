@@ -94,27 +94,25 @@ public class DaoPontoReciclagem implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        PontoReciclagem idEnt = (PontoReciclagem) obj;
+    public boolean excluir(int id) throws SQLException {
         String sql = "delete from pdr_ponto_reciclagem WHERE id = ?";
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
         // seta os valores
-        stmt.setInt(1,idEnt.getId());
+        stmt.setInt(1,id);
         // executa
         stmt.execute();
         stmt.close();
-        c.close();
-        return idEnt;
+        return true;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        PontoReciclagem idEnt = (PontoReciclagem) obj;
+    public Object buscar(int id) throws SQLException {
+
         String sql = "select * from pdr_ponto_reciclagem WHERE id = ?";
-        PreparedStatement stmt = this.c.prepareStatement(sql);
+        PreparedStatement stmt = c.prepareStatement(sql);
             // seta os valores
-            stmt.setInt(1,idEnt.getId());
+            stmt.setInt(1,id);
             // executa
             ResultSet rs = stmt.executeQuery();
             PontoReciclagem idSaida = null;
@@ -132,24 +130,23 @@ public class DaoPontoReciclagem implements DaoBasico {
     
     
     @Override
-    public List<Object> listar(Object obj) throws SQLException  {
-        PontoReciclagem idEnt = (PontoReciclagem) obj;
+    public List<Object> listar(String pfilto) throws SQLException  {
         // usus: array armazena a lista de registros
         List<Object> ids = new ArrayList<>();
         
         String sql = "select * from pdr_ponto_reciclagem WHERE IDPEJ like ?";
         PreparedStatement stmt = this.c.prepareStatement(sql);
         // seta os valores
-        stmt.setString(1,"%" + idEnt.getIdPEJ() + "%");
+        stmt.setString(1,"%" + pfilto + "%");
         
         ResultSet rs = stmt.executeQuery();
         
         while (rs.next()) {      
             // criando o objeto Usuario
             PontoReciclagem id = new PontoReciclagem(
-                rs.getInt("ID"),
-                rs.getInt("IDPEJ"),
-                rs.getString("NOME")
+                rs.getInt(1),
+                rs.getInt(2),
+                rs.getString(3)
             );
             // adiciona o usu à lista de usus
             ids.add(id);

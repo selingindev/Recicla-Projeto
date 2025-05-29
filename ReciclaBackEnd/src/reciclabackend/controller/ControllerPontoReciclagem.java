@@ -31,23 +31,21 @@ public class ControllerPontoReciclagem implements ControllerBasico {
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
+    public Object buscar(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoPontoReciclagem();
-        return dao.buscar(obj);
+        return dao.buscar(id);
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoPontoReciclagem();
-        return dao.excluir(obj);
+        return dao.excluir(id);
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
+    public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
         dao = new DaoPontoReciclagem();
-        List<Object> lista = dao.listar(obj);
-        System.out.println(lista);
-        return lista;
+        return dao.listar(pfiltro);
     }
 
     public boolean validar(PontoReciclagem usuEnt) throws SQLException, ClassNotFoundException {
