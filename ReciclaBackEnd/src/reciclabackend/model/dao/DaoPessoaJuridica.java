@@ -69,8 +69,8 @@ public class DaoPessoaJuridica  implements DaoBasico{
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException{
-        PessoaJuridica pj = (PessoaJuridica) obj;
+    public List<Object> listar(String pfiltro) throws SQLException{
+        PessoaJuridica pj = (PessoaJuridica) pfiltro;
         // usus: array armazena a lista de registros
         List<Object> usus = new ArrayList<>();
         
@@ -99,8 +99,8 @@ public class DaoPessoaJuridica  implements DaoBasico{
    }
 
     @Override
-    public Object excluir(Object obj) throws SQLException{
-        PessoaJuridica pj = (PessoaJuridica) obj;
+    public boolean excluir(int id) throws SQLException{
+        PessoaJuridica pj = (PessoaJuridica) id;
         String sql = "delete from pej_pessoajuridica WHERE id = ?";
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
@@ -114,8 +114,8 @@ public class DaoPessoaJuridica  implements DaoBasico{
     }
     
     @Override
-    public Object buscar(Object obj) throws SQLException{
-        PessoaJuridica pj = (PessoaJuridica) obj;
+    public Object buscar(int id) throws SQLException{
+        PessoaJuridica pj = (PessoaJuridica) id;
         String sql = "select * from pej_pessoajuridica WHERE id = ?";
         PreparedStatement stmt = this.c.prepareStatement(sql);
             // seta os valores
