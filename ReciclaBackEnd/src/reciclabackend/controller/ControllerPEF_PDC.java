@@ -7,35 +7,34 @@ import reciclabackend.util.ControllerBasico;
 
 public class ControllerPEF_PDC implements ControllerBasico {
 
-    private DaoPEF_PDC dao;
+    private final DaoPEF_PDC dao;
+
+    public ControllerPEF_PDC() throws SQLException, ClassNotFoundException {
+        this.dao = new DaoPEF_PDC();
+    }
 
     @Override
-    public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPEF_PDC();
+    public Object inserir(Object obj) throws SQLException {
         return dao.inserir(obj);
     }
 
     @Override
-    public Object alterar(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPEF_PDC();
+    public Object alterar(Object obj) throws SQLException {
         return dao.alterar(obj);
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPEF_PDC();
-        return dao.excluir(obj);
+    public boolean excluir(int id) throws SQLException {
+        return dao.excluir(id);
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPEF_PDC();
-        return dao.buscar(obj);
+    public Object buscar(int id) throws SQLException {
+        return dao.buscar(id);
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPEF_PDC();
-        return dao.listar(obj);
+    public List<Object> listar(String filtro) throws SQLException {
+        return dao.listar(filtro);
     }
 }
