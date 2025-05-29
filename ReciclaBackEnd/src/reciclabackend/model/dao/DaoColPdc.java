@@ -92,7 +92,7 @@ public class DaoColPdc implements DaoBasico {
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
+    public List<Object> listar(String pfiltro) throws SQLException {
         ColPdc filtro = (ColPdc) obj;
         List<Object> lista = new ArrayList<>();
 
