@@ -49,8 +49,8 @@ public class ManterPessoa implements ViewBasico{
     public void inserir() throws SQLException, ClassNotFoundException {
         String nome = JOptionPane.showInputDialog("NOME");
         
-        int id_LOG = Integer.parseInt(JOptionPane.showInputDialog("ID_LOG"));
-        Pessoa pesEnt = new Pessoa(nome, id_LOG);
+        int idLog = Integer.parseInt(JOptionPane.showInputDialog("IDLOG"));
+        Pessoa pesEnt = new Pessoa(nome, idLog);
         ControllerPessoa contUsu = new ControllerPessoa();
         Pessoa pesSaida = (Pessoa) contUsu.inserir(pesEnt);
         JOptionPane.showMessageDialog(null,pesSaida.toString());
@@ -70,18 +70,21 @@ public class ManterPessoa implements ViewBasico{
     @Override
     public void excluir() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        Pessoa pesEnt = new Pessoa(id);
         ControllerPessoa contPes = new ControllerPessoa();
-        Pessoa pesSaida = (Pessoa) contPes.excluir(pesEnt);
-        JOptionPane.showMessageDialog(null,pesSaida.toString());
+        boolean excluir = contPes.excluir(id);
+        if ( excluir ){
+            JOptionPane.showMessageDialog(null, "Pessoa deletada com sucesso !!");
+        } else {
+            JOptionPane.showMessageDialog(null,"Não foi possivel deletar este id");
+        }
     }
 
     @Override
     public void buscar() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        Pessoa pesEnt = new Pessoa(id);
+        
         ControllerPessoa contPes = new ControllerPessoa();
-        Pessoa pesSaida = (Pessoa) contPes.buscar(pesEnt);
+        Pessoa pesSaida = (Pessoa) contPes.buscar(id);
         JOptionPane.showMessageDialog(null,pesSaida.toString());
 
     }
@@ -89,9 +92,8 @@ public class ManterPessoa implements ViewBasico{
     @Override
     public void listar() throws SQLException, ClassNotFoundException {
         String nome = JOptionPane.showInputDialog("NOME");
-        Pessoa pesEnt = new Pessoa(nome);
         ControllerPessoa contPes = new ControllerPessoa();
-        List<Object> listaUsuario = contPes.listar(pesEnt);
+        List<Object> listaUsuario = contPes.listar(nome);
         for (Object pessaObject : listaUsuario) {
             Pessoa pessoaSaida = (Pessoa) pessaObject;
             JOptionPane.showMessageDialog(null,pessoaSaida.toString());
