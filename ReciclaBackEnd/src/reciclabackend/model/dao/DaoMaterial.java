@@ -63,32 +63,28 @@ public class DaoMaterial implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        Material materialRef = (Material) obj;
-        String sql = "delete from MAT_MATERIAL WHERE id = ?";
+    public boolean excluir(int id) throws SQLException {
+        String sql = "delete from MAT_MATERIAL WHERE id = " + Integer.toString(id);
 
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
-
-        // seta os valores
-        stmt.setInt(1, materialRef.getId());
 
         stmt.execute();
         stmt.close();
+        if (stmt.isCloseOnCompletion()) {
+            c.close();
+            return true;
+        }
         c.close();
-        return materialRef;
+        return false;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        Material materialEnt = (Material) obj;
-        String sql = "select * from MAT_MATERIAL where id = ?";
+    public Object buscar(int id) throws SQLException {
+        String sql = "select * from MAT_MATERIAL where id = " + Integer.toString(id);
 
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
-
-        // seta os valores
-        stmt.setInt(1, materialEnt.getId());
 
         // executa e lista os resultados
         ResultSet rs = stmt.executeQuery();
@@ -104,17 +100,14 @@ public class DaoMaterial implements DaoBasico {
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
-        Material materialEnt = (Material) obj;
+    public List<Object> listar(String pfiltro) throws SQLException {
+
         List<Object> materiais = new ArrayList<>();
 
-        String sql = "select * from MAT_MATERIAL where nome like ?";
+        String sql = "select * from MAT_MATERIAL where nome like " + pfiltro;
 
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
-
-        // seta os valores
-        stmt.setString(1, "%" + materialEnt.getNome() + "%");
 
         // executa e lista os resultados
         ResultSet rs = stmt.executeQuery();
