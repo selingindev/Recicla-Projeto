@@ -7,6 +7,8 @@ import reciclabackend.model.bean.CodigoBarras;
 import reciclabackend.util.CodigoBarraApiBasico;
 import reciclabackend.util.ControllerBasico;
 import reciclabackend.util.api.CosmoApi;
+import org.json.JSONObject;
+
 
 
 public class ControllerCodigoBarras implements ControllerBasico {
@@ -44,13 +46,16 @@ public class ControllerCodigoBarras implements ControllerBasico {
     public CodigoBarras requestApi(String gtin){
       CodigoBarraApiBasico api = new CosmoApi();   
         
-    String json = api.gtinData(gtin);
-     JSONObject json = new JSONObject(resposta.toString());
+    String data = api.gtinData(gtin);
+    JSONObject json = new JSONObject(data);
     
-    String gtin = 
-    CodigoBarras codigoBarras = new CodigoBarras(, 0, json)
+    String gtinConstrutor = json.getString("gtin");
+    String brandName = json.getString("brand");
+    String description = json.getString("description");
+    
+    CodigoBarras codigoBarras = new CodigoBarras( description, gtinConstrutor,brandName);
         
-      return
+      return codigoBarras;
 
 
     }

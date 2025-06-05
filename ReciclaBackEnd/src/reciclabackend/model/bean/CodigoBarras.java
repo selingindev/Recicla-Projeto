@@ -2,10 +2,10 @@ package reciclabackend.model.bean;
 
 public class CodigoBarras {
     String description;
-    int gtdin;
+    String gtdin;
     String brandName;
 
-    public CodigoBarras(String description, int gtdin, String brandName) {
+    public CodigoBarras(String description, String gtdin, String brandName) {
         this.description = description;
         this.gtdin = gtdin;
         this.brandName = brandName;
@@ -19,11 +19,11 @@ public class CodigoBarras {
         this.description = description;
     }
 
-    public int getGtdin() {
+    public String getGtdin() {
         return gtdin;
     }
 
-    public void setGtdin(int gtdin) {
+    public void setGtdin(String gtdin) {
         this.gtdin = gtdin;
     }
 
