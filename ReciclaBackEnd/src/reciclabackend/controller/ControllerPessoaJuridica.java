@@ -18,33 +18,35 @@ import reciclabackend.util.ControllerBasico;
 public class ControllerPessoaJuridica implements ControllerBasico {
     DaoPessoaJuridica dao;
 
+    public ControllerPessoaJuridica() throws SQLException, ClassNotFoundException {
+        this.dao = new DaoPessoaJuridica();
+    }
+
     @Override
-    public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPessoaJuridica();
+    public Object inserir(Object obj) throws SQLException {
         return dao.inserir(obj);
     }
 
     @Override
-    public Object alterar(Object obj) throws SQLException, ClassNotFoundException {
-        dao = new DaoPessoaJuridica();
+    public Object alterar(Object obj) throws SQLException {
         return dao.alterar(obj);
     }
 
     @Override
-    public Object buscar(int id) throws SQLException, ClassNotFoundException {
-        dao = new DaoPessoaJuridica();
+    public Object buscar(int id) throws SQLException {
         return dao.buscar(id);
     }
 
     @Override
-    public Boolean excluir(int id) throws SQLException, ClassNotFoundException {
-        dao = new DaoPessoaJuridica();
-        return dao.excluir(id);
-    }
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
+        boolean resultado = dao.excluir(id);
+        return resultado;
+
+}
 
     @Override
-    public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
-        dao = new DaoPessoaJuridica();
+    public List<Object> listar(String pfiltro) throws SQLException {
         return dao.listar(pfiltro);
     }
 }
+
