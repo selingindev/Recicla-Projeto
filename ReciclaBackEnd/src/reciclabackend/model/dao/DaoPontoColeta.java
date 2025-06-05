@@ -53,26 +53,24 @@ public class DaoPontoColeta implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        PontoColeta ponto = (PontoColeta) obj;
+    public boolean excluir(int id) throws SQLException {
         String sql = "DELETE FROM pdc_ponto_coleta WHERE id = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, ponto.getId());
-        stmt.executeUpdate();
+        stmt.setInt(1, id);
+        int rows = stmt.executeUpdate();
         stmt.close();
-        return ponto;
+        return rows > 0;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        PontoColeta ponto = (PontoColeta) obj;
+    public Object buscar(int id) throws SQLException {
         String sql = "SELECT * FROM pdc_ponto_coleta WHERE id = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, ponto.getId());
+        stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
-        PontoColeta pontoEncontrado = null;
+        PontoColeta ponto = null;
         if (rs.next()) {
-            pontoEncontrado = new PontoColeta(
+            ponto = new PontoColeta(
                 rs.getInt("id"),
                 rs.getInt("id_log"),
                 rs.getString("nome"),
@@ -81,16 +79,15 @@ public class DaoPontoColeta implements DaoBasico {
         }
         rs.close();
         stmt.close();
-        return pontoEncontrado;
+        return ponto;
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
-        PontoColeta pontoFiltro = (PontoColeta) obj;
+    public List<Object> listar(String filtro) throws SQLException {
         List<Object> pontos = new ArrayList<>();
         String sql = "SELECT * FROM pdc_ponto_coleta WHERE nome LIKE ?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setString(1, "%" + pontoFiltro.getNome() + "%");
+        stmt.setString(1, "%" + filtro + "%");
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
