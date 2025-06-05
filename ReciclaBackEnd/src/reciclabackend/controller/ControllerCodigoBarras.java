@@ -9,54 +9,52 @@ import reciclabackend.util.ControllerBasico;
 import reciclabackend.util.api.CosmoApi;
 import org.json.JSONObject;
 
-
-
 public class ControllerCodigoBarras implements ControllerBasico {
 
     @Override
     public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inserir'");
+        dao = new DaoCodigoBarra();
+        return dao.inserir(obj);
     }
 
     @Override
     public Object alterar(Object obj) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'alterar'");
+        dao = new DaoCodigoBarra();
+        return dao.inserir(obj);
     }
 
     @Override
     public boolean excluir(int id) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'excluir'");
+        dao = new DaoCodigoBarra();
+        return dao.inserir(obj);
     }
 
     @Override
     public Object buscar(int id) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscar'");
+      dao = new DaoCodigoBarra();
+        return dao.inserir(obj);
     }
 
     @Override
     public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listar'");
+       dao = new DaoCodigoBarra();
+        return dao.inserir(obj);
     }
 
-    public CodigoBarras requestApi(String gtin){
-      CodigoBarraApiBasico api = new CosmoApi();   
-        
-    String data = api.gtinData(gtin);
-    JSONObject json = new JSONObject(data);
-    
-    String gtinConstrutor = json.getString("gtin");
-    String brandName = json.getString("brand");
-    String description = json.getString("description");
-    
-    CodigoBarras codigoBarras = new CodigoBarras( description, gtinConstrutor,brandName);
-        
-      return codigoBarras;
+    public CodigoBarras requestApi(String gtin) {
+        CodigoBarraApiBasico api = new CosmoApi();
 
+        String data = api.gtinData(gtin);
+
+        JSONObject json = new JSONObject(data);
+
+        String gtinConstrutor = json.getString("gtin");
+        String brandName = json.getString("brand");
+        String description = json.getString("description");
+
+        CodigoBarras codigoBarras = new CodigoBarras(description, gtinConstrutor, brandName);
+
+        return codigoBarras;
 
     }
 
