@@ -10,9 +10,9 @@ public class ControllerColaborador implements ControllerBasico {
 
 	DaoColaborador dao;
 	@Override
-	public Object buscar(Object obj) throws SQLException , ClassNotFoundException {
+	public Object buscar(int id) throws SQLException , ClassNotFoundException {
 		dao = new DaoColaborador();
-        return dao.buscar(obj);
+        return dao.buscar(id);
 	}
 
 	@Override
@@ -28,15 +28,15 @@ public class ControllerColaborador implements ControllerBasico {
 	}
 
 	@Override
-	public Boolean excluir(Object obj) throws SQLException , ClassNotFoundException {
-		dao = new DaoColaborador();
-	    return dao.excluir(obj);
+	public boolean excluir(int id) throws SQLException , ClassNotFoundException {
+            dao = new DaoColaborador();
+	    return dao.excluir(id);
 	}
 
 	@Override
-	public List<Object> listar(Object obj) throws SQLException , ClassNotFoundException {
-		dao = new DaoColaborador();
-        return dao.listar(obj);
+	public List<Object> listar(String filtro) throws SQLException , ClassNotFoundException {
+            dao = new DaoColaborador();
+            return dao.listar(filtro);
 	}
 
 }

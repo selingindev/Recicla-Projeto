@@ -28,21 +28,21 @@ public class ControllerLogradouro implements ControllerBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoLogradouro();
-        return dao.excluir(obj);
+        return dao.excluir(id);
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
+    public Object buscar(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoLogradouro();
-        return dao.buscar(obj);
+        return dao.buscar(id);
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
+    public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
         dao = new DaoLogradouro();
-        return dao.listar(obj);
+        return dao.listar(pfiltro);
     }
 
     public String buscarCep(String cep) {

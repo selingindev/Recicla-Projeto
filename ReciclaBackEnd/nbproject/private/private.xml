@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/model/bean/Pessoa.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/controller/ControllerPessoa.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/model/dao/DaoPessoa.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/view/ManterPessoa.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/model/bean/ColPdc.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/test/Usuario/TesteControllerUsuario.java</file>
+            <file>file:/C:/GitHub/Recicla-Projeto/ReciclaBackEnd/test/Pessoa/ControllerPessoaTest.java</file>
+        </group>
+    </open-files>
+</project-private>
