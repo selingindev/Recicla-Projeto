@@ -72,28 +72,28 @@ public class ManterPessoaJuridica implements ViewBasico {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
         PessoaJuridica pessoaEnt = new PessoaJuridica(id);
         ControllerPessoaJuridica contUsu = new ControllerPessoaJuridica();
-        PessoaJuridica usuSaida = (PessoaJuridica) contUsu.buscar(pessoaEnt);
+        PessoaJuridica usuSaida = (PessoaJuridica) contUsu.buscar(id);
         JOptionPane.showMessageDialog(null,usuSaida.toString());
     }
 
     @Override
     public void excluir() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        PessoaJuridica pessoaEnt = new PessoaJuridica(id);
-        ControllerPessoaJuridica contUsu = new ControllerPessoaJuridica();
-        PessoaJuridica usuSaida = (PessoaJuridica) contUsu.excluir(pessoaEnt);
-        JOptionPane.showMessageDialog(null,usuSaida.toString());
-    }
+    int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
+    ControllerPessoaJuridica contUsu = new ControllerPessoaJuridica();
+    boolean sucesso = contUsu.excluir(id);
+}
+
 
     @Override
     public void listar() throws SQLException, ClassNotFoundException {
-        String cnpj = JOptionPane.showInputDialog("CNPJ");
-        PessoaJuridica pessoaEnt = new PessoaJuridica(cnpj);
-        ControllerPessoaJuridica contPes = new ControllerPessoaJuridica();
-        List<Object> listaUsuario = contPes.listar(pessoaEnt);
-        for (Object usuObj : listaUsuario) {
-            PessoaJuridica pessoaSaida = (PessoaJuridica) usuObj;
-            JOptionPane.showMessageDialog(null,pessoaSaida.toString());
-        }
+    String cnpj = JOptionPane.showInputDialog("CNPJ");
+    ControllerPessoaJuridica contPes = new ControllerPessoaJuridica();
+    List<Object> listaUsuario = contPes.listar(cnpj); // passando o filtro corretamente
+    
+    for (Object usuObj : listaUsuario) {
+        PessoaJuridica pessoaSaida = (PessoaJuridica) usuObj;
+        JOptionPane.showMessageDialog(null, pessoaSaida.toString());
     }
+}
+
 }

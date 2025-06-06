@@ -24,6 +24,7 @@ import reciclabackend.view.ManterUsuarioSistema;
 /**
  *
  * @author LAB 211
+ *         FATEC / Modelagem de Padrão de Projetos | Prof. A. Bittencourt
  */
 public class Start {
 
@@ -33,10 +34,10 @@ public class Start {
      * @throws java.lang.ClassNotFoundException
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        if(ManterUsuario.validar()) {
+        if (ManterUsuario.validar()) {
             menu();
         } else {
-            JOptionPane.showMessageDialog(null,"Usuario Inválido");            
+            JOptionPane.showMessageDialog(null, "Usuario Inválido");
         }
     }
 
@@ -59,27 +60,28 @@ public class Start {
 
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (num) {
-            case 0 : 
-                int sair = JOptionPane.showConfirmDialog(null,"Deseja Sair");
-                if (sair > 0) menu();
+            case 0:
+                int sair = JOptionPane.showConfirmDialog(null, "Deseja Sair");
+                if (sair > 0)
+                    menu();
                 break;
-            case 1 : 
+            case 1:
                 ManterUsuario mu = new ManterUsuario();
                 mu.menu();
                 break;
-            case 2 : 
+            case 2:
                 ManterSistema ms = new ManterSistema();
                 ms.menu();
                 break;
-            case 3 : 
+            case 3:
                 ManterUsuarioSistema mus = new ManterUsuarioSistema();
                 mus.menu();
                 break;
-            case 4 : 
+            case 4:
                 ManterMaterial mat = new ManterMaterial();
                 mat.menu();
                 break;
-            case 5 :
+            case 5:
                 ManterLogradouro ml = new ManterLogradouro();
                 ml.menu();
                 break;
@@ -91,38 +93,38 @@ public class Start {
                 ManterColaborador mc = new ManterColaborador();
                 mc.menu();
                 break;
-             case 8:
+            case 8:
                 ManterPontoColeta mpc = new ManterPontoColeta();
                 mpc.menu();
                 break;
-             case 9:
+            case 9:
                 ManterPontoReciclagem mpr = new ManterPontoReciclagem();
                 mpr.menu();
                 break;
-             case 10:
-                 ManterPessoaFisica mpf = new ManterPessoaFisica();
-                 mpf.menu();
-                 break;
-             case 11: 
-                 ManterPDRCOL mpdrcol = new ManterPDRCOL();
-                 mpdrcol.menu();
-                 break;
-             case 12: 
-                 ManterPEF_PDC mpp = new ManterPEF_PDC();
-                 mpp.menu();
-                 break;
-             case 13: 
-                 ManterColPdc mcp = new ManterColPdc();
-                 mcp.menu();
-                 break;
-             case 14: 
-                 ManterPessoaJuridica mpj = new ManterPessoaJuridica();
-                 mpj.menu();
-                 break;
-            default : 
+            case 10:
+                ManterPessoaFisica mpf = new ManterPessoaFisica();
+                mpf.menu();
+                break;
+            case 11:
+                ManterPDRCOL mpdrcol = new ManterPDRCOL();
+                mpdrcol.menu();
+                break;
+            case 12:
+                ManterPEF_PDC mpp = new ManterPEF_PDC();
+                mpp.menu();
+                break;
+            case 13:
+                ManterColPdc mcp = new ManterColPdc();
+                mcp.menu();
+                break;
+            case 14:
+                ManterPessoaJuridica mpj = new ManterPessoaJuridica();
+                mpj.menu();
+                break;
+            default:
                 System.out.println("Opção inválido");
                 break;
         }
     }
-    
+
 }
