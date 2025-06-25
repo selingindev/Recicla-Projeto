@@ -22,27 +22,32 @@ public class ControllerPessoaFisica implements ControllerBasico {
     DaoPessoaFisica dao = new DaoPessoaFisica();
 
     @Override
-    public Object inserir(Object obj) throws SQLException {
+    public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
+        dao = new DaoPessoaFisica();
         return dao.inserir(obj);
     }
 
     @Override
-    public Object alterar(Object obj) throws SQLException {
+    public Object alterar(Object obj) throws SQLException, ClassNotFoundException {
+        dao = new DaoPessoaFisica();
         return dao.alterar(obj);
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        return dao.excluir(obj);
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
+        dao = new DaoPessoaFisica();
+        return dao.excluir(id);
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        return dao.buscar(obj);
+    public Object buscar(int id) throws SQLException, ClassNotFoundException {
+        dao = new DaoPessoaFisica();
+        return dao.buscar(id);
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
-        return dao.listar(obj);
+    public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
+        dao = new DaoPessoaFisica();
+        return dao.listar(pfiltro);
     }
 }
