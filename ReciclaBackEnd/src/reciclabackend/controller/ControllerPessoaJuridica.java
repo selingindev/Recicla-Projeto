@@ -7,7 +7,6 @@ package reciclabackend.controller;
 import java.sql.SQLException;
 import java.util.List;
 
-import reciclabackend.model.bean.PessoaJuridica;
 import reciclabackend.model.dao.DaoPessoaJuridica;
 import reciclabackend.util.ControllerBasico;
 

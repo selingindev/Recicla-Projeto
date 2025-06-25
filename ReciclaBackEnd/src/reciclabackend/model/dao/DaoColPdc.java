@@ -72,18 +72,17 @@ public class DaoColPdc implements DaoBasico {
         String sql = "SELECT * FROM COL_PDC WHERE id = ?";
 
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1,id);
+        stmt.setInt(1, id);
 
         ResultSet rs = stmt.executeQuery();
         ColPdc resultado = null;
 
         if (rs.next()) {
             resultado = new ColPdc(
-                rs.getInt(1),
-                rs.getInt(2),
-                rs.getInt(3),
-                rs.getString(4)
-            );
+                    rs.getInt(1),
+                    rs.getInt(2),
+                    rs.getInt(3),
+                    rs.getString(4));
         }
 
         rs.close();
@@ -93,28 +92,28 @@ public class DaoColPdc implements DaoBasico {
 
     @Override
     public List<Object> listar(String pfiltro) throws SQLException {
-        ColPdc filtro = (ColPdc) obj;
         List<Object> lista = new ArrayList<>();
+        String sql = "SELECT * FROM COL_PDC";
 
-        String sql = "SELECT * FROM COL_PDC WHERE id_col = ? OR ? IS NULL";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        if (filtro.getIdCol() != 0) {
-            stmt.setInt(1, filtro.getIdCol());
-            stmt.setNull(2, java.sql.Types.INTEGER);
-        } else {
-            stmt.setNull(1, java.sql.Types.INTEGER);
-            stmt.setInt(2, 1);
+        boolean temFiltro = pfiltro != null && !pfiltro.isEmpty();
+        if (temFiltro) {
+            sql += " WHERE CAST(id_col AS CHAR) LIKE ?";
+        }
+
+        PreparedStatement stmt = this.c.prepareStatement(sql);
+
+        if (temFiltro) {
+            stmt.setString(1, "%" + pfiltro + "%");
         }
 
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
             ColPdc col = new ColPdc(
-                rs.getInt(1),
-                rs.getInt(2),
-                rs.getInt(3),
-                rs.getString(4)
-            );
+                    rs.getInt("id"), // ou rs.getInt(1) se preferir
+                    rs.getInt("id_col"),
+                    rs.getInt("id_pdc"),
+                    rs.getString("descricao"));
             lista.add(col);
         }
 
@@ -122,4 +121,5 @@ public class DaoColPdc implements DaoBasico {
         stmt.close();
         return lista;
     }
+
 }
