@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.controller;
 
 import java.sql.SQLException;
@@ -11,6 +7,7 @@ import reciclabackend.model.dao.DaoPontoColeta;
 import reciclabackend.util.ControllerBasico;
 
 public class ControllerPontoColeta implements ControllerBasico {
+
     DaoPontoColeta dao;
 
     @Override
@@ -28,22 +25,20 @@ public class ControllerPontoColeta implements ControllerBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
-        PontoColeta ponto = (PontoColeta) obj;
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoPontoColeta();
-        return dao.excluir(ponto);
+        return dao.excluir(id);
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
-        PontoColeta ponto = (PontoColeta) obj;
+    public Object buscar(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoPontoColeta();
-        return dao.buscar(ponto);
+        return dao.buscar(id);
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
+    public List<Object> listar(String filtro) throws SQLException, ClassNotFoundException {
         dao = new DaoPontoColeta();
-        return dao.listar(obj);
+        return dao.listar(filtro);
     }
 }

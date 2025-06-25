@@ -62,6 +62,7 @@ public class DaoMaterial implements DaoBasico {
         return materialEnt;
     }
 
+
     @Override
     public boolean excluir(int id) throws SQLException {
         String sql = "delete from MAT_MATERIAL WHERE id = " + Integer.toString(id);
