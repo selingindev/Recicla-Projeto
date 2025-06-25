@@ -1,16 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.view;
-
-/**
- *
- * @author Cateli
- */
-
-
-
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,86 +7,79 @@ import reciclabackend.controller.ControllerPessoaFisica;
 import reciclabackend.model.bean.PessoaFisica;
 import reciclabackend.util.ViewBasico;
 
-public class ManterPessoaFisica implements ViewBasico{
-
+public class ManterPessoaFisica implements ViewBasico {
 
     @Override
     public void menu() throws SQLException, ClassNotFoundException {
-        String msg = " 1 - Inserir \n 2 - Alterar \n 3 - buscar \n 4 - excluir \n 5 - Listar " ;
-        int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
-        switch (num) {
-            case 1 : 
-                inserir();
-                break;
-            case 2 : 
-                alterar();
-                break;
-            case 3 : 
-                buscar();
-                break;
-            case 4 : 
-                excluir();
-                break;
-            case 5 : 
-                listar();
-                break;
-            default : 
-                System.out.println("Opcao invalida");
-                break;
+        String msg = "1 - Inserir\n2 - Alterar\n3 - Buscar\n4 - Excluir\n5 - Listar";
+        int opcao = Integer.parseInt(JOptionPane.showInputDialog(msg));
+        switch (opcao) {
+            case 1 -> inserir();
+            case 2 -> alterar();
+            case 3 -> buscar();
+            case 4 -> excluir();
+            case 5 -> listar();
+            default -> JOptionPane.showMessageDialog(null, "Opção inválida.");
         }
     }
 
     @Override
     public void inserir() throws SQLException, ClassNotFoundException {
-        int idPes = Integer.parseInt(JOptionPane.showInputDialog("IDPES"));
+        int idPes = Integer.parseInt(JOptionPane.showInputDialog("ID da Pessoa"));
         String cpf = JOptionPane.showInputDialog("CPF");
         String rg = JOptionPane.showInputDialog("RG");
-        PessoaFisica pessoaEnt = new PessoaFisica(idPes, cpf, rg);
-        ControllerPessoaFisica contPef = new ControllerPessoaFisica();
-        PessoaFisica pefSaida = (PessoaFisica) contPef.inserir(pessoaEnt);
-        JOptionPane.showMessageDialog(null,pefSaida.toString());
+
+        PessoaFisica pf = new PessoaFisica(idPes, cpf, rg);
+        ControllerPessoaFisica controller = new ControllerPessoaFisica();
+        PessoaFisica pfSaida = (PessoaFisica) controller.inserir(pf);
+        JOptionPane.showMessageDialog(null, pfSaida.toString());
     }
 
     @Override
     public void alterar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        int idPes = Integer.parseInt(JOptionPane.showInputDialog("IDPES"));
-        String cpf = JOptionPane.showInputDialog("CPF");
-        String rg = JOptionPane.showInputDialog("RG");
+        int idPes = Integer.parseInt(JOptionPane.showInputDialog("ID da Pessoa (idpes)"));
+        String cpf = JOptionPane.showInputDialog("Novo CPF");
+        String rg = JOptionPane.showInputDialog("Novo RG");
 
-        PessoaFisica pessoaEnt = new PessoaFisica(id, idPes, cpf, rg);
-        ControllerPessoaFisica contPef = new ControllerPessoaFisica();
-        PessoaFisica pefSaida = (PessoaFisica) contPef.alterar(pessoaEnt);
-        JOptionPane.showMessageDialog(null,pefSaida.toString());
+        PessoaFisica pf = new PessoaFisica(idPes, cpf, rg);
+        ControllerPessoaFisica controller = new ControllerPessoaFisica();
+        PessoaFisica pfSaida = (PessoaFisica) controller.alterar(pf);
+        JOptionPane.showMessageDialog(null, pfSaida.toString());
     }
 
     @Override
     public void buscar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        PessoaFisica pessoaEnt = new PessoaFisica(id);
-        ControllerPessoaFisica contPef = new ControllerPessoaFisica();
-        PessoaFisica pefSaida = (PessoaFisica) contPef.buscar(pessoaEnt);
-        JOptionPane.showMessageDialog(null,pefSaida.toString());
+        int idPes = Integer.parseInt(JOptionPane.showInputDialog("ID da Pessoa (idpes) para buscar"));
+        ControllerPessoaFisica controller = new ControllerPessoaFisica();
+        PessoaFisica pfSaida = (PessoaFisica) controller.buscar(idPes);
+        JOptionPane.showMessageDialog(null, pfSaida.toString());
     }
 
     @Override
     public void excluir() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        PessoaFisica pessoaEnt = new PessoaFisica(id);
-        ControllerPessoaFisica contPef = new ControllerPessoaFisica();
-        PessoaFisica pefSaida = (PessoaFisica) contPef.excluir(pessoaEnt);
-        JOptionPane.showMessageDialog(null,pefSaida.toString());
+        int idPes = Integer.parseInt(JOptionPane.showInputDialog("ID da Pessoa (idpes) para excluir"));
+        ControllerPessoaFisica controller = new ControllerPessoaFisica();
+        boolean sucesso = controller.excluir(idPes);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(null, "Pessoa física excluída com sucesso.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Pessoa física não encontrada.");
+        }
     }
 
     @Override
     public void listar() throws SQLException, ClassNotFoundException {
-        String cpf = JOptionPane.showInputDialog("CPF");
-        PessoaFisica pessoaEnt = new PessoaFisica(cpf);
-        ControllerPessoaFisica contPes = new ControllerPessoaFisica();
-        List<Object> listaUsuario = contPes.listar(pessoaEnt);
-        for (Object usuObj : listaUsuario) {
-            PessoaFisica pessoaSaida = (PessoaFisica) usuObj;
-            JOptionPane.showMessageDialog(null,pessoaSaida.toString());
+        String filtro = JOptionPane.showInputDialog("Filtrar por CPF ou RG (pressione OK para listar tudo)");
+        ControllerPessoaFisica controller = new ControllerPessoaFisica();
+        List<Object> lista = controller.listar(filtro);
+
+        if (lista.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nenhum registro encontrado.");
+        } else {
+            for (Object obj : lista) {
+                PessoaFisica pf = (PessoaFisica) obj;
+                JOptionPane.showMessageDialog(null, pf.toString());
+            }
         }
     }
 }

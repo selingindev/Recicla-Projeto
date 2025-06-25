@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package reciclabackend.view;
 
 import java.sql.SQLException;
@@ -11,114 +8,79 @@ import reciclabackend.controller.ControllerPDRCOL;
 import reciclabackend.model.bean.PdrCol;
 import reciclabackend.util.ViewBasico;
 
-/**
- *
- * @author LAB 211
- */
+
 public class ManterPDRCOL implements ViewBasico {
 
     @Override
     public void menu() throws SQLException, ClassNotFoundException {
-        String msg = "1 - Inserir \n2 - Alterar \n3 - Buscar \n4 - Excluir \n5 - Listar";
+        String msg = "1 - Inserir\n2 - Alterar\n3 - Buscar\n4 - Excluir\n5 - Listar por código\n0 - Sair";
         while (true) {
-        int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
-        if (num == 0) {
-            JOptionPane.showMessageDialog(null, "Encerrando o menu...");
-            return; // ou break; se quiser sair apenas do while
+            int op = Integer.parseInt(JOptionPane.showInputDialog(msg));
+            if (op == 0) return;
+            switch (op) {
+                case 1: inserir(); break;
+                case 2: alterar(); break;
+                case 3: buscar(); break;
+                case 4: excluir(); break;
+                case 5: listar(); break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção inválida");
+            }
         }
-
-        switch (num) {
-            case 1:
-                inserir();
-                break;
-            case 2:
-                alterar();
-                break;
-            case 3:
-                buscar();
-                break;
-            case 4:
-                excluir();
-                break;
-            case 5:
-                listar();
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Opção inválida!");
-                break;
-        }
-    }}
+    }
 
     @Override
     public void inserir() throws SQLException, ClassNotFoundException {
-        int idPRD = Integer.parseInt(JOptionPane.showInputDialog("IDPRD:"));
-        int idCOL = Integer.parseInt(JOptionPane.showInputDialog("IDCOL:"));
-
-        PdrCol pdrEnt = new PdrCol(0, idPRD, idCOL); // ID é 0 porque será gerado no banco de dados
-        ControllerPDRCOL contPdr = new ControllerPDRCOL();
-        PdrCol pdrSaida = (PdrCol) contPdr.inserir(pdrEnt);
-
-        JOptionPane.showMessageDialog(null, "Inserido com sucesso:\n" + pdrSaida.toString());
+        PdrCol p = coletar(false);
+        ControllerPDRCOL c = new ControllerPDRCOL();
+        JOptionPane.showMessageDialog(null, "Inserido: " + c.inserir(p));
     }
 
     @Override
     public void alterar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID:"));
-        int idPRD = Integer.parseInt(JOptionPane.showInputDialog("IDPRD:"));
-        int idCOL = Integer.parseInt(JOptionPane.showInputDialog("IDCOL:"));
-
-        PdrCol pdrEnt = new PdrCol(id, idPRD, idCOL);
-        ControllerPDRCOL contPdr = new ControllerPDRCOL();
-        PdrCol pdrSaida = (PdrCol) contPdr.alterar(pdrEnt);
-
-        JOptionPane.showMessageDialog(null, "Alterado com sucesso:\n" + pdrSaida.toString());
-    }
-
-    @Override
-    public void buscar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID:"));
-        PdrCol pdrEnt = new PdrCol(id);
-        ControllerPDRCOL contPdr = new ControllerPDRCOL();
-        PdrCol pdrSaida = (PdrCol) contPdr.buscar(pdrEnt);
-
-        if (pdrSaida != null) {
-            JOptionPane.showMessageDialog(null, "Resultado da busca:\n" + pdrSaida.toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "Nenhum registro encontrado.");
-        }
+        PdrCol p = coletar(true);
+        ControllerPDRCOL c = new ControllerPDRCOL();
+        JOptionPane.showMessageDialog(null, "Alterado: " + c.alterar(p));
     }
 
     @Override
     public void excluir() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID:"));
-        PdrCol pdrEnt = new PdrCol(id);
-        ControllerPDRCOL contPdr = new ControllerPDRCOL();
-        PdrCol pdrSaida = (PdrCol) contPdr.excluir(pdrEnt);
-
-        if (pdrSaida != null) {
-            JOptionPane.showMessageDialog(null, "Excluído com sucesso:\n" + pdrSaida.toString());
+        int id = Integer.parseInt(JOptionPane.showInputDialog("ID a excluir"));
+        ControllerPDRCOL c = new ControllerPDRCOL();
+        if (c.excluir(id)) {
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir. Registro não encontrado.");
+            JOptionPane.showMessageDialog(null, "Erro ao excluir.");
         }
     }
 
     @Override
+    public void buscar() throws SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
+        ControllerPDRCOL c = new ControllerPDRCOL();
+        PdrCol p = (PdrCol) c.buscar(id);
+        JOptionPane.showMessageDialog(null, p == null ? "Não encontrado" : p.toString());
+    }
+
+    @Override
     public void listar() throws SQLException, ClassNotFoundException {
-        ControllerPDRCOL contPdr = new ControllerPDRCOL();
-        List<Object> listaPDR = contPdr.listar(null); // Lista todos os registros
-
-        if (listaPDR.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nenhum registro encontrado.");
-            return;
+        String filtro = JOptionPane.showInputDialog("Buscar por código (ou parte):");
+        ControllerPDRCOL c = new ControllerPDRCOL();
+        List<Object> list = c.listar(filtro);
+        if (list.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sem registros");
+        } else {
+            StringBuilder sb = new StringBuilder();
+            list.forEach(o -> sb.append(o).append("\n"));
+            JOptionPane.showMessageDialog(null, sb.toString());
         }
+    }
 
-        StringBuilder resultado = new StringBuilder("Lista de Registros PDRCOL:\n");
-        for (Object obj : listaPDR) {
-            PdrCol pdrSaida = (PdrCol) obj;
-            resultado.append(pdrSaida.toString()).append("\n");
-        }
-
-        JOptionPane.showMessageDialog(null, resultado.toString());
+    private PdrCol coletar(boolean pedirId) {
+        int id = pedirId ? Integer.parseInt(JOptionPane.showInputDialog("ID")) : 0;
+        int idPRD = Integer.parseInt(JOptionPane.showInputDialog("IDPRD"));
+        int idCOL = Integer.parseInt(JOptionPane.showInputDialog("IDCOL"));
+        return new PdrCol(id, idPRD, idCOL);
     }
 
 
