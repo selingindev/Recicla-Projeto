@@ -24,13 +24,16 @@ public class DaoPEF_PDC implements DaoBasico {
         stmt.setInt(2, pef.getIdCol());
         stmt.setInt(3, pef.getIdMat());
         stmt.setInt(4, pef.getIdPdc());
-        stmt.setInt(5, pef.getCod());
-        stmt.setInt(6, pef.getQuant());
-        stmt.setString(7, pef.getData());
+        stmt.setString(5, pef.getCod());
+        stmt.setDouble(6, pef.getQuant());
+        stmt.setDate(7, pef.getData());
         stmt.executeUpdate();
         ResultSet rs = stmt.getGeneratedKeys();
-        if (rs.next()) pef.setId(rs.getInt(1));
-        rs.close(); stmt.close();
+        if (rs.next()) {
+            pef.setId(rs.getInt(1));
+        }
+        rs.close();
+        stmt.close();
         return pef;
     }
 
@@ -43,9 +46,9 @@ public class DaoPEF_PDC implements DaoBasico {
         stmt.setInt(2, pef.getIdCol());
         stmt.setInt(3, pef.getIdMat());
         stmt.setInt(4, pef.getIdPdc());
-        stmt.setInt(5, pef.getCod());
-        stmt.setInt(6, pef.getQuant());
-        stmt.setString(7, pef.getData());
+        stmt.setString(5, pef.getCod());
+        stmt.setDouble(6, pef.getQuant());
+        stmt.setDate(7, pef.getData());
         stmt.setInt(8, pef.getId());
         stmt.executeUpdate();
         stmt.close();
@@ -53,22 +56,20 @@ public class DaoPEF_PDC implements DaoBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException {
-        PefPdc pef = (PefPdc) obj;
+    public boolean excluir(int id) throws SQLException {
         String sql = "DELETE FROM pef_pdc WHERE id=?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, pef.getId());
-        stmt.executeUpdate();
+        stmt.setInt(1, id);
+        int rows = stmt.executeUpdate();
         stmt.close();
-        return pef;
+        return rows > 0;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        PefPdc pefEnt = (PefPdc) obj;
+    public Object buscar(int id) throws SQLException {
         String sql = "SELECT * FROM pef_pdc WHERE id=?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, pefEnt.getId());
+        stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
         PefPdc pef = null;
         if (rs.next()) {
@@ -78,23 +79,23 @@ public class DaoPEF_PDC implements DaoBasico {
                 rs.getInt("id_col"),
                 rs.getInt("id_mat"),
                 rs.getInt("id_pdc"),
-                rs.getInt("cod"),
-                rs.getInt("quant"),
-                rs.getString("data")
+                rs.getString("cod"),
+                rs.getDouble("quant"),
+                rs.getDate("data")
             );
         }
-        rs.close(); stmt.close();
+        rs.close();
+        stmt.close();
         return pef;
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
-        PefPdc filtro = (PefPdc) obj;
-        String sql = "SELECT * FROM pef_pdc WHERE id_pef=?";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setInt(1, filtro.getIdPef());
-        ResultSet rs = stmt.executeQuery();
+    public List<Object> listar(String filtro) throws SQLException {
         List<Object> lista = new ArrayList<>();
+        String sql = "SELECT * FROM pef_pdc WHERE cod LIKE ?";
+        PreparedStatement stmt = c.prepareStatement(sql);
+        stmt.setString(1, "%" + filtro + "%");
+        ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             lista.add(new PefPdc(
                 rs.getInt("id"),
@@ -102,12 +103,13 @@ public class DaoPEF_PDC implements DaoBasico {
                 rs.getInt("id_col"),
                 rs.getInt("id_mat"),
                 rs.getInt("id_pdc"),
-                rs.getInt("cod"),
-                rs.getInt("quant"),
-                rs.getString("data")
+                rs.getString("cod"),
+                rs.getDouble("quant"),
+                rs.getDate("data")
             ));
         }
-        rs.close(); stmt.close();
+        rs.close();
+        stmt.close();
         return lista;
     }
 }

@@ -38,7 +38,7 @@ public class DaoPessoa implements DaoBasico {
 
         // seta os valores
         stmt.setString(1,pessoaEnt.getNome());
-        stmt.setInt(2, pessoaEnt.getId_LOG());
+        stmt.setInt(2, pessoaEnt.getIdLog());
 
         // executa
         stmt.executeUpdate();
@@ -59,7 +59,7 @@ public class DaoPessoa implements DaoBasico {
         PreparedStatement stmt = c.prepareStatement(sql);
         // seta os valores
         stmt.setString(1,pessoaEnt.getNome());
-        stmt.setInt(2, pessoaEnt.getId_LOG());
+        stmt.setInt(2, pessoaEnt.getIdLog());
         stmt.setInt(3,pessoaEnt.getId());
         // executa
         stmt.execute();
@@ -67,73 +67,7 @@ public class DaoPessoa implements DaoBasico {
         return pessoaEnt;
     }
 
-    @Override
-    public Object excluir(Object obj) throws SQLException {
-        Pessoa pessoaEnt = (Pessoa) obj;
-        String sql = "delete from PES_PESSOA WHERE id = ?";
-        // prepared statement para inserção
-        PreparedStatement stmt = c.prepareStatement(sql);
-        // seta os valores
-        stmt.setInt(1,pessoaEnt.getId());
-        // executa
-        stmt.execute();
-        stmt.close();
-        c.close();
-        return pessoaEnt;
-    }
-
-    @Override
-    public Object buscar(Object obj) throws SQLException {
-        Pessoa pessoaEnt = (Pessoa) obj;
-        String sql = "select * from PES_PESSOA WHERE id = ?";
-        PreparedStatement stmt = this.c.prepareStatement(sql);
-            // seta os valores
-            stmt.setInt(1,pessoaEnt.getId());
-            // executa
-            ResultSet rs = stmt.executeQuery();
-            Pessoa pesSaida = null;
-            while (rs.next()) {      
-            // criando o objeto Pessoa
-            pesSaida = new Pessoa(
-                    rs.getInt(1),
-                    rs.getString(2),
-                    rs.getInt(3)
-                    );
-            // adiciona o usu à lista de usus
-            }
-            stmt.close();
-        return pesSaida;
-    }
     
-    
-    @Override
-    public List<Object> listar(Object obj) throws SQLException  {
-        Pessoa pessoaEnt = (Pessoa) obj;
-        // usus: array armazena a lista de registros
-        List<Object> pessoas = new ArrayList<>();
-        
-        String sql = "select * from PES_PESSOA where nome like ?";
-        PreparedStatement stmt = this.c.prepareStatement(sql);
-        // seta os valores
-        stmt.setString(1,"%" + pessoaEnt.getNome() + "%");
-        
-        ResultSet rs = stmt.executeQuery();
-        
-        while (rs.next()) {      
-            // criando o objeto Usuario
-            Pessoa pessoa = new Pessoa(
-                rs.getInt(1),
-                rs.getString(2),
-                rs.getInt(3)
-            );
-            // adiciona o usu à lista de usus
-            pessoas.add(pessoa);
-        }
-        
-        rs.close();
-        stmt.close();
-        return pessoas;
-    }
     public List<Object> listarTodos() throws SQLException  {
         
         // usus: array armazena a lista de registros
@@ -160,4 +94,68 @@ public class DaoPessoa implements DaoBasico {
         stmt.close();
         return pessoas;
     }
+
+    @Override
+    public boolean excluir(int id) throws SQLException {
+
+        String sql = "delete from PES_PESSOA WHERE id = ?";
+        // prepared statement para inserção
+        PreparedStatement stmt = c.prepareStatement(sql);
+        // seta os valores
+        stmt.setInt(1,id);
+        // executa
+        stmt.execute();
+        stmt.close();
+        c.close();
+        return true;    
+    }
+
+    @Override
+    public Object buscar(int id) throws SQLException {
+        
+        String sql = "select * from PES_PESSOA WHERE id = ?";
+        PreparedStatement stmt = this.c.prepareStatement(sql);
+            // seta os valores
+            stmt.setInt(1,id);
+            // executa
+            ResultSet rs = stmt.executeQuery();
+            Pessoa pesSaida = null;
+            while (rs.next()) {      
+            // criando o objeto Pessoa
+            pesSaida = new Pessoa(
+                    rs.getInt(1),
+                    rs.getString(2),
+                    rs.getInt(3)
+                    );
+            // adiciona o usu à lista de usus
+            }
+            stmt.close();
+        return pesSaida;    
+    }
+
+    @Override
+    public List<Object> listar(String pfiltro) throws SQLException {
+        List<Object> pessoas = new ArrayList<>();
+        
+        String sql = "select * from PES_PESSOA where nome like ?";
+        PreparedStatement stmt = this.c.prepareStatement(sql);
+        // seta os valores
+        stmt.setString(1,"%" + pfiltro + "%");
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        while (rs.next()) {      
+            // criando o objeto Usuario
+            Pessoa pessoa = new Pessoa(
+                rs.getInt(1),
+                rs.getString(2),
+                rs.getInt(3)
+            );
+            // adiciona o usu à lista de usus
+            pessoas.add(pessoa);
+        }
+        
+        rs.close();
+        stmt.close();
+        return pessoas;    }
 }

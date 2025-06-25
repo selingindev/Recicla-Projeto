@@ -9,8 +9,6 @@ package reciclabackend.model.dao;
  * @author Cateli
  */
 
-
-
 import java.sql.*;
 import java.util.*;
 import reciclabackend.model.bean.PessoaFisica;
@@ -51,25 +49,25 @@ public class DaoPessoaFisica implements DaoBasico {
 
     @Override
     public boolean excluir(int id) throws SQLException {
-        
+
         String sql = "DELETE FROM pef_pessoafisica WHERE id = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, id());
+        ps.setInt(1, id);
         ps.executeUpdate();
 
-        return pf;
+        return true;
     }
 
     @Override
-    public Object buscar(int id) throws SQLException {
-        
+    public Object buscar(Object obj) throws SQLException {
+        PessoaFisica pf = (PessoaFisica) obj;
         String sql = "SELECT * FROM pef_pessoafisica WHERE id = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, id());
+        ps.setInt(1, pf.getId());
 
         ResultSet rs = ps.executeQuery();
 
@@ -82,7 +80,7 @@ public class DaoPessoaFisica implements DaoBasico {
     }
 
     @Override
-    public List<Object> listar(String pfiltro) throws SQLException {
+    public List<Object> listar(Object obj) throws SQLException {
         String sql = "SELECT * FROM pef_pessoafisica";
         List<Object> lista = new ArrayList<>();
 
