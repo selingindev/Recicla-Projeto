@@ -4,12 +4,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 import reciclabackend.model.bean.CodigoBarras;
+import reciclabackend.model.dao.DaoCodigoBarra;
 import reciclabackend.util.CodigoBarraApiBasico;
 import reciclabackend.util.ControllerBasico;
 import reciclabackend.util.api.CosmoApi;
 import org.json.JSONObject;
 
 public class ControllerCodigoBarras implements ControllerBasico {
+
+    DaoCodigoBarra dao;
 
     @Override
     public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
@@ -26,19 +29,19 @@ public class ControllerCodigoBarras implements ControllerBasico {
     @Override
     public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoCodigoBarra();
-        return dao.inserir(obj);
+        return dao.excluir(id);
     }
 
     @Override
     public Object buscar(int id) throws SQLException, ClassNotFoundException {
-      dao = new DaoCodigoBarra();
-        return dao.inserir(obj);
+        dao = new DaoCodigoBarra();
+        return dao.buscar(id);
     }
 
     @Override
     public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
-       dao = new DaoCodigoBarra();
-        return dao.inserir(obj);
+        dao = new DaoCodigoBarra();
+        return dao.listar(pfiltro);
     }
 
     public CodigoBarras requestApi(String gtin) {
