@@ -81,33 +81,47 @@ public class ManterColPdc implements ViewBasico{
 
     @Override
     public void excluir() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(null, "ID - COL-PDC"));
+    int id = Integer.parseInt(JOptionPane.showInputDialog(null, "ID - COL-PDC"));
 
-        ColPdc colpdcEnt = new ColPdc(id);
-        ColPdc colpdcSaida = (ColPdc) controller.excluir(colpdcEnt);
+    ColPdc colpdcEnt = new ColPdc(id);
+    boolean sucesso = controller.excluir(colpdcEnt.getId());
 
-        JOptionPane.showMessageDialog(null, colpdcSaida.toString() + "  deletado com sucesso");
-        
+    if (sucesso) {
+        JOptionPane.showMessageDialog(null, colpdcEnt.toString() + " deletado com sucesso");
+    } else {
+        JOptionPane.showMessageDialog(null, "Erro ao excluir. Registro não encontrado.");
     }
+}
 
     @Override
-    public void buscar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        ColPdc logEntrada = new ColPdc(id);
-        ColPdc colPdc = (ColPdc) controller.buscar(logEntrada);
-        JOptionPane.showMessageDialog(null, colPdc);
-        
+public void buscar() throws SQLException, ClassNotFoundException {
+    int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
+
+    ColPdc resultado = (ColPdc) controller.buscar(id);
+    if (resultado != null) {
+        JOptionPane.showMessageDialog(null, resultado.toString());
+    } else {
+        JOptionPane.showMessageDialog(null, "Registro não encontrado.");
     }
+}
 
     @Override
-    public void listar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog(null, "ID"));
-        
-        ColPdc logEntrada = new ColPdc(id);
-        List<Object> listaLogradouro = controller.listar(logEntrada);
-        for(Object colpdcItem : listaLogradouro){
-            ColPdc colpdc = (ColPdc) colpdcItem;
-            JOptionPane.showMessageDialog(null, colpdc.toString());
-        }
+public void listar() throws SQLException, ClassNotFoundException {
+    String filtro = JOptionPane.showInputDialog(null, "Digite o ID_COL para filtrar ou deixe em branco:");
+
+    List<Object> lista = controller.listar((filtro == null || filtro.isEmpty()) ? null : filtro);
+
+    if (lista.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Nenhum registro encontrado.");
+        return;
     }
+
+    StringBuilder resultado = new StringBuilder("Registros encontrados:\n");
+    for (Object item : lista) {
+        ColPdc colpdc = (ColPdc) item;
+        resultado.append(colpdc.toString()).append("\n");
+    }
+
+    JOptionPane.showMessageDialog(null, resultado.toString());
+}
 }
