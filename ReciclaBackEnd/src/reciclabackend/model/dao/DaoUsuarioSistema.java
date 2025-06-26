@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.model.dao;
 
 import reciclabackend.model.bean.UsuarioSistema;
@@ -12,129 +8,107 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import reciclabackend.util.ConexaoDb;
 import reciclabackend.util.DaoBasico;
 
-/**
- *
- * @author User
- */
 public class DaoUsuarioSistema implements DaoBasico {
 
     private final Connection c;
-    
-    public DaoUsuarioSistema() throws SQLException, ClassNotFoundException{
-        this.c = ConexaoDb.getConexaoMySQL();
+
+    public DaoUsuarioSistema() {
+         this.c = ConexaoDb.getConexaoMySQL();
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException{
+    public Object inserir(Object obj) throws SQLException {
         UsuarioSistema usuEnt = (UsuarioSistema) obj;
-        String sql = "delete from usuarios_sistemas WHERE id = ?";
-        // prepared statement para inserção
-        PreparedStatement stmt = c.prepareStatement(sql);
-        // seta os valores
-        stmt.setInt(1,usuEnt.getId());
-        // executa
-        stmt.execute();
-        stmt.close();
-        c.close();
-        return usuEnt;
-    }
-    
-    @Override
-    public Object buscar(Object obj) throws SQLException{
-        UsuarioSistema usuEnt = (UsuarioSistema) obj;
-        String sql = "select * from usuarios_sistemas WHERE id = ?";
-        PreparedStatement stmt = this.c.prepareStatement(sql);
-            // seta os valores
-            stmt.setInt(1,usuEnt.getId());
-            // executa
-            ResultSet rs = stmt.executeQuery();
-            UsuarioSistema usuSaida = null;
-            while (rs.next()) {      
-            // criando o objeto Usuario
-                usuSaida = new UsuarioSistema(
-                    rs.getInt(1),
-                    rs.getInt(2),
-                    rs.getInt(3),
-                    rs.getString(4));
-            // adiciona o usu à lista de usus
+        String sql = "INSERT INTO usuarios_sistemas (idU, idS, obs) VALUES (?, ?, ?)";
+
+        try (PreparedStatement stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setInt(1, usuEnt.getIdU());
+            stmt.setInt(2, usuEnt.getIdS());
+            stmt.setString(3, usuEnt.getObs());
+
+            stmt.executeUpdate();
+
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    usuEnt.setId(rs.getInt(1));
+                }
             }
-            stmt.close();
-        return usuSaida;
-   }
-
-    @Override
-    public Object inserir(Object obj) throws SQLException{
-        UsuarioSistema usuEnt = (UsuarioSistema) obj;
-        String sql = "insert into usuarios_sistemas" + " (idU, idS, obs)" + " values (?,?,?)";
-        // prepared statement para inserção
-        PreparedStatement stmt = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-
-        // seta os valores
-        stmt.setInt(1,usuEnt.getIdU());
-        stmt.setInt(2,usuEnt.getIdS());
-        stmt.setString(3,usuEnt.getObs());
-
-        // executa
-        stmt.executeUpdate();
-        ResultSet rs = stmt.getGeneratedKeys();
-        if (rs.next()) {
-            int id = rs.getInt(1);
-            usuEnt.setId(id);
         }
-        stmt.close();
         return usuEnt;
     }
 
     @Override
-    public Object alterar(Object obj) throws SQLException{
+    public Object alterar(Object obj) throws SQLException {
         UsuarioSistema usuEnt = (UsuarioSistema) obj;
         String sql = "UPDATE usuarios_sistemas SET idU = ?, idS = ?, obs = ? WHERE id = ?";
-        // prepared statement para inserção
-        PreparedStatement stmt = c.prepareStatement(sql);
-        // seta os valores
-        stmt.setInt(1,usuEnt.getIdU());
-        stmt.setInt(2,usuEnt.getIdS());
-        stmt.setString(3,usuEnt.getObs());
-        stmt.setInt(4,usuEnt.getId());
 
-        // executa
-        stmt.execute();
-        stmt.close();
+        try (PreparedStatement stmt = c.prepareStatement(sql)) {
+            stmt.setInt(1, usuEnt.getIdU());
+            stmt.setInt(2, usuEnt.getIdS());
+            stmt.setString(3, usuEnt.getObs());
+            stmt.setInt(4, usuEnt.getId());
+
+            stmt.executeUpdate();
+        }
         return usuEnt;
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException{
-         UsuarioSistema usuEnt = (UsuarioSistema) obj;
-        // usus: array armazena a lista de registros
-        List<Object> usus = new ArrayList<>();
-        
-        String sql = "select * from usuarios_sistemas where obs like ?";
-        PreparedStatement stmt = this.c.prepareStatement(sql);
-        // seta os valores
-        stmt.setString(1,"%" + usuEnt.getObs()+ "%");
-        
-        ResultSet rs = stmt.executeQuery();
-        
-        while (rs.next()) {      
-            // criando o objeto Usuario
-            UsuarioSistema usu = new UsuarioSistema(
-                rs.getInt(1),
-                rs.getInt(2),
-                rs.getInt(3),
-                rs.getString(4)
-            );
-            // adiciona o usu à lista de usus
-            usus.add(usu);
-        }
-        
-        rs.close();
-        stmt.close();
-        return usus;
-   }
+    public boolean excluir(int id) throws SQLException {
+        String sql = "DELETE FROM usuarios_sistemas WHERE id = ?";
 
-    
+        try (PreparedStatement stmt = c.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            int rows = stmt.executeUpdate();
+            return rows > 0;
+        }
+    }
+
+    @Override
+    public Object buscar(int id) throws SQLException {
+        String sql = "SELECT * FROM usuarios_sistemas WHERE id = ?";
+
+        try (PreparedStatement stmt = c.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new UsuarioSistema(
+                        rs.getInt("id"),
+                        rs.getInt("idU"),
+                        rs.getInt("idS"),
+                        rs.getString("obs")
+                    );
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Object> listar(String filtro) throws SQLException {
+        String sql = "SELECT * FROM usuarios_sistemas WHERE obs LIKE ?";
+        List<Object> lista = new ArrayList<>();
+
+        try (PreparedStatement stmt = c.prepareStatement(sql)) {
+            stmt.setString(1, "%" + filtro + "%");
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    UsuarioSistema usu = new UsuarioSistema(
+                        rs.getInt("id"),
+                        rs.getInt("idU"),
+                        rs.getInt("idS"),
+                        rs.getString("obs")
+                    );
+                    lista.add(usu);
+                }
+            }
+        }
+        return lista;
+    }
 }
