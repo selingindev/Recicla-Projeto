@@ -9,18 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import reciclabackend.model.bean.CodigoBarras;
+import reciclabackend.util.ConexaoDb;
 import reciclabackend.util.DaoBasico;
 
 public class DaoCodigoBarra implements DaoBasico {
-
     private final Connection c;
 
-    public DaoCodigoBarra(Connection c) {
-        this.c = c;
-    }
-
     public DaoCodigoBarra() {
-        //TODO Auto-generated constructor stub
+             this.c = ConexaoDb.getConexaoMySQL();
     }
 
     @Override
