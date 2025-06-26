@@ -6,6 +6,7 @@ package reciclabackend.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+
 import reciclabackend.model.dao.DaoSistema;
 import reciclabackend.util.ControllerBasico;
 
@@ -17,7 +18,7 @@ public class ControllerSistema implements ControllerBasico {
     
     DaoSistema dao;
 
-    @Override
+  @Override
     public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
         dao = new DaoSistema();
         return dao.inserir(obj);
@@ -26,25 +27,26 @@ public class ControllerSistema implements ControllerBasico {
     @Override
     public Object alterar(Object obj) throws SQLException, ClassNotFoundException {
         dao = new DaoSistema();
-        return dao.alterar(obj);
+        return dao.inserir(obj);
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoSistema();
-        return dao.buscar(obj);
+        return dao.excluir(id);
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
+    public Object buscar(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoSistema();
-        return dao.excluir(obj);
+        return dao.buscar(id);
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
+    public List<Object> listar(String pfiltro) throws SQLException, ClassNotFoundException {
         dao = new DaoSistema();
-        return dao.listar(obj);
-     }
+        return dao.listar(pfiltro);
+    }
+
     
 }

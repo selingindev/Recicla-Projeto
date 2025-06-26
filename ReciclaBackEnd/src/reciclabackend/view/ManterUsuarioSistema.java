@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.view;
 
 import reciclabackend.controller.ControllerUsuarioSistema;
@@ -11,94 +7,87 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import reciclabackend.util.ViewBasico;
 
-/**
- *
- * @author User
- */
-public class ManterUsuarioSistema implements ViewBasico{
-    
+public class ManterUsuarioSistema implements ViewBasico {
+
     @Override
     public void menu() throws SQLException, ClassNotFoundException {
-        String msg = " 1 - Inserir \n 2 - Alterar \n 3 - buscar \n 4 - excluir \n 5 - Listar " ;
-        int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
-        switch (num) {
-            case 1 : 
-                inserir();
-                break;
-            case 2 : 
-                alterar();
-                break;
-            case 3 : 
-                buscar();
-                break;
-            case 4 : 
-                excluir();
-                break;
-            case 5 : 
-                listar();
-                break;
-            default : 
-                System.out.println("Opcao inválida");
-                break;
+        String msg = "1 - Inserir\n2 - Alterar\n3 - Buscar\n4 - Excluir\n5 - Listar";
+        int opc = Integer.parseInt(JOptionPane.showInputDialog(msg));
+        switch (opc) {
+            case 1 -> inserir();
+            case 2 -> alterar();
+            case 3 -> buscar();
+            case 4 -> excluir();
+            case 5 -> listar();
+            default -> JOptionPane.showMessageDialog(null, "Opção inválida");
         }
     }
 
     @Override
     public void inserir() throws SQLException, ClassNotFoundException {
-        int idU = Integer.parseInt(JOptionPane.showInputDialog("IDU"));
-        int idS = Integer.parseInt(JOptionPane.showInputDialog("IDS"));
-        String obs = JOptionPane.showInputDialog("OBS");
-        UsuarioSistema usuEnt = new UsuarioSistema(idU, idS, obs);
-        ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
-        UsuarioSistema usuSaida = (UsuarioSistema) contUsu.inserir(usuEnt);
-        JOptionPane.showMessageDialog(null,usuSaida.toString());
+        int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("ID do Usuário"));
+        int idSistema = Integer.parseInt(JOptionPane.showInputDialog("ID do Sistema"));
+        String obs = JOptionPane.showInputDialog("Observações");
+
+        UsuarioSistema usuSis = new UsuarioSistema(idUsuario, idSistema, obs);
+        ControllerUsuarioSistema controller = new ControllerUsuarioSistema();
+        UsuarioSistema resultado = (UsuarioSistema) controller.inserir(usuSis);
+
+        JOptionPane.showMessageDialog(null, resultado.toString());
     }
 
     @Override
     public void alterar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        int idU = Integer.parseInt(JOptionPane.showInputDialog("IDU"));
-        int idS = Integer.parseInt(JOptionPane.showInputDialog("IDS"));
-        String obs = JOptionPane.showInputDialog("OBS");
-        UsuarioSistema usuEnt = new UsuarioSistema(id,idU, idS, obs);
-        ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
-        UsuarioSistema usuSaida = (UsuarioSistema) contUsu.alterar(usuEnt);
-        JOptionPane.showMessageDialog(null,usuSaida.toString());
+        int id = Integer.parseInt(JOptionPane.showInputDialog("ID do vínculo"));
+        int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("ID do Usuário"));
+        int idSistema = Integer.parseInt(JOptionPane.showInputDialog("ID do Sistema"));
+        String obs = JOptionPane.showInputDialog("Observações");
+
+        UsuarioSistema usuSis = new UsuarioSistema(id, idUsuario, idSistema, obs);
+        ControllerUsuarioSistema controller = new ControllerUsuarioSistema();
+        UsuarioSistema resultado = (UsuarioSistema) controller.alterar(usuSis);
+
+        JOptionPane.showMessageDialog(null, resultado.toString());
     }
 
     @Override
     public void buscar() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        UsuarioSistema usuEnt = new UsuarioSistema(id);
-        ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
-        UsuarioSistema usuSaida = (UsuarioSistema) contUsu.buscar(usuEnt);
-        JOptionPane.showMessageDialog(null,usuSaida.toString());
-        JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
-        JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
+        int id = Integer.parseInt(JOptionPane.showInputDialog("ID do vínculo"));
+        ControllerUsuarioSistema controller = new ControllerUsuarioSistema();
+        UsuarioSistema resultado = controller.buscar(id);
 
+        if (resultado != null) {
+            JOptionPane.showMessageDialog(null, resultado.toString());
+            JOptionPane.showMessageDialog(null, resultado.getUsu().toString());
+            JOptionPane.showMessageDialog(null, resultado.getSis().toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "Vínculo não encontrado");
+        }
     }
 
     @Override
     public void excluir() throws SQLException, ClassNotFoundException {
-        int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        UsuarioSistema usuEnt = new UsuarioSistema(id);
-        ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
-        UsuarioSistema usuSaida = (UsuarioSistema) contUsu.excluir(usuEnt);
-        JOptionPane.showMessageDialog(null,usuSaida.toString());
+        int id = Integer.parseInt(JOptionPane.showInputDialog("ID do vínculo"));
+        ControllerUsuarioSistema controller = new ControllerUsuarioSistema();
+        boolean sucesso = controller.excluir(id);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(null, "Vínculo excluído com sucesso.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir vínculo.");
+        }
     }
 
     @Override
     public void listar() throws SQLException, ClassNotFoundException {
-        String obs = JOptionPane.showInputDialog("OBS");
-        UsuarioSistema usuEnt = new UsuarioSistema(obs);
-        ControllerUsuarioSistema contUsu = new ControllerUsuarioSistema();
-        List<Object> listaUsuario = contUsu.listar(usuEnt);
-        for (Object usuObj : listaUsuario) {
-            UsuarioSistema usuSaida = (UsuarioSistema) usuObj;
-            JOptionPane.showMessageDialog(null,usuSaida.toString());
-            JOptionPane.showMessageDialog(null,usuSaida.getUsu().toString());
-            JOptionPane.showMessageDialog(null,usuSaida.getSis().toString());
+        String filtro = JOptionPane.showInputDialog("Filtro de Observações (ou deixe vazio)");
+        ControllerUsuarioSistema controller = new ControllerUsuarioSistema();
+        List<Object> lista = controller.listar(filtro);
+
+        for (Object obj : lista) {
+            UsuarioSistema us = (UsuarioSistema) obj;
+            JOptionPane.showMessageDialog(null, us.toString());
+            JOptionPane.showMessageDialog(null, us.getUsu().toString());
+            JOptionPane.showMessageDialog(null, us.getSis().toString());
         }
     }
-
 }
