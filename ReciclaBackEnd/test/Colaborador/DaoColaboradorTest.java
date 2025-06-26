@@ -44,7 +44,7 @@ public class DaoColaboradorTest {
      * Test of buscar method, of class DaoColaborador.
      */
     @Test
-    public void testBuscar() {
+    public void testBuscar() throws Exception {
         System.out.println("buscar");
         int id = 0;
         DaoColaborador instance = new DaoColaborador();
@@ -59,7 +59,7 @@ public class DaoColaboradorTest {
      * Test of inserir method, of class DaoColaborador.
      */
     @Test
-    public void testInserir() {
+    public void testInserir()throws Exception {
         System.out.println("inserir");
         Object obj = null;
         DaoColaborador instance = new DaoColaborador();
@@ -74,7 +74,7 @@ public class DaoColaboradorTest {
      * Test of alterar method, of class DaoColaborador.
      */
     @Test
-    public void testAlterar() {
+    public void testAlterar() throws Exception {
         System.out.println("alterar");
         Object obj = null;
         DaoColaborador instance = new DaoColaborador();
@@ -89,7 +89,7 @@ public class DaoColaboradorTest {
      * Test of excluir method, of class DaoColaborador.
      */
     @Test
-    public void testExcluir() {
+    public void testExcluir() throws Exception {
         System.out.println("excluir");
         int id = 0;
         DaoColaborador instance = new DaoColaborador();
@@ -104,7 +104,7 @@ public class DaoColaboradorTest {
      * Test of listar method, of class DaoColaborador.
      */
     @Test
-    public void testListar() {
+    public void testListar() throws Exception {
         System.out.println("listar");
         String filtro = "";
         DaoColaborador instance = new DaoColaborador();
