@@ -23,6 +23,10 @@ public class ValorGame {
         this.idMuni = idMuni;
     }
 
+    public ValorGame(double valor2, int nivel2, int mat, int par, int muni) {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters e Setters
     public int getId() {
         return id;
