@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.controller;
 
 import java.sql.SQLException;
@@ -10,13 +6,9 @@ import reciclabackend.model.bean.Usuario;
 import reciclabackend.model.dao.DaoUsuario;
 import reciclabackend.util.ControllerBasico;
 
-/**
- *
- * @author LAB 211
- */
 public class ControllerUsuario implements ControllerBasico {
-    
-    DaoUsuario dao;
+
+    private DaoUsuario dao;
 
     @Override
     public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
@@ -30,40 +22,34 @@ public class ControllerUsuario implements ControllerBasico {
         return dao.alterar(obj);
     }
 
-    @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
+    // Buscar por ID
+    public Object buscar(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuario();
-        return dao.buscar(obj);
+        return dao.buscar(id);
     }
 
-    @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
+    // Excluir por ID
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuario();
-        return dao.excluir(obj);
+        return dao.excluir(id);
     }
 
-    @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
+    // Listar com filtro String
+    public List<Object> listar(String filtro) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuario();
-        return dao.listar(obj);
+        return dao.listar(filtro);
     }
 
+    // Método para validar usuário (login e senha)
     public boolean validar(Usuario usuEnt) throws SQLException, ClassNotFoundException {
-        boolean retorno = false;
         dao = new DaoUsuario();
         Usuario usuSaida = dao.validar(usuEnt);
-        if(usuSaida != null) {
-            retorno = true;
-        }
-        return retorno;
+        return usuSaida != null;
     }
 
+    // Variante que retorna o usuário completo para uso em Web ou outras finalidades
     public Usuario validarWeb(Usuario usuEnt) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuario();
-        Usuario usuSaida = dao.validar(usuEnt);
-        return usuSaida;
+        return dao.validar(usuEnt);
     }
-
-
-
 }
