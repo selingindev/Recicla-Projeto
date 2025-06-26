@@ -1,14 +1,31 @@
 package reciclabackend.model.bean;
 
 public class CodigoBarras {
+    int id;
     String description;
     String gtdin;
     String brandName;
 
-    public CodigoBarras(String description, String gtdin, String brandName) {
+    public CodigoBarras(int id, String description, String gtdin, String brandName) {
+        this.id = id;
         this.description = description;
         this.gtdin = gtdin;
         this.brandName = brandName;
+    }
+
+    public CodigoBarras(String description, String gtdin, String brandName) {
+
+        this.description = description;
+        this.gtdin = gtdin;
+        this.brandName = brandName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {
