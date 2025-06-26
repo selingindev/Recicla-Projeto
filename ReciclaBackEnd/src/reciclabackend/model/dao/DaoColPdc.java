@@ -93,33 +93,41 @@ public class DaoColPdc implements DaoBasico {
 
     @Override
     public List<Object> listar(String pfiltro) throws SQLException {
-        ColPdc filtro = (ColPdc) obj;
-        List<Object> lista = new ArrayList<>();
+    List<Object> lista = new ArrayList<>();
+    String sql;
+    PreparedStatement stmt;
 
-        String sql = "SELECT * FROM COL_PDC WHERE id_col = ? OR ? IS NULL";
-        PreparedStatement stmt = c.prepareStatement(sql);
-        if (filtro.getIdCol() != 0) {
-            stmt.setInt(1, filtro.getIdCol());
-            stmt.setNull(2, java.sql.Types.INTEGER);
-        } else {
-            stmt.setNull(1, java.sql.Types.INTEGER);
-            stmt.setInt(2, 1);
+    
+    if (pfiltro != null && !pfiltro.isEmpty()) {
+        sql = "SELECT * FROM COL_PDC WHERE id_col = ?";
+        stmt = c.prepareStatement(sql);
+
+        try {
+            int idCol = Integer.parseInt(pfiltro);
+            stmt.setInt(1, idCol);
+        } catch (NumberFormatException e) {
+            stmt.setInt(1, -1);
         }
-
-        ResultSet rs = stmt.executeQuery();
-
-        while (rs.next()) {
-            ColPdc col = new ColPdc(
-                rs.getInt(1),
-                rs.getInt(2),
-                rs.getInt(3),
-                rs.getString(4)
-            );
-            lista.add(col);
-        }
-
-        rs.close();
-        stmt.close();
-        return lista;
+    } else {
+        sql = "SELECT * FROM COL_PDC";
+        stmt = c.prepareStatement(sql);
     }
+
+    ResultSet rs = stmt.executeQuery();
+
+    while (rs.next()) {
+        ColPdc col = new ColPdc(
+            rs.getInt(1),
+            rs.getInt(2),
+            rs.getInt(3),
+            rs.getString(4)
+        );
+        lista.add(col);
+    }
+
+    rs.close();
+    stmt.close();
+    return lista;
+}
+
 }
