@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import reciclabackend.controller.ControllerValorCredito;
 import static org.junit.Assert.*;
+import reciclabackend.model.bean.ValorCredito;
 
 /**
  *
@@ -44,13 +45,15 @@ public class ControllerValorCreditoTest {
     @Test
     public void testBuscar() throws Exception {
         System.out.println("buscar");
-        int id = 0;
+        int id = 1;
         ControllerValorCredito instance = new ControllerValorCredito();
-        Object expResult = null;
+        // id, double valor, int idMat, int idPar, int idMuni);
+        ValorCredito expResult = new ValorCredito(1, 10, 3, 4, 1);
         Object result = instance.buscar(id);
+        assertTrue(result instanceof ValorCredito); 
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Teste de buca valor-credito falhou.");
     }
 
     /**
@@ -59,13 +62,12 @@ public class ControllerValorCreditoTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        Object obj = null;
+        ValorCredito valor = new ValorCredito(1, 10, 3, 4, 1);
         ControllerValorCredito instance = new ControllerValorCredito();
-        Object expResult = null;
-        Object result = instance.inserir(obj);
-        assertEquals(expResult, result);
+        Object result = instance.inserir(valor);
+        assertTrue(result instanceof ValorCredito); 
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Teste de inserir falhou.");
     }
 
     /**
@@ -74,13 +76,18 @@ public class ControllerValorCreditoTest {
     @Test
     public void testAlterar() throws Exception {
         System.out.println("alterar");
-        Object obj = null;
+        ValorCredito valor1 = new ValorCredito(1, 10, 3, 4, 1);
         ControllerValorCredito instance = new ControllerValorCredito();
-        Object expResult = null;
-        Object result = instance.alterar(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ValorCredito criado = (ValorCredito) instance.inserir(valor1);
+        
+        criado.setValor(15);
+        ValorCredito result = (ValorCredito) instance.alterar(criado);
+        
+        // Verifica
+        assertEquals(criado.getId(), result.getId());
+        assertEquals(15, result.getValor());
+        
+        fail("Teste de alterar falhou.");
     }
 
     /**
@@ -89,13 +96,12 @@ public class ControllerValorCreditoTest {
     @Test
     public void testExcluir() throws Exception {
         System.out.println("excluir");
-        int id = 0;
+        int id = 1;
         ControllerValorCredito instance = new ControllerValorCredito();
-        boolean expResult = false;
         boolean result = instance.excluir(id);
-        assertEquals(expResult, result);
+        assertTrue(result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Teste de excluir falhou.");
     }
 
     /**
@@ -106,11 +112,10 @@ public class ControllerValorCreditoTest {
         System.out.println("listar");
         String filtro = "";
         ControllerValorCredito instance = new ControllerValorCredito();
-        List<Object> expResult = null;
         List<Object> result = instance.listar(filtro);
-        assertEquals(expResult, result);
+        assertTrue(result.size() >= 2); 
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        fail("Teste de listar falhou.");
     }
     
 }
