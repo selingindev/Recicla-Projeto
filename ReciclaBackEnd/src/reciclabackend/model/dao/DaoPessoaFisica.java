@@ -1,14 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.model.dao;
-
-/**
- *
- * @author Cateli
- */
-
 import java.sql.*;
 import java.util.*;
 import reciclabackend.model.bean.PessoaFisica;
@@ -49,44 +39,53 @@ public class DaoPessoaFisica implements DaoBasico {
 
     @Override
     public boolean excluir(int id) throws SQLException {
-
-        String sql = "DELETE FROM pef_pessoafisica WHERE id = ?";
+        String sql = "DELETE FROM pef_pessoafisica WHERE idpes = ?";
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
         ps.setInt(1, id);
-        ps.executeUpdate();
+        int linhasAfetadas = ps.executeUpdate();
 
-        return true;
+        return linhasAfetadas > 0;
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException {
-        PessoaFisica pf = (PessoaFisica) obj;
-        String sql = "SELECT * FROM pef_pessoafisica WHERE id = ?";
-
+    public Object buscar(int id) throws SQLException {
+        String sql = "SELECT * FROM pef_pessoafisica WHERE idpes = ?";
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
-        ps.setInt(1, pf.getId());
-
+        ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
+            PessoaFisica pf = new PessoaFisica();
+            pf.setIdPes(rs.getInt("idpes"));
             pf.setCpf(rs.getString("cpf"));
             pf.setRg(rs.getString("rg"));
+            return pf;
         }
 
-        return pf;
+        return null;
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException {
+    public List<Object> listar(String pfiltro) throws SQLException {
         String sql = "SELECT * FROM pef_pessoafisica";
-        List<Object> lista = new ArrayList<>();
+        if (pfiltro != null && !pfiltro.trim().isEmpty()) {
+            sql += " WHERE cpf LIKE ? OR rg LIKE ?";
+        }
 
         Connection conexao = ConexaoDb.getConexaoMySQL();
         PreparedStatement ps = conexao.prepareStatement(sql);
+
+        if (pfiltro != null && !pfiltro.trim().isEmpty()) {
+            String filtro = "%" + pfiltro + "%";
+            ps.setString(1, filtro);
+            ps.setString(2, filtro);
+        }
+
         ResultSet rs = ps.executeQuery();
+        List<Object> lista = new ArrayList<>();
 
         while (rs.next()) {
             PessoaFisica pf = new PessoaFisica();

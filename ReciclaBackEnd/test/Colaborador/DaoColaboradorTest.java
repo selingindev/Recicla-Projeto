@@ -108,7 +108,6 @@ public class DaoColaboradorTest {
      */
     @Test
     public void testListar() throws Exception{
-        System.out.println("listar");
         String filtro = "";
         DaoColaborador instance = new DaoColaborador();
         List<Object> expResult = null;
