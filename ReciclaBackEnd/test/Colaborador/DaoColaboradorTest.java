@@ -5,8 +5,10 @@ package Colaborador;
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
 
-import reciclabackend.model.dao.*;
+import java.sql.SQLException;
 import reciclabackend.model.dao.DaoColaborador;
+import reciclabackend.controller.ControllerColaborador;
+import reciclabackend.model.bean.Colaborador;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,12 +46,13 @@ public class DaoColaboradorTest {
      * Test of buscar method, of class DaoColaborador.
      */
     @Test
-    public void testBuscar() {
+    public void testBuscar() throws Exception {
         System.out.println("buscar");
         int id = 0;
-        DaoColaborador instance = new DaoColaborador();
-        Object expResult = null;
+        ControllerColaborador instance = new ControllerColaborador();
+        Object expResult = new Colaborador(id);
         Object result = instance.buscar(id);
+        assertTrue(result instanceof Colaborador);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -59,7 +62,7 @@ public class DaoColaboradorTest {
      * Test of inserir method, of class DaoColaborador.
      */
     @Test
-    public void testInserir() {
+    public void testInserir() throws Exception{
         System.out.println("inserir");
         Object obj = null;
         DaoColaborador instance = new DaoColaborador();
@@ -74,7 +77,7 @@ public class DaoColaboradorTest {
      * Test of alterar method, of class DaoColaborador.
      */
     @Test
-    public void testAlterar() {
+    public void testAlterar() throws Exception{
         System.out.println("alterar");
         Object obj = null;
         DaoColaborador instance = new DaoColaborador();
@@ -89,7 +92,7 @@ public class DaoColaboradorTest {
      * Test of excluir method, of class DaoColaborador.
      */
     @Test
-    public void testExcluir() {
+    public void testExcluir() throws Exception {
         System.out.println("excluir");
         int id = 0;
         DaoColaborador instance = new DaoColaborador();
@@ -104,7 +107,7 @@ public class DaoColaboradorTest {
      * Test of listar method, of class DaoColaborador.
      */
     @Test
-    public void testListar() {
+    public void testListar() throws Exception{
         System.out.println("listar");
         String filtro = "";
         DaoColaborador instance = new DaoColaborador();
