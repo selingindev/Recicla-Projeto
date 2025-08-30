@@ -14,12 +14,12 @@ public class ManterUsuarioSistema implements ViewBasico {
         String msg = "1 - Inserir\n2 - Alterar\n3 - Buscar\n4 - Excluir\n5 - Listar";
         int opc = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (opc) {
-            case 1 -> inserir();
-            case 2 -> alterar();
-            case 3 -> buscar();
-            case 4 -> excluir();
-            case 5 -> listar();
-            default -> JOptionPane.showMessageDialog(null, "Opção inválida");
+            case 1: inserir();
+            case 2: alterar();
+            case 3: buscar();
+            case 4: excluir();
+            case 5: listar();
+            default: JOptionPane.showMessageDialog(null, "Opção inválida");
         }
     }
 
