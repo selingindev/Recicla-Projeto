@@ -8,8 +8,8 @@
     
     Parametro parEntrada = new Parametro(cod, descricao);
     ControllerParametro controller = new ControllerParametro();
-    Parametro parSaida = (Parametro) controller.inserir(parEntrada);
-        
+    Parametro parSaida = (Parametro) controller.alterar(parEntrada);
+    
     // REDIRECIONA PARA A PAG LISTAR PARAMETROS.JSP
     String url = "listarParametros.jsp";
     response.sendRedirect(url);

@@ -3,15 +3,12 @@
 <%@page import="reciclabackend.controller.ControllerParametro"%>
 
 <%
-    int cod = Integer.parseInt(request.getParameter("CODIGO"));
-    String descricao = request.getParameter("DESCRICAO");
-    
-    Parametro parEntrada = new Parametro(cod, descricao);
+    String cod = request.getParameter("CODIGO");
+    int id = Integer.parseInt(cod);
     ControllerParametro controller = new ControllerParametro();
-    Parametro parSaida = (Parametro) controller.inserir(parEntrada);
-        
+    boolean sucesso = controller.excluir(id);
+    
     // REDIRECIONA PARA A PAG LISTAR PARAMETROS.JSP
     String url = "listarParametros.jsp";
     response.sendRedirect(url);
 %>
-
