@@ -10,8 +10,8 @@
     ControllerParametro controller = new ControllerParametro();
     Parametro parSaida = (Parametro) controller.inserir(parEntrada);
         
-    // REDIRECIONA PARA A PAG LOGIN.JSP
-    String url = "inserirParametro.jsp";
+    // REDIRECIONA PARA A PAG LISTAR PARAMETROS.JSP
+    String url = "listarParametros.jsp";
     response.sendRedirect(url);
 %>
 
