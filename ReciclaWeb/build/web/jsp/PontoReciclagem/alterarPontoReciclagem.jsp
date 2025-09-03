@@ -1,13 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="reciclabackend.model.bean.Parametro"%>
-<%@page import="reciclabackend.controller.ControllerParametro"%>
+<%@page import="reciclabackend.model.bean.PontoReciclagem"%>
+<%@page import="reciclabackend.controller.ControllerPontoReciclagem"%>
 
 <%
     String cod = request.getParameter("CODIGO");
     int id = Integer.parseInt(cod);
-    Parametro sis = new Parametro(id);
+    PontoReciclagem sis = new PontoReciclagem(id);
     ControllerParametro sisCont = new ControllerParametro();
-    sis = (Parametro) sisCont.buscar(id);
+    sis = (PontoReciclagem) sisCont.buscar(id);
 %>
 
 <html>

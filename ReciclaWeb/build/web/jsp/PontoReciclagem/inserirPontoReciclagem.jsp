@@ -1,9 +1,3 @@
-<%-- 
-    Document   : parametros
-    Created on : 30 de ago. de 2025, 15:53:28
-    Author     : raife
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
