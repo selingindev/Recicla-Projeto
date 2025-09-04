@@ -1,15 +1,15 @@
 
-<%@page import="descartebackend.model.dado.Logradouro"%>
+<%@page import="reciclabackend.model.bean.Logradouro"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="descartebackend.model.dado.Usuario"%>
-<%@page import="descartebackend.model.dado.Pessoa"%>
-<%@page import="descartebackend.controller.ControllerPessoa"%>
+<%@page import="reciclabackend.model.bean.Usuario"%>
+<%@page import="reciclabackend.model.bean.Pessoa"%>
+<%@page import="reciclabackend.controller.ControllerPessoa"%>
 
 <%
     String nome = request.getParameter("NOME");
     ControllerPessoa pescont = new ControllerPessoa();
-    List<Object> listaPessoa = pescont.Listar(nome);
+    List<Object> listaPessoa = pescont.listar(nome);
     Usuario usuLogado = (Usuario) session.getAttribute("UsuarioLogado");
     String url = "PBUSCA=" + nome +"&ID=" ;
 %>
@@ -37,8 +37,8 @@
                     <tr>
                             <td><%=pesSaida.getId()%></td>
                             <td><%=pesSaida.getNome()%></td>
-                            <td><%=pesSaida.getEmail()%></td>
-                            <td><%=pesSaida.getFone()%></td>
+                            <td><%=pesSaida.getNome()%></td>
+                            <td><%=pesSaida.getTelefone()%></td>
                             <td><%=log.getCep()%></td>
                             <% if (usuLogado.getTipo().equals("ADM")) { %>
                                 <td><a href="excluirPessoa.jsp?<%=url + pesSaida.getId()%>">Excluir</a></td>

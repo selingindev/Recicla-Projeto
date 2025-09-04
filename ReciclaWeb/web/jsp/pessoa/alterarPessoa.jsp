@@ -1,13 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="descartebackend.model.dado.Pessoa"%>
-<%@page import="descartebackend.model.dado.Logradouro"%>
-<%@page import="descartebackend.controller.ControllerPessoa"%>
+<%@page import="reciclabackend.model.bean.Pessoa"%>
+<%@page import="reciclabackend.model.bean.Logradouro"%>
+<%@page import="reciclabackend.controller.ControllerPessoa"%>
 
 <%
     String cod = request.getParameter("ID");
     int id = Integer.parseInt(cod);
     ControllerPessoa sisCont = new ControllerPessoa();
-    Pessoa pes = (Pessoa) sisCont.Buscar(id);
+    Pessoa pes = (Pessoa) sisCont.buscar(id);
     Logradouro log = (Logradouro) pes.getLog();
     String pbusca = request.getParameter("PBUSCA");
 
@@ -42,7 +42,7 @@
                         Fone:
                     </td>
                     <td>
-                        <input type="text" name="FONE" value="<%=pes.getFone()%>">
+                        <input type="text" name="FONE" value="<%=pes.getTelefone()%>">
                     </td>
                 </tr>
                 <tr>

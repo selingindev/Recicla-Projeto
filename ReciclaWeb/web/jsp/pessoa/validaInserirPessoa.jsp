@@ -1,12 +1,12 @@
-<%@page import="descartebackend.model.dado.PessoaJuridica"%>
-<%@page import="descartebackend.controller.ControllerPessoaJuridica"%>
-<%@page import="descartebackend.model.dado.PessoaFisica"%>
-<%@page import="descartebackend.controller.ControllerPessoaFisica"%>
+<%@page import="reciclabackend.model.bean.PessoaJuridica"%>
+<%@page import="reciclabackend.controller.ControllerPessoaJuridica"%>
+<%@page import="reciclabackend.model.bean.PessoaFisica"%>
+<%@page import="reciclabackend.controller.ControllerPessoaFisica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="descartebackend.model.dado.Pessoa"%>
-<%@page import="descartebackend.model.dado.Logradouro"%>
-<%@page import="descartebackend.controller.ControllerPessoa"%>
-<%@page import="descartebackend.controller.ControllerLogradouro"%>
+<%@page import="reciclabackend.model.bean.Pessoa"%>
+<%@page import="reciclabackend.model.bean.Logradouro"%>
+<%@page import="reciclabackend.controller.ControllerPessoa"%>
+<%@page import="reciclabackend.controller.ControllerLogradouro"%>
 
 <%
 
@@ -21,20 +21,20 @@
 
     ControllerLogradouro contLog = new ControllerLogradouro();
     Logradouro logEnt = new Logradouro(cep, numero, "", complemento_outros);
-    Logradouro logSaida = (Logradouro) contLog.Inserir(logEnt);
+    Logradouro logSaida = (Logradouro) contLog.inserir(logEnt);
 
     ControllerPessoa pescont = new ControllerPessoa();
-    Pessoa pEnt = new Pessoa(logSaida.getId(), nome, email, fone);
-    Pessoa pSaida = (Pessoa) pescont.Inserir(pEnt);
+    Pessoa pEnt = new Pessoa(nome, logSaida.getId(), email, fone);
+    Pessoa pSaida = (Pessoa) pescont.inserir(pEnt);
     
     if(cpf.trim().length() > 0) {
         ControllerPessoaFisica pesfcont = new ControllerPessoaFisica();
         PessoaFisica pFEnt = new PessoaFisica(pSaida.getId(), cpf, "");
-        pesfcont.Inserir(pFEnt);
+        pesfcont.inserir(pFEnt);
     } else {
         ControllerPessoaJuridica pesjcont = new ControllerPessoaJuridica();
         PessoaJuridica pJEnt = new PessoaJuridica(pSaida.getId(), cnpj, "");
-        pesjcont.Inserir(pJEnt);
+        pesjcont.inserir(pJEnt);
     }
 
     // REDIRECIONA PARA A PAG LOGIN.JSP
