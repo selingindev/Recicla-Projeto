@@ -5,7 +5,7 @@
 <%
     String cod = request.getParameter("CODIGO");
     int id = Integer.parseInt(cod);
-    ControllerParametro controller = new ControllerParametro();
+    ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
     boolean sucesso = controller.excluir(id);
     
     // REDIRECIONA PARA A PAG LISTAR PARAMETROS.JSP
