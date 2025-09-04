@@ -1,3 +1,8 @@
+<%-- 
+    Document   : inserirLogradouro
+    Created on : 4 de set. de 2025, 12:10:26
+    Author     : ArthurSelingin
+--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="reciclabackend.model.bean.Logradouro"%>
 <%@page import="reciclabackend.controller.ControllerLogradouro"%>
