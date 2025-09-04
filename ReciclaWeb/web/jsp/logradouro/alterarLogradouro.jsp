@@ -48,6 +48,9 @@
                 if (log != null) {
             %>
               <form name="alterarLogradouro" action="validaAlterarLogradouro.jsp" method="post">
+     
+      <input type="text" id="id" name="ID" hidden="" value="<%= log.getId() %>"> 
+    <br>               
     <label for="cep">CEP:</label>
     <input type="text" id="cep" name="CEP" value="<%= log.getCep() %>"> 
     <br>
