@@ -1,7 +1,7 @@
 <%-- 
-    Document   : validarPessoaJuridica
-    Created on : 2 de set. de 2025, 22:20:08
-    Author     : vitor
+    Document   : newjsp
+    Created on : 4 de set. de 2025, 13:23:22
+    Author     : ArthurSelingin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

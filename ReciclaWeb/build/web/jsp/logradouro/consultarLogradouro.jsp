@@ -7,8 +7,13 @@
        <div class="container"/>
        <h1>CONSULTAR LOGRADOURO</h1>
        <form name="consultarLogradouro" action="validaConsultarLogradouro.jsp" method="post">
-           CEP <input type="text" name ="CEP" value=""> <br>
-           <input type="submit" name ="Enviar" value="Enviar"> <br>
+            <div class="input-field">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="CEP" required>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">
+                    Buscar
+                </button>
        </form>
        </div>
     </body>

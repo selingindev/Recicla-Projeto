@@ -1,13 +1,13 @@
 
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="descartebackend.model.dado.Usuario"%>
-<%@page import="descartebackend.model.dado.Logradouro"%>
-<%@page import="descartebackend.controller.ControllerLogradouro"%>
+<%@page import="reciclabackend.model.bean.Usuario"%>
+<%@page import="reciclabackend.model.bean.Logradouro"%>
+<%@page import="reciclabackend.controller.ControllerLogradouro"%>
 <%
     String cep = request.getParameter("CEP");
     ControllerLogradouro logcont = new ControllerLogradouro();
-    List<Object> listaLogradouro = logcont.Listar(cep);
+    List<Object> listaLogradouro = logcont.listar(cep);
     Usuario usuLogado = (Usuario) session.getAttribute("UsuarioLogado");
     String url = "PBUSCA=" + cep +"&ID=" ;
 %>

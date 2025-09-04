@@ -10,7 +10,7 @@
     ControllerLogradouro logCont = new ControllerLogradouro();
     logCont.inserir(Log);
     // REDIRECIONA PARA A PAG LOGIN.JSP
-    String url = "inserirLogradouro.jsp";
+    String url = "consultarLogradouro.jsp";
     response.sendRedirect(url);
 %>
 

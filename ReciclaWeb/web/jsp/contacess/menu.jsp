@@ -60,13 +60,11 @@
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/inserirLogradouro.jsp"> Inserir Logradouro </a></li>
                     <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
-                    <li><a href="../logradouro/alterarLogradouro.jsp"> Alterar  Logradouro</a></li>
-                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
-                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
+                   
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
                 </ul>
             <% } %>
     
