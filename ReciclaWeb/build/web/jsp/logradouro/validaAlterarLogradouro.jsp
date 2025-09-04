@@ -1,3 +1,8 @@
+<%-- 
+    Document   : validaAlterarLogradouro
+    Created on : 4 de set. de 2025, 12:59:00
+    Author     : ArthurSelingin
+--%>
 <%@page import="reciclabackend.util.api.CepApi"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="reciclabackend.model.bean.Logradouro"%>
