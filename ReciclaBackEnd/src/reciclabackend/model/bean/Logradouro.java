@@ -41,6 +41,11 @@ public class Logradouro implements Serializable{
     public Logradouro(int id) {
      
     }
+        public Logradouro() {
+     
+    }
+
+
     public int getId() {
         return id;
     }

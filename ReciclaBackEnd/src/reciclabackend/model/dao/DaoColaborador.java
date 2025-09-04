@@ -14,152 +14,148 @@ import reciclabackend.util.DaoBasico;
 
 public class DaoColaborador implements DaoBasico {
 
-	private final Connection c;
-	
-	public DaoColaborador() throws SQLException, ClassNotFoundException{
+    private final Connection c;
+
+    public DaoColaborador() throws SQLException, ClassNotFoundException {
         this.c = ConexaoDb.getConexaoMySQL();
     }
 
-	@Override
-	public Object buscar(int id) {
-            try {			
-                String sql = "SELECT * FROM COL_COLABORADOR WHERE ID = ?";
-                PreparedStatement stmt = this.c.prepareStatement(sql);
+    @Override
+    public Object buscar(int id) {
+        try {
+            String sql = "SELECT * FROM COL_COLABORADOR WHERE ID = ?";
+            PreparedStatement stmt = this.c.prepareStatement(sql);
 
-                stmt.setInt(1, id);
+            stmt.setInt(1, id);
 
-                ResultSet rs = stmt.executeQuery();
-                Colaborador colSaida = null;
+            ResultSet rs = stmt.executeQuery();
+            Colaborador colSaida = null;
 
-                while (rs.next()) {      
-                        colSaida = new Colaborador(
-                                        rs.getInt(1),
-                                        rs.getInt(2)
-                                        );
-                }
-
-                rs.close();
-                stmt.close();
-                return colSaida;
-            }catch(SQLException e) {
-                e.printStackTrace();
+            while (rs.next()) {
+                colSaida = new Colaborador(
+                        rs.getInt(1),
+                        rs.getInt(2));
             }
+
+            rs.close();
+            stmt.close();
+            return colSaida;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Object inserir(Object obj) {
+        Colaborador colEnt = (Colaborador) obj;
+
+        String sql = "INSERT INTO COL_COLABORADOR" +
+                "(ID, FUNCIONAL)" +
+                " values (?, ?)";
+
+        try {
+            PreparedStatement stmt;
+
+            stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setLong(1, colEnt.getId());
+            stmt.setLong(2, colEnt.getFuncional());
+
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                colEnt.setId(id);
+            }
+
+            stmt.close();
+            return colEnt;
+        } catch (SQLException e) {
+            e.printStackTrace();
             return null;
-	}
+        }
 
-	@Override
-	public Object inserir(Object obj) {
-		Colaborador colEnt = (Colaborador) obj;
-		
-		String sql = "INSERT INTO COL_COLABORADOR" + 
-					 "(ID, FUNCIONAL)" + 
-				 	" values (?, ?)";
-		
-		try {
-			PreparedStatement stmt;
-			
-			stmt = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-		
-		
-			stmt.setLong(1, colEnt.getId());
-			stmt.setLong(2, colEnt.getFuncional());
-			
-			stmt.executeUpdate();
-			ResultSet rs = stmt.getGeneratedKeys();
-			
-			if(rs.next()) {
-				int id = rs.getInt(1);
-				colEnt.setId(id);
-			}
-			
-			stmt.close();
-			return colEnt;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		
-	}
+    }
 
-	@Override
-	public Object alterar(Object obj) {
-		try {
-                    Colaborador colEnt = (Colaborador) obj;
-                    String sql = "UPDATE COL_COLABORADOR SET FUNCIONAL = ? WHERE ID = ?";
+    @Override
+    public Object alterar(Object obj) {
+        try {
+            Colaborador colEnt = (Colaborador) obj;
+            String sql = "UPDATE COL_COLABORADOR SET FUNCIONAL = ? WHERE ID = ?";
 
-                    // prepared statement para inserção
-                    PreparedStatement stmt = c.prepareStatement(sql);
+            // prepared statement para inserção
+            PreparedStatement stmt = c.prepareStatement(sql);
 
-                    // seta os valores
-                    stmt.setInt(1,colEnt.getFuncional());
-                    stmt.setInt(2,colEnt.getId());
+            // seta os valores
+            stmt.setInt(1, colEnt.getFuncional());
+            stmt.setInt(2, colEnt.getId());
 
-                    stmt.execute();
-                    stmt.close();
+            stmt.execute();
+            stmt.close();
 
-                    return colEnt;
-		}catch(SQLException e) {
-                    e.printStackTrace();
-                    return null;
-		}
-	}
+            return colEnt;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-	@Override
-	public boolean excluir(int id) {
-            
-		try{
-                    String sql = "DELETE FROM COL_COLABORADOR WHERE ID = ?";
+    @Override
+    public boolean excluir(int id) {
 
-                    // prepared statement para inserção
-                    PreparedStatement stmt = c.prepareStatement(sql);
+        try {
+            String sql = "DELETE FROM COL_COLABORADOR WHERE ID = ?";
 
-                    // seta os valores
-                    stmt.setInt(1,id);
+            // prepared statement para inserção
+            PreparedStatement stmt = c.prepareStatement(sql);
 
-                    // executa
-                    stmt.execute();
-                    stmt.close();
+            // seta os valores
+            stmt.setInt(1, id);
 
-                    c.close();
-                    return true;
-		}catch(SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+            // executa
+            stmt.execute();
+            stmt.close();
 
-	@Override
-	public List<Object> listar(String filtro){
-		try{
-                    
-                    List<Object> cols = new ArrayList<>();
+            c.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
-                    String sql = "SELECT * FROM COL_COLABORADOR WHERE ID = ?";
-                    PreparedStatement stmt = this.c.prepareStatement(sql);
+    @Override
+    public List<Object> listar(String filtro) {
+        try {
 
-                    // seta os valores
-                    stmt.setInt(1, 0); // Erro
+            List<Object> cols = new ArrayList<>();
 
-                    ResultSet rs = stmt.executeQuery();
+            String sql = "SELECT * FROM COL_COLABORADOR WHERE ID = ?";
+            PreparedStatement stmt = this.c.prepareStatement(sql);
 
-                    while (rs.next()) {      
+            // seta os valores
+            stmt.setInt(1, 0); // Erro
 
-                        Colaborador col = new Colaborador(
-                            rs.getInt(1),
-                            rs.getInt(2)
-                            );
+            ResultSet rs = stmt.executeQuery();
 
-                        cols.add(col);
-                    }
+            while (rs.next()) {
 
-                    rs.close();
-                    stmt.close();
-                    return cols;
-		}
-                catch(SQLException e) {
-                    return null;
-		}
-		
-	}
+                Colaborador col = new Colaborador(
+                        rs.getInt(1),
+                        rs.getInt(2));
+
+                cols.add(col);
+            }
+
+            rs.close();
+            stmt.close();
+            return cols;
+        } catch (SQLException e) {
+            return null;
+        }
+
+    }
 
 }

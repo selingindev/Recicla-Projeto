@@ -148,7 +148,7 @@ public class DaoValorCredito implements DaoBasico{
                 // usus: array armazena a lista de registros
                 List<Object> valores = new ArrayList<>();
 
-                String sql = "SELECT * FROM VLC-VALOR_CREDITO WHERE VALOR = ?";
+                String sql = "SELECT * FROM VLC-VALOR_CREDITO";
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
                 // seta os valores
