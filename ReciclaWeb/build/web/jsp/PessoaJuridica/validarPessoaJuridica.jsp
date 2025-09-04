@@ -17,3 +17,4 @@
     String url = "inserirPessoaJuridica.jsp";
     request.getRequestDispatcher(url).forward(request, response);
 %>
+
