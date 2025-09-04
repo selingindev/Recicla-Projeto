@@ -20,7 +20,8 @@
             <!-- Dropdown1 Trigger -->
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Gerenciar Usuário</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown2'>Gerenciar Produto</a>        
-            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>        
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>       
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Logradouro</a>       
                 <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown1 Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
@@ -48,6 +49,20 @@
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../usuarioProduto/inserirRelacaoUsuarioProduto.jsp"> Inserir Relação Usuário e Produto </a></li>
                     <li><a href="../usuarioProduto/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                </ul>
+            <% } else { %>
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                </ul>
+            <% } %>
+                <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../logradouro/inserirLogradouro.jsp"> Inserir Logradouro </a></li>
+                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
+                    <li><a href="../logradouro/alterarLogradouro.jsp"> Alterar  Logradouro</a></li>
+                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
+                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
