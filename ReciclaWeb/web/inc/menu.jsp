@@ -54,8 +54,9 @@
                     <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
                 </ul>
             <% } %>
-    
+            
 
+            
             <% } else { %>
                 <h1>USUÁRIO INVÁLIDO</h1>
         <% } %>
