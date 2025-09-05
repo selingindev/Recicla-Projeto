@@ -54,20 +54,9 @@
                     <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
                 </ul>
             <% } %>
-            <% if (usuSaida.getTipo().equals("ADM")) { %>
-                <!-- Dropdown3 Structure -->
-                <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuarioProduto/inserirRelacaoUsuarioProduto.jsp"> Inserir Relação Usuário e Produto </a></li>
-                    <li><a href="../usuarioProduto/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
-                </ul>
-            <% } else { %>
-                <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
-                </ul>
-            <% } %>
             
-    
 
+            
             <% } else { %>
                 <h1>USUÁRIO INVÁLIDO</h1>
         <% } %>
