@@ -5,13 +5,20 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="reciclabackend.model.bean.PefPdc"%>
+<%@page import="reciclabackend.controller.ControllerPEF_PDC"%>
+
+<%
+    int idPef = Integer.parseInt(request.getParameter("ID_PEF"));
+    int idPdc = Integer.parseInt(request.getParameter("ID_PDC"));
+    String cod = request.getParameter("COD");
+    double quant = Double.parseDouble(request.getParameter("QUANT"));
+    String data = request.getParameter("DATA");
+
+    PefPdc relacao = new PefPdc(idPef, 0, 0, idPdc, cod, quant, data);
+    ControllerPEF_PDC relacaoCont = new ControllerPEF_PDC();
+    relacaoCont.inserir(relacao);
+
+    String url = "inserirRelacaoPEF_PDC.jsp";
+    response.sendRedirect(url);
+%>
