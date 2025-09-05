@@ -61,7 +61,7 @@
                     </tr>
                     <tr>
                         <td>Data:</td>
-                        <td><input type="text" name="DATA" value=""></td>
+                        <td><input type="date" name="DATA" value=""></td>
                     </tr>
                 </table>    
                 <input type="submit" name="Enviar" value="Enviar">  
