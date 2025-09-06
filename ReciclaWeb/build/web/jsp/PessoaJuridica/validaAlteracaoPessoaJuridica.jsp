@@ -1,3 +1,9 @@
+<%--
+    Document   : validaAltercaoPessoaJuridica
+    Created on : 6 de set. de 2025
+    Author     : Vitoria
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="reciclabackend.model.bean.PessoaJuridica"%>
 <%@page import="reciclabackend.controller.ControllerPessoaJuridica"%>
