@@ -1,82 +1,60 @@
 <%-- 
-    Document   : listarPontoReciclagem
-    Description: Página para listar, consultar, alterar e excluir Pontos de Reciclagem.
+    Document   : validaAlterarPontoReciclagem
+    Description: Recebe os dados do formulário, valida, monta o objeto e chama o controller para alterar.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
 <%@page import="reciclabackend.model.bean.PontoReciclagem"%>
 <%@page import="reciclabackend.controller.ControllerPontoReciclagem"%>
 
 <%
-    // Instancia o controller para buscar os dados
-    ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
-    
-    // Chama o método listar para obter todos os pontos de reciclagem
-    // O filtro vazio "" significa que queremos todos os registros
-    List<Object> pontos = controller.listar("");
+    try {
+        // 1. Obter TODOS os parâmetros do formulário.
+        // É crucial que os nomes ("id", "idPEJ", "nome") correspondam aos 'name' dos campos no formulário.
+        String idParam = request.getParameter("id");
+        String idPEJParam = request.getParameter("idPEJ");
+        String nomeParam = request.getParameter("nome");
+
+        // 2. Validar que os parâmetros não são nulos ou vazios para evitar erros.
+        if (idParam == null || idPEJParam == null || nomeParam == null || 
+            idParam.isEmpty() || idPEJParam.isEmpty() || nomeParam.isEmpty()) {
+            
+            // Redireciona de volta com uma mensagem de erro clara.
+            String idErro = (idParam != null && !idParam.isEmpty()) ? idParam : "0";
+            String url = "alterarPontoReciclagem.jsp?id=" + idErro + "&erro=" + java.net.URLEncoder.encode("Todos os campos são obrigatórios.", "UTF-8");
+            response.sendRedirect(url);
+            return; // Interrompe a execução da página.
+        }
+        
+        // 3. Converter os parâmetros para os tipos corretos (int).
+        int id = Integer.parseInt(idParam);
+        int idPEJ = Integer.parseInt(idPEJParam);
+        String nome = nomeParam;
+        
+        // 4. Criar o objeto PontoReciclagem com TODOS os dados necessários para o UPDATE.
+        PontoReciclagem pontoParaAlterar = new PontoReciclagem();
+        pontoParaAlterar.setId(id);       // O ID é essencial para a cláusula WHERE da query.
+        pontoParaAlterar.setIdPEJ(idPEJ); // Novo valor
+        pontoParaAlterar.setNome(nome);   // Novo valor
+
+        // 5. Instanciar o controller e chamar o método de alteração.
+        ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
+        controller.alterar(pontoParaAlterar);
+        
+        // 6. Se tudo correu bem, redireciona para a página de listagem.
+        response.sendRedirect("listarPontoReciclagem.jsp");
+
+    } catch (NumberFormatException nfe) {
+        // Erro específico se 'id' ou 'idPEJ' não forem números válidos.
+        String idErro = request.getParameter("id") != null ? request.getParameter("id") : "0";
+        String mensagemErro = "Erro: ID ou Código da Empresa inválido. Devem ser números.";
+        String url = "alterarPontoReciclagem.jsp?id=" + idErro + "&erro=" + java.net.URLEncoder.encode(mensagemErro, "UTF-8");
+        response.sendRedirect(url);
+    } catch (Exception e) {
+        // Captura qualquer outro erro (ex: erro de SQL vindo do DAO).
+        String idErro = request.getParameter("id") != null ? request.getParameter("id") : "0";
+        String mensagemErro = "Ocorreu um erro inesperado ao alterar: " + e.getMessage();
+        String url = "alterarPontoReciclagem.jsp?id=" + idErro + "&erro=" + java.net.URLEncoder.encode(mensagemErro, "UTF-8");
+        response.sendRedirect(url);
+    }
 %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listagem de Pontos de Reciclagem</title>
-        <style>
-            /* Estilos básicos para a tabela, para melhor visualização */
-            body { font-family: sans-serif; }
-            .container { width: 80%; margin: 0 auto; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
-            th { background-color: #f2f2f2; }
-            tr:nth-child(even) { background-color: #f9f9f9; }
-            a { text-decoration: none; color: #007bff; }
-            .btn-inserir {
-                display: inline-block;
-                padding: 10px 15px;
-                background-color: #28a745;
-                color: white;
-                border-radius: 5px;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Pontos de Reciclagem</h1>
-
-            <a href="inserirPontoReciclagem.jsp" class="btn-inserir">Inserir Novo Ponto</a>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome do Ponto</th>
-                        <th>ID da Empresa (PEJ)</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%-- Laço de repetição para percorrer a lista de pontos --%>
-                    <% for (Object obj : pontos) {
-                        // Converte o Object para PontoReciclagem
-                        PontoReciclagem ponto = (PontoReciclagem) obj;
-                    %>
-                    <tr>
-                        <td><%= ponto.getId() %></td>
-                        <td><%= ponto.getNome() %></td>
-                        <td><%= ponto.getIdPEJ() %></td>
-                        <td>
-                            <%-- Link para a página de alteração, passando o ID do ponto --%>
-                            <a href="alterarPontoReciclagem.jsp?id=<%= ponto.getId() %>">Alterar</a>
-                            &nbsp;|&nbsp;
-                            <%-- Link para a página de exclusão, passando o ID do ponto --%>
-                            <a href="excluirPontoReciclagem.jsp?id=<%= ponto.getId() %>">Excluir</a>
-                        </td>
-                    </tr>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
-    </body>
-</html>
