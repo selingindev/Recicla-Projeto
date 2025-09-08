@@ -20,7 +20,8 @@
             <!-- Dropdown1 Trigger -->
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Gerenciar Usuário</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown2'>Gerenciar Produto</a>        
-            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>        
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown4'>Gerenciar Pontos de Reciclagem</a>
                 <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown1 Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
@@ -52,6 +53,17 @@
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                </ul>
+            <% } %>
+             <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown 4 Structure -->
+                <ul id='dropdown4' class='dropdown-content'>
+                    <li><a href="../pontoReciclagem/inserirPontoReciclagem.jsp"> Inserir Ponto </a></li>
+                    <li><a href="../pontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos </a></li>
+                </ul>
+            <% } else { %>
+                <ul id='dropdown4' class='dropdown-content'>
+                    <li><a href="../pontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos </a></li>
                 </ul>
             <% } %>
     
