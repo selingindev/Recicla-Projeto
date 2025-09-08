@@ -1,14 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="reciclabackend.model.bean.PontoReciclagem"%>
 <%@page import="reciclabackend.controller.ControllerPontoReciclagem"%>
 
 <%
-    String cod = request.getParameter("CODIGO");
-    int id = Integer.parseInt(cod);
-    ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
-    boolean sucesso = controller.excluir(id);
+    String idString = request.getParameter("id");
+    int id = Integer.parseInt(idString);
     
-    // REDIRECIONA PARA A PAG LISTAR PARAMETROS.JSP
-    String url = "listarParametros.jsp";
+    ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
+    controller.excluir(id);
+    
+    // REDIRECIONA PARA A PAGINA DE LISTAGEM CORRETA
+    String url = "listarPontoReciclagem.jsp";
     response.sendRedirect(url);
 %>
