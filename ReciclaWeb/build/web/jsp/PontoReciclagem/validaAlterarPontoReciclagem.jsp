@@ -3,15 +3,19 @@
 <%@page import="reciclabackend.controller.ControllerPontoReciclagem"%>
 
 <%
-    int cod = Integer.parseInt(request.getParameter("CODIGO"));
-    String descricao = request.getParameter("DESCRICAO");
+    // 1. Pega os dados do formulário de alteração
+    int id = Integer.parseInt(request.getParameter("id"));
+    int idPEJ = Integer.parseInt(request.getParameter("idPEJ"));
+    String nome = request.getParameter("nome");
     
-    Parametro parEntrada = new Parametro(cod, descricao);
-    ControllerParametro controller = new ControllerParametro();
-    Parametro parSaida = (Parametro) controller.alterar(parEntrada);
+    // 2. Cria o objeto PontoReciclagem com todos os dados
+    PontoReciclagem pontoEntrada = new PontoReciclagem(id, idPEJ, nome);
     
-    // REDIRECIONA PARA A PAG LISTAR PARAMETROS.JSP
-    String url = "listarParametros.jsp";
+    // 3. Usa o Controller de PontoReciclagem para alterar
+    ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
+    controller.alterar(pontoEntrada);
+    
+    // 4. REDIRECIONA PARA A PAGINA DE LISTAGEM CORRETA
+    String url = "listarPontoReciclagem.jsp";
     response.sendRedirect(url);
 %>
-
