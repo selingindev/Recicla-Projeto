@@ -10,11 +10,12 @@
     String cod = request.getParameter("COD");
     double quant = Double.parseDouble(request.getParameter("QUANT"));
     String data = request.getParameter("DATA");
-    int idMat = 1;
-    int idCol = 1;
+    int idMat = 10;
+    int idCol = 5;
+//    int idMat = Integer.parseInt(request.getParameter("ID_MATERIAL"));
+//    int idCol = Integer.parseInt(request.getParameter("ID_COLABORADOR"));
 
-    // Atualizando o formato para o formato correto da data
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  // Formato correto
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     java.sql.Date dataFormatada = new java.sql.Date(sdf.parse(data).getTime());
 
     PefPdc relacao = new PefPdc(idPef, idCol, idMat, idPdc, cod, quant, dataFormatada);

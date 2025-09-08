@@ -1,15 +1,13 @@
-<%-- 
-    Document   : inserirRelacaoPEF_PDC.jsp
-    Created on : 4 de set. de 2025, 17:11:28
-    Author     : mathe
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="reciclabackend.model.bean.PessoaFisica"%>
 <%@page import="reciclabackend.controller.ControllerPessoaFisica"%>
 <%@page import="reciclabackend.model.bean.PontoColeta"%>
 <%@page import="reciclabackend.controller.ControllerPontoColeta"%>
+<%@page import="reciclabackend.model.bean.Material"%>
+<%@page import="reciclabackend.controller.ControllerMaterial"%>
+<%@page import="reciclabackend.model.bean.Colaborador"%>
+<%@page import="reciclabackend.controller.ControllerColaborador"%>
 
 <%
     ControllerPontoColeta pontoCont = new ControllerPontoColeta();
@@ -17,6 +15,12 @@
 
     ControllerPessoaFisica pessoaCont = new ControllerPessoaFisica();
     List<Object> listaPessoas = pessoaCont.listar("");
+
+    ControllerMaterial materialCont = new ControllerMaterial();
+    List<Object> listaMateriais = materialCont.listar("");
+
+    ControllerColaborador colaboradorCont = new ControllerColaborador();
+    List<Object> listaColaboradores = colaboradorCont.listar("");
 %>
 
 <html>
@@ -32,7 +36,7 @@
                         <td>
                             <select NAME="ID_PEF" class="browser-default">
                                 <% for (Object obj : listaPessoas) {
-                                    PessoaFisica pf = (PessoaFisica) obj;
+                                        PessoaFisica pf = (PessoaFisica) obj;
                                 %>
                                 <option value="<%= pf.getId()%>"><%= pf.getCpf()%> - <%= pf.getRg()%></option>
                                 <% } %>
@@ -44,13 +48,39 @@
                         <td>
                             <select NAME="ID_PDC" class="browser-default">
                                 <% for (Object obj : listaPontos) {
-                                    PontoColeta pc = (PontoColeta) obj;
+                                        PontoColeta pc = (PontoColeta) obj;
                                 %>
                                 <option value="<%= pc.getId()%>"><%= pc.getNome()%></option>
                                 <% } %>
                             </select> 
                         </td>
                     </tr>
+                    <!--
+                    <tr>
+                        <td>Material:</td>
+                        <td>
+                            <select NAME="ID_MATERIAL" class="browser-default">
+                                <% for (Object obj : listaMateriais) {
+                                        Material mat = (Material) obj;
+                                %>
+                                <option value="<%= mat.getId()%>"><%= mat.getNome()%></option>
+                                <% } %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Colaborador:</td>
+                        <td>
+                            <select NAME="ID_COLABORADOR" class="browser-default">
+                                <% for (Object obj : listaColaboradores) {
+                                        Colaborador col = (Colaborador) obj;
+                                %>
+                                <option value="<%= col.getId()%>"><%= col.getFuncional()%></option>
+                                <% }%>
+                            </select>
+                        </td>
+                    </tr>
+                    -->
                     <tr>
                         <td>Código:</td>
                         <td><input type="text" name="COD" value=""></td>
