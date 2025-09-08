@@ -58,12 +58,12 @@
              <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown 4 Structure -->
                 <ul id='dropdown4' class='dropdown-content'>
-                    <li><a href="../pontoReciclagem/inserirPontoReciclagem.jsp"> Inserir Ponto </a></li>
-                    <li><a href="../pontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos </a></li>
+                    <li><a href="../PontoReciclagem/inserirPontoReciclagem.jsp"> Inserir Ponto </a></li>
+                    <li><a href="../PontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos </a></li>
                 </ul>
             <% } else { %>
                 <ul id='dropdown4' class='dropdown-content'>
-                    <li><a href="../pontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos </a></li>
+                    <li><a href="../PontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos </a></li>
                 </ul>
             <% } %>
     
