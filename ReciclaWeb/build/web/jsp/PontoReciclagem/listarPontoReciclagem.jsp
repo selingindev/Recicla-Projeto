@@ -8,11 +8,8 @@
 <%@page import="reciclabackend.controller.ControllerPontoReciclagem"%>
 
 <%
-    // Instancia o controller para buscar os dados
+    // A única função desta página é buscar e listar os dados.
     ControllerPontoReciclagem controller = new ControllerPontoReciclagem();
-    
-    // Chama o método listar para obter todos os pontos de reciclagem
-    // O filtro vazio "" significa que queremos todos os registros
     List<Object> pontos = controller.listar("");
 %>
 
@@ -57,9 +54,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%-- Laço de repetição para percorrer a lista de pontos --%>
                     <% for (Object obj : pontos) {
-                        // Converte o Object para PontoReciclagem
                         PontoReciclagem ponto = (PontoReciclagem) obj;
                     %>
                     <tr>
@@ -67,10 +62,8 @@
                         <td><%= ponto.getNome() %></td>
                         <td><%= ponto.getIdPEJ() %></td>
                         <td>
-                            <%-- Link para a página de alteração, passando o ID do ponto --%>
                             <a href="alterarPontoReciclagem.jsp?id=<%= ponto.getId() %>">Alterar</a>
                             &nbsp;|&nbsp;
-                            <%-- Link para a página de exclusão, passando o ID do ponto --%>
                             <a href="excluirPontoReciclagem.jsp?id=<%= ponto.getId() %>">Excluir</a>
                         </td>
                     </tr>
@@ -80,3 +73,4 @@
         </div>
     </body>
 </html>
+

@@ -18,7 +18,7 @@
     
     // 4. REDIRECIONA PARA A PÁGINA DE LISTAGEM CORRETA
     // Você precisará criar a página "listarPontoReciclagem.jsp"
-    String url = "listarPontoReciclagem.jsp";
+    String url = "..PontoReciclagem/listarPontoReciclagem.jsp";
     response.sendRedirect(url);
 %>
 
