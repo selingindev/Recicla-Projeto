@@ -3,24 +3,31 @@
 <%@page import="reciclabackend.controller.ControllerPontoReciclagem"%>
 
 <%
-    String cod = request.getParameter("CODIGO");
-    int id = Integer.parseInt(cod);
-    PontoReciclagem sis = new PontoReciclagem(id);
-    ControllerPontoReciclagem sisCont = new ControllerPontoReciclagem();
-    sis = (PontoReciclagem) sisCont.buscar(id);
+    // O parâmetro da URL é o ID (chave primária) do registro
+    String idString = request.getParameter("id");
+    int id = Integer.parseInt(idString);
+    
+    // Usa o Controller para buscar o objeto completo no banco de dados
+    ControllerPontoReciclagem pontoCont = new ControllerPontoReciclagem();
+    PontoReciclagem ponto = (PontoReciclagem) pontoCont.buscar(id);
 %>
 
 <html>
-    <title>Alterar - Ponto de Reciclagem</title>
+    <head>
+        <title>Alterar - Ponto de Reciclagem</title>
+    </head>
     <body>
-       <div class="container"/>
-       <h1>Alterar Ponto de Reciclagem</h1>
-        <form name="alterarPontoReciclagem" action="validaAlterarPontoReciclagem.jsp" method="post">
-            Nome: <input type="text" name="NOME" value="<%=sis.getNome()%>"> <br>
-             <input type="HIDDEN" name="CODIGO" value="<%=sis.getId()%>"> <br>
-             
-            <input type="submit" name="Enviar" value="Enviar">
-        </form>
-        <div>
+       <div class="container">
+           <h1>Alterar Ponto de Reciclagem</h1>
+            <form name="alterarPontoReciclagem" action="validaAlterarPontoReciclagem.jsp" method="post">
+                Código: <input type="number" name="idPEJ" value="<%=ponto.getIdPEJ()%>" readonly> <br><br>
+                Nome: <input type="text" name="nome" value="<%=ponto.getNome()%>"> <br><br>
+                
+                <%-- Campo oculto para enviar o ID (chave primária) para a página de validação --%>
+                <input type="hidden" name="id" value="<%=ponto.getId()%>">
+                
+                <input type="submit" name="Enviar" value="Alterar">
+            </form>
+       </div>
     </body>
 </html>
