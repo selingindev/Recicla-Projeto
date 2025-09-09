@@ -16,11 +16,11 @@
     ControllerPessoaFisica pessoaCont = new ControllerPessoaFisica();
     List<Object> listaPessoas = pessoaCont.listar("");
 
-    ControllerMaterial materialCont = new ControllerMaterial();
-    List<Object> listaMateriais = materialCont.listar("");
-
-    ControllerColaborador colaboradorCont = new ControllerColaborador();
-    List<Object> listaColaboradores = colaboradorCont.listar("");
+//    ControllerMaterial materialCont = new ControllerMaterial();
+//    List<Object> listaMateriais = materialCont.listar("");
+//
+//    ControllerColaborador colaboradorCont = new ControllerColaborador();
+//    List<Object> listaColaboradores = colaboradorCont.listar("");
 %>
 
 <html>
@@ -51,36 +51,10 @@
                                         PontoColeta pc = (PontoColeta) obj;
                                 %>
                                 <option value="<%= pc.getId()%>"><%= pc.getNome()%></option>
-                                <% } %>
+                                <% }%>
                             </select> 
                         </td>
                     </tr>
-                    <!--
-                    <tr>
-                        <td>Material:</td>
-                        <td>
-                            <select NAME="ID_MATERIAL" class="browser-default">
-                    <% for (Object obj : listaMateriais) {
-                            Material mat = (Material) obj;
-                    %>
-                    <option value="<%= mat.getId()%>"><%= mat.getNome()%></option>
-                    <% } %>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Colaborador:</td>
-            <td>
-                <select NAME="ID_COLABORADOR" class="browser-default">
-                    <% for (Object obj : listaColaboradores) {
-                            Colaborador col = (Colaborador) obj;
-                    %>
-                    <option value="<%= col.getId()%>"><%= col.getFuncional()%></option>
-                    <% }%>
-                </select>
-            </td>
-        </tr>
-                    -->
                     <tr>
                         <td>Código:</td>
                         <td><input type="text" name="COD" value=""></td>
