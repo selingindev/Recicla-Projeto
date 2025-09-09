@@ -60,26 +60,26 @@
                         <td>Material:</td>
                         <td>
                             <select NAME="ID_MATERIAL" class="browser-default">
-                                <% for (Object obj : listaMateriais) {
-                                        Material mat = (Material) obj;
-                                %>
-                                <option value="<%= mat.getId()%>"><%= mat.getNome()%></option>
-                                <% } %>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Colaborador:</td>
-                        <td>
-                            <select NAME="ID_COLABORADOR" class="browser-default">
-                                <% for (Object obj : listaColaboradores) {
-                                        Colaborador col = (Colaborador) obj;
-                                %>
-                                <option value="<%= col.getId()%>"><%= col.getFuncional()%></option>
-                                <% }%>
-                            </select>
-                        </td>
-                    </tr>
+                    <% for (Object obj : listaMateriais) {
+                            Material mat = (Material) obj;
+                    %>
+                    <option value="<%= mat.getId()%>"><%= mat.getNome()%></option>
+                    <% } %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Colaborador:</td>
+            <td>
+                <select NAME="ID_COLABORADOR" class="browser-default">
+                    <% for (Object obj : listaColaboradores) {
+                            Colaborador col = (Colaborador) obj;
+                    %>
+                    <option value="<%= col.getId()%>"><%= col.getFuncional()%></option>
+                    <% }%>
+                </select>
+            </td>
+        </tr>
                     -->
                     <tr>
                         <td>Código:</td>

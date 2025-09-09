@@ -22,6 +22,5 @@
     ControllerPEF_PDC relacaoCont = new ControllerPEF_PDC();
     relacaoCont.inserir(relacao);
 
-    String url = "inserirRelacaoPEF_PDC.jsp";
-    response.sendRedirect(url);
+    response.sendRedirect("consultarRelacaoPEF_PDC.jsp");
 %>
