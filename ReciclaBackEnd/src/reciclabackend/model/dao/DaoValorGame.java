@@ -151,7 +151,7 @@ public class DaoValorGame implements DaoBasico{
                 // usus: array armazena a lista de registros
                 List<Object> valores = new ArrayList<>();
 
-                String sql = "SELECT * FROM VLG-VALOR_GAME WHERE VALOR = ?";
+                String sql = "SELECT * FROM VLG-VALOR_GAME";
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
                 // seta os valores
