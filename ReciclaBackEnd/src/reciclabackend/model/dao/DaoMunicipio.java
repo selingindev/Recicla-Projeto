@@ -143,7 +143,7 @@ public class DaoMunicipio implements DaoBasico{
                 // usus: array armazena a lista de registros
                 List<Object> cols = new ArrayList<>();
 
-                String sql = "SELECT * FROM MUN_MUNICIPIO WHERE ID = ?";
+                String sql = "SELECT * FROM MUN_MUNICIPIO";
                 PreparedStatement stmt = this.c.prepareStatement(sql);
 
                 // seta os valores

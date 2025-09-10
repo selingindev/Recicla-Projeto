@@ -1,28 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package reciclabackend.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import reciclabackend.model.bean.Sistema;
 import reciclabackend.model.bean.Usuario;
 import reciclabackend.model.bean.UsuarioSistema;
 import reciclabackend.model.dao.DaoUsuarioSistema;
 import reciclabackend.util.ControllerBasico;
 
-/**
- *
- * @author LAB 211
- */
 public class ControllerUsuarioSistema implements ControllerBasico {
-    
-    DaoUsuarioSistema dao;
-    ControllerUsuario contUsu;
-    ControllerSistema contSis;
-    
+
+    private DaoUsuarioSistema dao;
+    private ControllerUsuario contUsu;
+    private ControllerSistema contSis;
+
     @Override
     public Object inserir(Object obj) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuarioSistema();
@@ -36,33 +29,44 @@ public class ControllerUsuarioSistema implements ControllerBasico {
     }
 
     @Override
-    public Object excluir(Object obj) throws SQLException, ClassNotFoundException {
+    public boolean excluir(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuarioSistema();
-        return dao.excluir(obj);
+        return dao.excluir(id);
     }
 
     @Override
-    public Object buscar(Object obj) throws SQLException, ClassNotFoundException {
+    public UsuarioSistema buscar(int id) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuarioSistema();
-        UsuarioSistema objSaida = (UsuarioSistema) dao.buscar(obj);
-        Object usu = new Usuario(objSaida.getIdU());
-        Object sis = new Sistema(objSaida.getIdS());
+
+        // busca o vínculo
+        UsuarioSistema usuSis = (UsuarioSistema) dao.buscar(id);
+        if (usuSis == null) {
+            return null;
+        }
+
+        // carrega usuário e sistema relacionados
         contUsu = new ControllerUsuario();
         contSis = new ControllerSistema();
-        objSaida.setUsu(contUsu.buscar(usu));
-        objSaida.setSis(contSis.buscar(sis));
-        return objSaida;
+
+        Usuario u = (Usuario) contUsu.buscar(usuSis.getIdU());
+        Sistema s = (Sistema) contSis.buscar(usuSis.getIdS());
+
+        usuSis.setUsu(u);
+        usuSis.setSis(s);
+        return usuSis;
     }
 
     @Override
-    public List<Object> listar(Object obj) throws SQLException, ClassNotFoundException {
+    public List<Object> listar(String filtro) throws SQLException, ClassNotFoundException {
         dao = new DaoUsuarioSistema();
-        List<Object> listaAux = dao.listar(obj);
-        List<Object> lista = new ArrayList<>();
-        for (Object objlista : listaAux) {
-            lista.add(buscar(objlista));
+        List<Object> raw = dao.listar(filtro);
+        List<Object> enriched = new ArrayList<>();
+
+        for (Object o : raw) {
+            UsuarioSistema us = (UsuarioSistema) o;
+            // reutiliza buscar para preencher usuário e sistema
+            enriched.add(this.buscar(us.getId()));
         }
-        return lista;
-     }
-    
+        return enriched;
+    }
 }

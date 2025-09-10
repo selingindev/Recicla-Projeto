@@ -89,7 +89,7 @@ public class DaoParametro implements DaoBasico{
      @Override
     public List<Object> listar(String filtro) throws SQLException  {
         List<Object> param = new ArrayList<>();
-        String sql = "select * from PAR_PARAMETROS where COD = ?";
+        String sql = "select * from PAR_PARAMETROS";
         PreparedStatement stmt = this.c.prepareStatement(sql);
         // seta os valores
         stmt.setInt(1,0);

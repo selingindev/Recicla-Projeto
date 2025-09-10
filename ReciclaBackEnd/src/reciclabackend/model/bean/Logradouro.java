@@ -28,6 +28,7 @@ public class Logradouro implements Serializable{
         this.complemento_outros = complemento_outros;
     }
     public Logradouro(int id, String cep, String numero, String complemento_api, String complemento_outros) {
+        this.id = id;
         this.cep = cep;
         this.numero = numero;
         this.complemento_api = complemento_api;
@@ -41,6 +42,11 @@ public class Logradouro implements Serializable{
     public Logradouro(int id) {
      
     }
+        public Logradouro() {
+     
+    }
+
+
     public int getId() {
         return id;
     }
