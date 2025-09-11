@@ -10,7 +10,7 @@
 <%@include file="../../inc/materalizeWeb.inc" %>
 
 <%
-    // Proteção de sessão (sem mexer fora do escopo PontoColeta)
+    // Proteção de sessão 
     request.setCharacterEncoding("UTF-8");
     Object _usu = session.getAttribute("UsuarioLogado");
     if (_usu == null) {

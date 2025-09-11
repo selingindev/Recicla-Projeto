@@ -11,7 +11,6 @@
     session.setAttribute("UsuarioLogado",usuSaida);
 %>
 
-
 <!DOCTYPE html>
 <html>
     <title>SISTEMA</title>
@@ -21,7 +20,8 @@
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Gerenciar Usuário</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown2'>Gerenciar Produto</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>       
-            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Logradouro</a>       
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Logradouro</a>  
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Pessoa</a>  
                 <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown1 Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
@@ -66,29 +66,39 @@
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/inserirLogradouro.jsp"> Inserir Logradouro </a></li>
                     <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
-                   
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
                 </ul>
             <% } %>
-                  <% if (usuSaida.getTipo().equals("ADM")) { %>
+            
+             <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown3 Structure -->
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../PessoaJuridica/inserirPessoaJuridica.jsp"> Inserir PJ </a></li>
-                    <li><a href="../PessoaJuridica/consultaPessoaJuridica.jsp"> Consultar PJ</a></li>
-                   
+                    <li><a href="../pessoa/inserirPessoa.jsp"> Inserir Pessoa </a></li>
+                    <li><a href="../pessoa/consultarPessoa.jsp"> Consultar Pessoa </a></li>
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar PJ</a></li>
+                    <li><a href="../usuario/consultarPessoa.jsp"> Consultar Pessoa </a></li>
                 </ul>
             <% } %>
-    
 
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown PontoColeta -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../PontoColeta/inserirPontoColeta.jsp"> Inserir Ponto de Coleta </a></li>
+                    <li><a href="../PontoColeta/consultarPontoColeta.jsp"> Consultar Ponto de Coleta </a></li>
+                </ul>
             <% } else { %>
-                <h1>USUÁRIO INVÁLIDO</h1>
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../PontoColeta/consultarPontoColeta.jsp"> Consultar Ponto de Coleta </a></li>
+                </ul>
+            <% } %>
+
+        <% } else { %>
+            <h1>USUÁRIO INVÁLIDO</h1>
         <% } %>
     </body>
 </html>
