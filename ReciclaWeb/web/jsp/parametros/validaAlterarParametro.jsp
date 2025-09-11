@@ -3,10 +3,11 @@
 <%@page import="reciclabackend.controller.ControllerParametro"%>
 
 <%
-    int cod = Integer.parseInt(request.getParameter("CODIGO"));
+    
+    int id = Integer.parseInt(request.getParameter("ID"));
     String descricao = request.getParameter("DESCRICAO");
     
-    Parametro parEntrada = new Parametro(cod, descricao);
+    Parametro parEntrada = new Parametro(id, descricao);
     ControllerParametro controller = new ControllerParametro();
     Parametro parSaida = (Parametro) controller.alterar(parEntrada);
     
