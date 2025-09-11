@@ -52,10 +52,16 @@
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação</a></li>
                 </ul>
             <% } %>
-                <% if (usuSaida.getTipo().equals("ADM")) { %>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../parametros/listarParametros.jsp"> Listar Parametro </a></li>
+                </ul>
+            <% }  %>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown3 Structure -->
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/inserirLogradouro.jsp"> Inserir Logradouro </a></li>
@@ -65,6 +71,18 @@
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
+                </ul>
+            <% } %>
+                  <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../PessoaJuridica/inserirPessoaJuridica.jsp"> Inserir PJ </a></li>
+                    <li><a href="../PessoaJuridica/consultaPessoaJuridica.jsp"> Consultar PJ</a></li>
+                   
+                </ul>
+            <% } else { %>
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar PJ</a></li>
                 </ul>
             <% } %>
     

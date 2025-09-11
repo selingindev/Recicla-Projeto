@@ -21,7 +21,8 @@
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Gerenciar Usuário</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown2'>Gerenciar Produto</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>       
-            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Logradouro</a>       
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Logradouro</a>  
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Pessoa</a>  
                 <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown1 Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
@@ -52,10 +53,16 @@
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação</a></li>
                 </ul>
             <% } %>
-                <% if (usuSaida.getTipo().equals("ADM")) { %>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../parametros/listarParametros.jsp"> Listar Parametro </a></li>
+                </ul>
+            <% }  %>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown3 Structure -->
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/inserirLogradouro.jsp"> Inserir Logradouro </a></li>
@@ -65,6 +72,28 @@
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar Logradouro</a></li>
+                </ul>
+            <% } %>
+            
+             <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../pessoa/inserirPessoa.jsp"> Inserir Pessoa </a></li>
+                    <li><a href="../pessoa/consultarPessoa.jsp"> Consultar Pessoa </a></li>
+                </ul>
+            <% } else { %>
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../usuario/consultarPessoa.jsp"> Consultar Pessoa </a></li>
+                  <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../PessoaJuridica/inserirPessoaJuridica.jsp"> Inserir PJ </a></li>
+                    <li><a href="../PessoaJuridica/consultaPessoaJuridica.jsp"> Consultar PJ</a></li>
+                   
+                </ul>
+            <% } else { %>
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../logradouro/consultarLogradouro.jsp"> Consultar PJ</a></li>
                 </ul>
             <% } %>
     
