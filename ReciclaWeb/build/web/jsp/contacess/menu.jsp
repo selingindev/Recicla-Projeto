@@ -52,10 +52,16 @@
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação</a></li>
                 </ul>
             <% } %>
-                <% if (usuSaida.getTipo().equals("ADM")) { %>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <!-- Dropdown3 Structure -->
+                <ul id='dropdown3' class='dropdown-content'>
+                    <li><a href="../parametros/listarParametros.jsp"> Listar Parametro </a></li>
+                </ul>
+            <% }  %>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown3 Structure -->
                 <ul id='dropdown3' class='dropdown-content'>
                     <li><a href="../logradouro/inserirLogradouro.jsp"> Inserir Logradouro </a></li>
