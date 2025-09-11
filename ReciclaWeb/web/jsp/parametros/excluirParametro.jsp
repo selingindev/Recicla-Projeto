@@ -3,8 +3,7 @@
 <%@page import="reciclabackend.controller.ControllerParametro"%>
 
 <%
-    String cod = request.getParameter("CODIGO");
-    int id = Integer.parseInt(cod);
+    int id = Integer.parseInt(request.getParameter("id"));
     ControllerParametro controller = new ControllerParametro();
     boolean sucesso = controller.excluir(id);
     
