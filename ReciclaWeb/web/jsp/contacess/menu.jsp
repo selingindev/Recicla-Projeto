@@ -26,7 +26,8 @@
         <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPessoa'>Gerenciar Pessoa</a>  
         <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPJ'>Gerenciar PJ</a>  
         <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPEF_PDC'>Gerenciar PEF_PDC</a>  
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownParametros'>Gerenciar Parâmetros</a>  
+        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPontoReciclagem'>Gerenciar Ponto de Reciclagem</a>
+        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownParametros'>Gerenciar Parâmetros</a>
 
         <!-- Dropdown Usuário -->
         <ul id='dropdownUsuario' class='dropdown-content'>
@@ -82,6 +83,14 @@
                 <li><a href="../PEF_PDC/inserirRelacaoPEF_PDC.jsp"> Inserir PEF_PDC </a></li>
             <% } %>
             <li><a href="../PEF_PDC/consultarRelacaoPEF_PDC.jsp"> Consultar PEF_PDC</a></li>
+        </ul>
+
+        <!-- Dropdown Ponto de Reciclagem -->
+        <ul id='dropdownPontoReciclagem' class='dropdown-content'>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <li><a href="../PontoReciclagem/inserirPontoReciclagem.jsp"> Inserir Ponto de Reciclagem </a></li>
+            <% } %>
+            <li><a href="../PontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos de Reciclagem </a></li>
         </ul>
 
         <!-- Dropdown Parâmetros -->
