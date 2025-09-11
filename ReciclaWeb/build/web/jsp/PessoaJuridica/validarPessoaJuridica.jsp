@@ -3,17 +3,29 @@
 <%@page import="reciclabackend.controller.ControllerPessoaJuridica"%>
 
 <%
-    // Pegando os parâmetros do formulário
-    String cnpj = request.getParameter("cnpj");
-    String senha = request.getParameter("senha");
+    // Pegando o parâmetro do formulário
+    String idParam = request.getParameter("id");
+    PessoaJuridica pj = null;
+    String url = "inserirPessoaJuridica.jsp";
 
-    // Instanciando o controller
-    ControllerPessoaJuridica controller = new ControllerPessoaJuridica();
+    try {
+        int id = Integer.parseInt(idParam);
 
- 
-    PessoaJuridica pj = controller.buscarPorCnpjESenha(cnpj, senha);
+        // Instanciando o controller
+        ControllerPessoaJuridica controller = new ControllerPessoaJuridica();
+
+        // Busca pelo id, conforme o controller atual
+        pj = (PessoaJuridica) controller.buscar(id);
+
+        // Se encontrou, passa para a próxima página
+        request.setAttribute("pessoaJuridica", pj);
+
+    } catch (Exception e) {
+        // Em caso de erro, pode encaminhar para uma página de erro, se quiser
+        request.setAttribute("erro", "Erro ao buscar Pessoa Jurídica: " + e.getMessage());
+        url = "erro.jsp";
+    }
 
     // Encaminha para a página de inserção ou de resultado
-    String url = "inserirPessoaJuridica.jsp";
     request.getRequestDispatcher(url).forward(request, response);
 %>

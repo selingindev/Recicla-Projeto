@@ -11,17 +11,18 @@
     session.setAttribute("UsuarioLogado",usuSaida);
 %>
 
-
 <!DOCTYPE html>
 <html>
     <title>SISTEMA</title>
     <body>
         <% if (usuSaida != null) { %>
-            <!-- Dropdown1 Trigger -->
+            <!-- Dropdown Triggers -->
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Gerenciar Usuário</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown2'>Gerenciar Produto</a>        
             <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown3'>Gerenciar Relações Usuário e Produto</a>        
-                <% if (usuSaida.getTipo().equals("ADM")) { %>
+            <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown4'>Gerenciar Pessoa Jurídica</a>        
+
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown1 Structure -->
                 <ul id='dropdown1' class='dropdown-content'>
                     <li><a href="../usuario/inserirUsuario.jsp"> Inserir Usuário </a></li>
@@ -32,6 +33,7 @@
                     <li><a href="../usuario/consultarUsuario.jsp"> Consultar Usuário </a></li>
                 </ul>
             <% } %>
+
             <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <!-- Dropdown2 Structure -->
                 <ul id='dropdown2' class='dropdown-content'>
@@ -43,21 +45,21 @@
                     <li><a href="../produto/consultarProduto.jsp"> Consultar Produto </a></li>
                 </ul>
             <% } %>
+
             <% if (usuSaida.getTipo().equals("ADM")) { %>
-                <!-- Dropdown3 Structure -->
-                <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuarioProduto/inserirRelacaoUsuarioProduto.jsp"> Inserir Relação Usuário e Produto </a></li>
-                    <li><a href="../usuarioProduto/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                <!-- Dropdown4 Structure -->
+                <ul id='dropdown4' class='dropdown-content'>
+                    <li><a href="../pessoaJuridica/inserirPessoaJuridica.jsp"> Inserir Pessoa Jurídica </a></li>
+                    <li><a href="../pessoaJuridica/consultaPessoaJuridica.jsp"> Consultar Pessoa Jurídica </a></li>
                 </ul>
             <% } else { %>
-                <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                <ul id='dropdown4' class='dropdown-content'>
+                    <li><a href="../pessoaJuridica/consultaPessoaJuridica.jsp"> Consultar Pessoa Jurídica </a></li>
                 </ul>
             <% } %>
-    
 
-            <% } else { %>
-                <h1>USUÁRIO INVÁLIDO</h1>
+        <% } else { %>
+            <h1>USUÁRIO INVÁLIDO</h1>
         <% } %>
     </body>
 </html>
