@@ -18,6 +18,12 @@
             <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/view/ManterLogradouro.java</file>
             <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/view/ManterPEF_PDC.java</file>
             <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/view/ManterParametro.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/view/ManterUsuarioSistema.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/util/mysql/DataToString.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/util/mysql/StringToData.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/util/ConexaoDb.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/src/reciclabackend/model/dao/DaoUsuario.java</file>
+            <file>file:/C:/Users/Arthur%20Selingin/Documents/Recicla-Projeto/ReciclaBackEnd/test/util/TesteApiCosmo.java</file>
         </group>
     </open-files>
 </project-private>
