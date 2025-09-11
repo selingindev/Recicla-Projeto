@@ -9,7 +9,7 @@
 <%@page import="reciclabackend.controller.ControllerParametro"%>
 
 <%
-    String cod = request.getParameter("CODIGO");
+    String cod = request.getParameter("id");
     int id = Integer.parseInt(cod);
     Parametro sis = new Parametro(id);
     ControllerParametro sisCont = new ControllerParametro();
