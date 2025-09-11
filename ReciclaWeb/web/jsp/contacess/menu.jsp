@@ -52,7 +52,7 @@
                 </ul>
             <% } else { %>
                 <ul id='dropdown3' class='dropdown-content'>
-                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação </a></li>
+                    <li><a href="../usuario/consultarRelacaoUsuarioProduto.jsp"> Consultar Relação</a></li>
                 </ul>
             <% } %>
             <% if (usuSaida.getTipo().equals("ADM")) { %>
