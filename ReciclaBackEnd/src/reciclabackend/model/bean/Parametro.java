@@ -13,15 +13,21 @@ public class Parametro {
     private int cod;
     private String descricao;
 
-    public Parametro(int cod) {
-        this.cod = cod;
+    public Parametro(int id) {
+        this.id = id;
     }
 
-    public Parametro(int cod, String descricao) {
-        this.cod = cod;
+    public Parametro(int id, String descricao) {
+        this.id = id;
         this.descricao = descricao;
     }
 
+    public Parametro(int id, int cod, String descricao) {
+        this.id = id;
+        this.cod = cod;
+        this.descricao = descricao;
+    }
+    
     public int getId() {
         return id;
     }
