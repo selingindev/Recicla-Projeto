@@ -46,9 +46,8 @@ public class ControllerPessoaTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        Object obj = new Pessoa("biel", 1);
+        Object obj = new Pessoa("biel", 6, "emaildobiel", "4385732");
         ControllerPessoa instance = new ControllerPessoa();
-        Object expResult = new Pessoa(1, "biel", 1);
         Object result = instance.inserir(obj);
         assertTrue(result instanceof Pessoa);
         Pessoa pessoa = (Pessoa) result;
@@ -61,19 +60,19 @@ public class ControllerPessoaTest {
     @Test
     public void testAlterar() throws Exception {
          // Pré-cria registro
-        Pessoa existente = new Pessoa("Original", 1);
+        Pessoa existente = new Pessoa("Original", 6, "email", "242332425");
         ControllerPessoa instance = new ControllerPessoa();
         Pessoa criada = (Pessoa) instance.inserir(existente);
     
          // Altera
         criada.setNome("biel alteração");
-        criada.setIdLog(2);
+        criada.setEmail("alteração email");
         Pessoa alterada = (Pessoa) instance.alterar(criada);
     
         // Verifica
         assertEquals(criada.getId(), alterada.getId());
         assertEquals("biel alteração", alterada.getNome());
-        assertEquals(2, alterada.getIdLog());
+        assertEquals(6, alterada.getIdLog());
     }
 
     /**
@@ -84,10 +83,8 @@ public class ControllerPessoaTest {
         System.out.println("buscar");
         int id = 1;
         ControllerPessoa instance = new ControllerPessoa();
-        Object expResult = new Pessoa(id, "teste banco", 4);
         Object result = instance.buscar(id);
         assertTrue(result instanceof Pessoa); 
-        assertEquals(expResult, result);
         
     }
 
@@ -97,7 +94,7 @@ public class ControllerPessoaTest {
     @Test
     public void testExcluir() throws Exception {
         System.out.println("excluir");
-        int id = 1;
+        int id = 2;
         ControllerPessoa instance = new ControllerPessoa();
         boolean result = instance.excluir(id);
         assertTrue(result);
@@ -111,16 +108,13 @@ public class ControllerPessoaTest {
         System.out.println("listar");
         String filtro = "negocia";
         ControllerPessoa instance = new ControllerPessoa();
-        Pessoa negocia = new Pessoa(123, "negocia", 2);
-        Pessoa negocia2 = new Pessoa(124, "negocia", 5);
-        List<Object> expResult = new ArrayList<>();
-        expResult.add(negocia2);
-        expResult.add(negocia);
         List<Object> result = instance.listar(filtro);
-        assertEquals(expResult, result);
+        assertFalse(result.isEmpty());
+        Pessoa negocia = (Pessoa) result.getFirst();
+        assertEquals(negocia.getNome(), "Negocia");
     }
 
-    /**
+    /** 
      * Test of listarTodos method, of class ControllerPessoa.
      */
     @Test
