@@ -93,12 +93,20 @@
             <li><a href="../PontoReciclagem/listarPontoReciclagem.jsp"> Consultar Pontos de Reciclagem </a></li>
         </ul>
 
+        <!-- Dropdown COL_PDC -->
+        <ul id='dropdownCOL_PDC' class='dropdown-content'>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <li><a href="../COL_PDC/inserirCOL_PDC.jsp"> Inserir COL_PDC </a></li>
+            <% } %>
+            <li><a href="../COL_PDC/consultarCOL_PDC.jsp"> Consultar COL_PDC </a></li>
+        </ul>
+
         <!-- Dropdown Parâmetros -->
         <ul id='dropdownParametros' class='dropdown-content'>
             <% if (usuSaida.getTipo().equals("ADM")) { %>
                 <li><a href="../parametros/listarParametros.jsp"> Listar Parâmetro </a></li>
             <% } %>
-        </ul>
+    
 
     <% } else { %>
         <h1>USUÁRIO INVÁLIDO</h1>

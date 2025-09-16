@@ -3,23 +3,20 @@ package reciclabackend.model.bean;
 import java.io.Serializable;
 
 public class ColPdc implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 1L;
 
     private int id;
     private int idCol;
     private int idPdc;
     private String data;
-    private Colaborador col;
-    private PontoColeta pdc;
 
     // buscar e excluir
     public ColPdc(int id) {
         this.id = id;
     }
 
-    // listar
+    // listar por data (ou outros filtros)
     public ColPdc(String data) {
         this.data = data;
     }
@@ -39,58 +36,17 @@ public class ColPdc implements Serializable {
         this.data = data;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdCol() {
-        return idCol;
-    }
-
-    public void setIdCol(int idCol) {
-        this.idCol = idCol;
-    }
-
-    public int getIdPdc() {
-        return idPdc;
-    }
-
-    public void setIdPdc(int idPdc) {
-        this.idPdc = idPdc;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public Colaborador getCol() {
-        return col;
-    }
-
-    public void setCol(Colaborador col) {
-        this.col = col;
-    }
-
-    public PontoColeta getPdc() {
-        return pdc;
-    }
-
-    public void setPdc(PontoColeta pdc) {
-        this.pdc = pdc;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public int getIdCol() { return idCol; }
+    public void setIdCol(int idCol) { this.idCol = idCol; }
+    public int getIdPdc() { return idPdc; }
+    public void setIdPdc(int idPdc) { this.idPdc = idPdc; }
+    public String getData() { return data; }
+    public void setData(String data) { this.data = data; }
 
     @Override
     public String toString() {
         return "ColPdc{" + "id=" + id + ", idCol=" + idCol + ", idPdc=" + idPdc + ", data=" + data + '}';
     }
-
-
 }
