@@ -47,10 +47,11 @@ public class DaoParametro implements DaoBasico{
     @Override
     public Object alterar(Object obj) throws SQLException {
         Parametro parametro = (Parametro) obj; 
-        String sql = "UPDATE PAR_PARAMETROS SET DESCRICAO = ? WHERE ID = ?";
+        String sql = "UPDATE PAR_PARAMETROS SET COD = ?, DESCRICAO = ? WHERE ID = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
-        stmt.setString(1, parametro.getDescricao());
-        stmt.setInt(2, parametro.getId());
+        stmt.setInt(1, parametro.getCod());
+        stmt.setString(2, parametro.getDescricao());
+        stmt.setInt(3, parametro.getId());
         stmt.execute();
         stmt.close();
  
@@ -59,7 +60,7 @@ public class DaoParametro implements DaoBasico{
  
     @Override
     public boolean excluir(int id) throws SQLException {
-        String sql = "delete from PAR_PARAMETROS WHERE ID = ?";
+        String sql = "delete from PAR_PARAMETRO WHERE ID = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
         stmt.setInt(1, id);
         stmt.execute();
@@ -69,7 +70,7 @@ public class DaoParametro implements DaoBasico{
  
     @Override
     public Object buscar(int cod) throws SQLException {
-        String sql = "select * from PAR_PARAMETROS WHERE ID = ?";
+        String sql = "select * from PAR_PARAMETRO WHERE COD = ?";
         PreparedStatement stmt = c.prepareStatement(sql);
  
         stmt.setInt(1, cod);
@@ -78,7 +79,6 @@ public class DaoParametro implements DaoBasico{
         while (rs.next()) {      
             logSaida = new Parametro(
                 rs.getInt(1),
-                rs.getInt(2),
                 rs.getString(3)
             );
         }
@@ -98,25 +98,6 @@ public class DaoParametro implements DaoBasico{
         while (rs.next()) {      
             Parametro parametro = new Parametro(
                 rs.getInt(1),
-                rs.getString(3)
-            );
-            param.add(parametro);
-        }
-        rs.close();
-        stmt.close();
-        return param;
-    }
-    
-    public List<Object> listar() throws SQLException  {
-        List<Object> param = new ArrayList<>();
-        String sql = "select * from PAR_PARAMETROS";
-        PreparedStatement stmt = this.c.prepareStatement(sql);
-        
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {      
-            Parametro parametro = new Parametro(
-                rs.getInt(1),
-                rs.getInt(2),
                 rs.getString(3)
             );
             param.add(parametro);

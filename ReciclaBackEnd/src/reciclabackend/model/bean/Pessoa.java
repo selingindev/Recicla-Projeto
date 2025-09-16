@@ -11,43 +11,10 @@ import java.io.Serializable;
  * @author olgac
  */
 public class Pessoa implements Serializable {
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public Pessoa(int id, String nome, int idLog, String email, String telefone) {
-        this.id = id;
-        this.nome = nome;
-        this.idLog = idLog;
-        this.email = email;
-        this.telefone = telefone;
-    }
-
-    public Pessoa(String nome, int idLog, String email, String telefone) {
-        this.nome = nome;
-        this.idLog = idLog;
-        this.email = email;
-        this.telefone = telefone;
-    }
     
     private int id;
     private String nome;
     private int idLog;
-    private String email;
-    private String telefone;
     private Logradouro log;
     
     //alterar

@@ -42,9 +42,4 @@ public class ControllerParametro implements ControllerBasico{
             dao = new DaoParametro();
             return dao.listar(filtro);
 	}
-        
-        public List<Object> listar() throws SQLException , ClassNotFoundException {
-            dao = new DaoParametro();
-            return dao.listar();
-	}
 }
