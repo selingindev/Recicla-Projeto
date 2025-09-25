@@ -1,5 +1,7 @@
 <%@ page import="reciclabackend.controller.ControllerColPdc" %>
 <%@ page import="reciclabackend.model.bean.ColPdc" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -13,14 +15,19 @@
             <%
                 String idColParam = request.getParameter("IDCOL");
                 String idPdcParam = request.getParameter("IDPDC");
-                String dataParam = request.getParameter("DATA");
+                String dataParam = request.getParameter("DATA"); // espera dd/MM/yyyy
+
+                // Converte data de dd/MM/yyyy para yyyy-MM-dd
+                SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat formatoBanco = new SimpleDateFormat("yyyy-MM-dd");
+                String dataFormatada = formatoBanco.format(formatoBrasileiro.parse(dataParam));
 
                 ControllerColPdc controller = new ControllerColPdc();
 
                 ColPdc novo = new ColPdc(
                     Integer.parseInt(idColParam),
                     Integer.parseInt(idPdcParam),
-                    dataParam
+                    dataFormatada
                 );
 
                 ColPdc inserido = (ColPdc) controller.inserir(novo);

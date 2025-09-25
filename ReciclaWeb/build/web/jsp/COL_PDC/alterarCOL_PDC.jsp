@@ -1,77 +1,47 @@
-<%-- 
-    Document   : alterarColPdc
-    Created on : 10 de set. de 2025
-    Author     : Felipe
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="reciclabackend.model.bean.ColPdc"%>
-<%@page import="reciclabackend.controller.ControllerColPdc"%>
-
+<%@ page import="reciclabackend.controller.ControllerColPdc" %>
+<%@ page import="reciclabackend.model.bean.ColPdc" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String id = request.getParameter("id");
-    ColPdc colPdc = null;
-    String pbusca = request.getParameter("PBUSCA");
+    String idParam = request.getParameter("ID");
+    ColPdc colpdc = null;
 
-    if (id != null && !id.trim().isEmpty()) {
-        try {
-            Integer idInt = Integer.parseInt(id);
-            ControllerColPdc colPdcCont = new ControllerColPdc();
-            colPdc = (ColPdc) colPdcCont.buscar(idInt);
-        } catch (Exception e) {
-            colPdc = null;
-        }
+    if (idParam != null && !idParam.isEmpty()) {
+        int id = Integer.parseInt(idParam);
+        ControllerColPdc controller = new ControllerColPdc();
+        colpdc = (ColPdc) controller.buscar(id);
     }
 %>
 
 <html>
-    <%@include file="../../inc/materalizeWeb.inc" %>
-    <head>
-        <title>ALTERAR - COL_PDC</title>
-    </head>
-    <body>
-       <div class="container">
-            <h1>ALTERAR COL_PDC</h1>
+<%@ include file="../../inc/materalizeWeb.inc" %>
+<head>
+    <title>ALTERAR - COL_PDC</title>
+</head>
+<body>
+<div class="container">
+    <h1>Alterar Registro COL_PDC</h1>
 
-            <!-- Campo para buscar pelo ID -->
-            <form name="buscarColPdc" method="get">
-                <label for="id">ID do Col_Pdc:</label>
-                <input type="text" name="id" id="id" value="<%= (id != null ? id : "") %>">
-                <button class="btn waves-effect waves-light" type="submit">
-                    Alterar
-                </button>
-            </form>
-            <br><br><br><br>
+    <form action="validaAlterarCOL_PDC.jsp" method="post">
+        <% if (colpdc != null) { %>
+            <input type="hidden" name="ID" value="<%= colpdc.getId() %>">
 
-            <%
-                if (colPdc != null) {
-            %>
-              <form name="alterarColPdc" action="validaAlterarColPdc.jsp" method="post">
+            <label for="idCol">ID Colaborador:</label>
+            <input type="text" name="IDCOL" id="idCol" value="<%= colpdc.getIdCol() %>">
+            <br>
 
-                <!-- ID oculto -->
-                <input type="hidden" id="id" name="ID" value="<%= colPdc.getId() %>">
+            <label for="idPdc">ID Ponto de Coleta:</label>
+            <input type="text" name="IDPDC" id="idPdc" value="<%= colpdc.getIdPdc() %>">
+            <br>
 
-                <label for="idCol">ID do Colaborador:</label>
-                <input type="text" id="idCol" name="IDCOL" value="<%= colPdc.getIdCol() %>">
-                <br>
+            <label for="data">Data (dd/mm/aaaa):</label>
+            <input type="text" name="DATA" id="data" value="<%= colpdc.getData().substring(8,10) + "/" + colpdc.getData().substring(5,7) + "/" + colpdc.getData().substring(0,4) %>">
+            <br><br>
 
-                <label for="idPdc">ID do Ponto de Coleta:</label>
-                <input type="text" id="idPdc" name="IDPDC" value="<%= colPdc.getIdPdc() %>">
-                <br>
-
-                <label for="data">Data:</label>
-                <input type="text" id="data" name="DATA" value="<%= colPdc.getData() %>">
-                <br>
-
-                <input type="hidden" name="PBUSCA" value="<%= (pbusca != null ? pbusca : "") %>"> 
-
-                <button class="btn waves-effect waves-light" type="submit">
-                    Alterar
-                </button>
-              </form>
-            <%
-                }
-            %>
-        </div>
-    </body>
+            <button class="btn waves-effect waves-light" type="submit">Alterar</button>
+        <% } else { %>
+            <p>Registro não encontrado.</p>
+        <% } %>
+    </form>
+</div>
+</body>
 </html>
