@@ -37,8 +37,8 @@
                     <tr>
                             <td><%=pesSaida.getId()%></td>
                             <td><%=pesSaida.getNome()%></td>
-                            <td><%=pesSaida.getNome()%></td>
                             <td><%=pesSaida.getTelefone()%></td>
+                            <td><%=pesSaida.getEmail()%></td>
                             <td><%=log.getCep()%></td>
                             <% if (usuLogado.getTipo().equals("ADM")) { %>
                                 <td><a href="excluirPessoa.jsp?<%=url + pesSaida.getId()%>">Excluir</a></td>
