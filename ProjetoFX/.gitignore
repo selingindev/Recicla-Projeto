@@ -1,0 +1,25 @@
+# IDE
+*.iml
+.idea/
+.nbproject/private/
+.vscode/
+
+# Build
+/build/
+/dist/
+/out/
+
+# Arquivos binários
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs e temporários
+*.log
+*.tmp
+*.swp
+*.DS_Store
+
+# Sistema
+Thumbs.db
