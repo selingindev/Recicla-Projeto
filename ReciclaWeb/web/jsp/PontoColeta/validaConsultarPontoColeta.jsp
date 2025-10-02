@@ -11,7 +11,6 @@
 <%@include file="../../inc/materalizeWeb.inc" %>
 
 <%
-    // Guard de sessão (não mexe em login/menu)
     request.setCharacterEncoding("UTF-8");
     Object _usu = session.getAttribute("UsuarioLogado");
     if (_usu == null) {
@@ -19,7 +18,7 @@
         return;
     }
 
-    // --- Consulta (DECLARE APENAS UMA VEZ) ---
+    // --- Consulta ---
     String filtro = request.getParameter("filtro");
     if (filtro == null) filtro = "";
     ControllerPontoColeta ctrl = new ControllerPontoColeta();

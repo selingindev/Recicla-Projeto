@@ -19,17 +19,18 @@
 <body>
     <% if (usuSaida != null) { %>
         <!-- Botões Dropdown -->
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownUsuario'>Gerenciar Usuário</a>        
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownProduto'>Gerenciar Produto</a>        
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownRelacoes'>Gerenciar Relações</a>       
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownLogradouro'>Gerenciar Logradouro</a>  
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPessoa'>Gerenciar Pessoa</a>  
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPJ'>Gerenciar PJ</a>  
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPEF_PDC'>Gerenciar PEF_PDC</a>  
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPontoReciclagem'>Gerenciar Ponto de Reciclagem</a>
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownParametros'>Gerenciar Parâmetros</a>
-        <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownColPDC'>Gerenciar ColPDC</a>
-<a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdownPDC'>Gerenciar PDC</a>
+        <a class='dropdown-button btn' href='#' data-activates='dropdownUsuario'>Gerenciar Usuário</a>        
+        <a class='dropdown-button btn' href='#' data-activates='dropdownProduto'>Gerenciar Produto</a>        
+        <a class='dropdown-button btn' href='#' data-activates='dropdownRelacoes'>Gerenciar Relações Usuário e Produto</a>       
+        <a class='dropdown-button btn' href='#' data-activates='dropdownLogradouro'>Gerenciar Logradouro</a>  
+        <a class='dropdown-button btn' href='#' data-activates='dropdownPessoa'>Gerenciar Pessoa</a>  
+        <a class='dropdown-button btn' href='#' data-activates='dropdownPJ'>Gerenciar PJ</a>  
+        <a class='dropdown-button btn' href='#' data-activates='dropdownPEF_PDC'>Gerenciar PEF_PDC</a>  
+        <a class='dropdown-button btn' href='#' data-activates='dropdownPontoReciclagem'>Gerenciar Ponto de Reciclagem</a>
+        <a class='dropdown-button btn' href='#' data-activates='dropdownParametros'>Gerenciar Parâmetros</a>
+        <a class='dropdown-button btn' href='#' data-activates='dropdownColPDC'>Gerenciar ColPDC</a>
+        <a class='dropdown-button btn' href='#' data-activates='dropdownPDC'>Gerenciar PDC</a>
+
         <!-- Dropdown Usuário -->
         <ul id='dropdownUsuario' class='dropdown-content'>
             <% if (usuSaida.getTipo().equals("ADM")) { %>
@@ -100,20 +101,22 @@
                 <li><a href="../parametros/listarParametros.jsp"> Listar Parâmetro </a></li>
             <% } %>
         </ul>
-        <ul id='dropdownColPDC' class='dropdown-content'>
-    <% if (usuSaida.getTipo().equals("ADM")) { %>
-        <li><a href="../COL_PDC/inserirCOL_PDC.jsp"> Inserir ColPDC </a></li>
-    <% } %>
-    <li><a href="../COL_PDC/consultarCOL_PDC.jsp"> Consultar ColPDC </a></li>
-</ul>
 
-<!-- Dropdown PDC -->
-<ul id='dropdownPDC' class='dropdown-content'>
-    <% if (usuSaida.getTipo().equals("ADM")) { %>
-        <li><a href="../PontoColeta/inserirPontoColeta.jsp"> Inserir PDC </a></li>
-    <% } %>
-    <li><a href="../PontoColeta/consultarPontoColeta.jsp"> Consultar PDC </a></li>
-</ul>
+        <!-- Dropdown ColPDC -->
+        <ul id='dropdownColPDC' class='dropdown-content'>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <li><a href="../COL_PDC/inserirCOL_PDC.jsp"> Inserir ColPDC </a></li>
+            <% } %>
+            <li><a href="../COL_PDC/consultarCOL_PDC.jsp"> Consultar ColPDC </a></li>
+        </ul>
+
+        <!-- Dropdown PDC -->
+        <ul id='dropdownPDC' class='dropdown-content'>
+            <% if (usuSaida.getTipo().equals("ADM")) { %>
+                <li><a href="../PontoColeta/inserirPontoColeta.jsp"> Inserir PDC </a></li>
+            <% } %>
+            <li><a href="../PontoColeta/consultarPontoColeta.jsp"> Consultar PDC </a></li>
+        </ul>
 
     <% } else { %>
         <h1>USUÁRIO INVÁLIDO</h1>
