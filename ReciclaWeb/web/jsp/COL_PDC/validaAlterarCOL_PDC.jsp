@@ -1,47 +1,20 @@
-<%-- 
-    Document   : validaAlterarColPdc
-    Created on : 10 de set. de 2025
-    Author     : Felipe
---%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="reciclabackend.model.bean.ColPdc" %>
 <%@ page import="reciclabackend.controller.ControllerColPdc" %>
-
+<%@ page import="reciclabackend.model.bean.ColPdc" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String idStr = request.getParameter("ID");
-    String idColStr = request.getParameter("IDCOL");
-    String idPdcStr = request.getParameter("IDPDC");
-    String data = request.getParameter("DATA");
-    String pbusca = request.getParameter("PBUSCA");
+    int id = Integer.parseInt(request.getParameter("ID"));
+    int idCol = Integer.parseInt(request.getParameter("IDCOL"));
+    int idPdc = Integer.parseInt(request.getParameter("IDPDC"));
+    String dataParam = request.getParameter("DATA"); // espera dd/mm/aaaa
 
-    String mensagem = "";
+    // Converte data para yyyy-mm-dd (MySQL)
+    String[] partes = dataParam.split("/");
+    String dataFormatada = partes[2] + "-" + partes[1] + "-" + partes[0];
 
-    try {
-        int id = idStr != null && !idStr.trim().isEmpty() ? Integer.parseInt(idStr) : 0;
-        int idCol = idColStr != null && !idColStr.trim().isEmpty() ? Integer.parseInt(idColStr) : 0;
-        int idPdc = idPdcStr != null && !idPdcStr.trim().isEmpty() ? Integer.parseInt(idPdcStr) : 0;
+    ColPdc colpdc = new ColPdc(id, idCol, idPdc, dataFormatada);
+    ControllerColPdc controller = new ControllerColPdc();
+    controller.alterar(colpdc);
 
-        ColPdc colPdc = new ColPdc(id, idCol, idPdc, data);
-        ControllerColPdc controller = new ControllerColPdc();
-        ColPdc colPdcAlterado = (ColPdc) controller.alterar(colPdc);
-
-        mensagem = "ColPdc alterado com sucesso: " + colPdcAlterado.toString();
-    } catch (Exception e) {
-        mensagem = "Erro ao alterar ColPdc: " + e.getMessage();
-    }
+    // Redireciona para a listagem
+    response.sendRedirect("validaConsultarCOL_PDC.jsp");
 %>
-<!DOCTYPE html>
-<html>
-    <%@ include file="../../inc/materalizeWeb.inc" %>
-    <head>
-        <meta charset="UTF-8">
-        <title>VALIDAR ALTERAÇÃO - COL_PDC</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Resultado da Alteração</h1>
-            <p><%= mensagem %></p>
-            <a class="btn waves-effect waves-light" href="alterarColPdc.jsp?PBUSCA=<%= (pbusca != null ? pbusca : "") %>">Voltar</a>
-        </div>
-    </body>
-</html>
