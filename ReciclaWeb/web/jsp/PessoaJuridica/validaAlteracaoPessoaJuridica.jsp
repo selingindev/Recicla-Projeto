@@ -1,5 +1,5 @@
-<%--
-    Document   : validaAlteracaoPessoaJuridica
+<%-- 
+    Document   : validaAltercaoPessoaJuridica
     Created on : 6 de set. de 2025
     Author     : Vitoria
 --%>
@@ -9,46 +9,37 @@
 <%@page import="reciclabackend.controller.ControllerPessoaJuridica"%>
 
 <%
-    // Pegando os parâmetros.
-    String idParam = request.getParameter("ID");
-    String idPesParam = request.getParameter("IDPES");
-    String cnpj = request.getParameter("CNPJ"); // Pegamos o CNPJ
-    String inscEstParam = request.getParameter("INSCEST");
-
-    int id;
-    int idPes;
-    String inscEst = "";
-
-
-
     try {
-        // Convertendo os valores numéricos.
-        id = Integer.parseInt(idParam);
-        idPes = Integer.parseInt(idPesParam);
+        // Pega os parâmetros do formulário
+        int id = Integer.parseInt(request.getParameter("id"));
+        String cnpj = request.getParameter("cnpj");
+        String inscEst = request.getParameter("inscEst");
 
-        if (inscEstParam != null && !inscEstParam.trim().isEmpty()) {
-            inscEst = inscEstParam;  // Aqui inscEst é String, igual na classe!
+        // Controller
+        ControllerPessoaJuridica controller = new ControllerPessoaJuridica();
+
+        // Busca o objeto existente no banco
+        PessoaJuridica pj = (PessoaJuridica) controller.buscar(id);
+
+        if (pj != null) {
+            // Atualiza com os novos valores
+            pj.setCnpj(cnpj);
+            pj.setInscEst(inscEst);
+
+            // Salva no banco
+            controller.alterar(pj);
+
+            // Redireciona para consulta
+            String url = "validaConsultaPessoaJuridica.jsp?FILTRO=" + cnpj;
+            response.sendRedirect(url);
+        } else {
+            out.print("Pessoa Jurídica com ID " + id + " não encontrada.");
         }
 
-    } catch (NumberFormatException e) {
-        System.err.println("Erro de conversão de número: " + e.getMessage());
-        // response.sendRedirect("paginaDeErro.jsp?erro=DadosInvalidos");
-        return; // Para a execução
-    }
+    } catch (Exception e) {
+    String msg = "Erro ao alterar Pessoa Jurídica: " + e.getMessage();
+    request.setAttribute("erro", msg);
+    request.getRequestDispatcher("paginaErro.jsp").forward(request, response);
+ }
 
-    // Se o código chegou até aqui, os dados são válidos.
-    System.out.println("Todos os dados validados. Criando objeto...");
-
-    // Criando o objeto PessoaJuridica com os tipos corretos.
-    PessoaJuridica pj = new PessoaJuridica(id, idPes, cnpj, inscEst);
-    
-    // Instanciando o controller e executando a alteração.
-    ControllerPessoaJuridica pjCont = new ControllerPessoaJuridica();
-    pjCont.alterar(pj);
-
-    // Redirecionando para a página de consulta.
-    String url = "consultaPessoaJuridica.jsp?FILTRO=" + cnpj;
-    response.sendRedirect(url);
 %>
-
-
