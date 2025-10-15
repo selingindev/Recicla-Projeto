@@ -15,7 +15,7 @@
         controller.excluir(id);
 
         String cnpj = request.getParameter("CNPJ");
-        String url = "consultaPessoaJuridica.jsp?NOME=" + cnpj;
+        String url = "validaConsultaPessoaJuridica.jsp?FILTRO=" + cnpj;
         response.sendRedirect(url);
 
     } catch (Exception e) {
