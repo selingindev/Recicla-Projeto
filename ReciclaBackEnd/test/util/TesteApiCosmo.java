@@ -8,7 +8,7 @@ public class TesteApiCosmo {
         CosmoApi cosmo = new CosmoApi();
 
         cosmo.gtinData("78912359");
-        System.out.println();
+        System.out.println(cosmo.gtinData("78912359"));
 
     }
 

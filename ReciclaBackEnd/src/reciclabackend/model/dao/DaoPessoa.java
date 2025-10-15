@@ -31,7 +31,7 @@ public class DaoPessoa implements DaoBasico {
     @Override
     public Object inserir(Object obj) throws SQLException {
         Pessoa pessoaEnt = (Pessoa) obj;
-        String sql = "insert into PES_PESSOA" + " (NOME, id_log)" + " values (?, ?)";
+        String sql = "insert into PES_PESSOA" + " (NOME, id_log, EMAIL, TELEFONE)" + " values (?, ?, ?, ?)";
     
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -39,6 +39,8 @@ public class DaoPessoa implements DaoBasico {
         // seta os valores
         stmt.setString(1,pessoaEnt.getNome());
         stmt.setInt(2, pessoaEnt.getIdLog());
+        stmt.setString(3, pessoaEnt.getEmail());
+        stmt.setString(4, pessoaEnt.getTelefone());
 
         // executa
         stmt.executeUpdate();
@@ -54,13 +56,15 @@ public class DaoPessoa implements DaoBasico {
     @Override
     public Object alterar(Object obj) throws SQLException {
         Pessoa pessoaEnt = (Pessoa) obj;
-        String sql = "UPDATE PES_PESSOA SET nome = ?, id_log = ? WHERE id = ?";
+        String sql = "UPDATE PES_PESSOA SET nome = ?, id_log = ? , telefone = ?, email = ? WHERE id = ?";
         // prepared statement para inserção
         PreparedStatement stmt = c.prepareStatement(sql);
         // seta os valores
         stmt.setString(1,pessoaEnt.getNome());
         stmt.setInt(2, pessoaEnt.getIdLog());
-        stmt.setInt(3,pessoaEnt.getId());
+        stmt.setString(3,pessoaEnt.getEmail());
+        stmt.setString(4, pessoaEnt.getTelefone());
+        stmt.setInt(5, pessoaEnt.getId());
         // executa
         stmt.execute();
         stmt.close();
@@ -82,9 +86,11 @@ public class DaoPessoa implements DaoBasico {
         while (rs.next()) {      
             // criando o objeto Usuario
             Pessoa pessoa = new Pessoa(
-                rs.getInt(1),
-                rs.getString(2),
-                rs.getInt(3)
+                rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getInt("id_log"),
+                rs.getString("email"),
+                rs.getString("telefone") 
             );
             // adiciona o usu à lista de usus
             pessoas.add(pessoa);
@@ -123,12 +129,15 @@ public class DaoPessoa implements DaoBasico {
             while (rs.next()) {      
             // criando o objeto Pessoa
             pesSaida = new Pessoa(
-                    rs.getInt(1),
-                    rs.getString(2),
-                    rs.getInt(3)
+                    rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getInt("id_log"),
+                rs.getString("email"),
+                rs.getString("telefone") 
                     );
             // adiciona o usu à lista de usus
             }
+            System.out.println(pesSaida.toString());
             stmt.close();
         return pesSaida;    
     }
@@ -147,9 +156,11 @@ public class DaoPessoa implements DaoBasico {
         while (rs.next()) {      
             // criando o objeto Usuario
             Pessoa pessoa = new Pessoa(
-                rs.getInt(1),
-                rs.getString(2),
-                rs.getInt(3)
+                rs.getInt("id"),
+                rs.getString("nome"),
+                rs.getInt("id_log"),
+                rs.getString("email"),
+                rs.getString("telefone")
             );
             // adiciona o usu à lista de usus
             pessoas.add(pessoa);
